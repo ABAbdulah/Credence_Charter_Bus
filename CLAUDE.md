@@ -38,10 +38,13 @@ Marketing + lead-gen site for a charter bus company (rebrand of "Vanguard Charte
 
 ## Data-file locations
 - `src/config/site.ts` — siteConfig (business info placeholders, hero media swap point)
-- `src/data/fleet.ts` — fleet categories + vehicles (Phase 2)
-- `src/data/services.ts` — services (Phase 2)
+- `src/config/nav.ts` — main nav items (header, mobile, footer all read this)
+- `src/data/fleet.ts` — 8 FleetCategory entries; images point to `public/fleet/*.png` (kebab-case, renamed from originals; motor coach images live under charter-buses as `extra`). 3 featured hero categories.
+- `src/data/services.ts` — 6 services (corporate, event, airport, sports, wedding, school)
+- `src/data/testimonials.ts`, `src/data/faq.ts` — home/FAQ content
+- `src/data/blogs.ts` — blog preview stub (3 posts); Phase 4 replaces with full content layer
+- `src/lib/quote.ts` — QuoteRequest type + validateQuote (shared client/server); `src/lib/quote-sender.ts` — QuoteSender interface, console stub is the swap point for email/CRM
 - `src/data/locations/` — state→city dataset + ingestion script (Phase 3)
-- `src/content/blogs/` — MDX/typed blog content (Phase 4)
 
 ## Assets
 - Vehicle images arrived during Phase 1: 18 PNGs in `public/` root, 9 types × ext/int (charter bus, motor coach, mini bus, sprinter van, party bus, school bus, stretch limo — filename typo "strecth", SUV, sedan). ~2MB+ each, ~1536×1024. Phase 2: move to `public/fleet/` with kebab-case names, map into fleet data model, serve via next/image (never raw — too heavy). Motor coach folds into the Charter/Coach category.
@@ -57,7 +60,7 @@ Marketing + lead-gen site for a charter bus company (rebrand of "Vanguard Charte
 ## Phase checklist
 - [x] Phase 0 — Recon & baseline (scaffold, siteConfig, CLAUDE.md, smoke test, route/data plan)
 - [x] Phase 1 — Design system + shell (tokens, Header/Footer/Logo, primitives, a11y pass)
-- [ ] Phase 2 — Core marketing pages (home, fleet, services, about, contact, FAQ, quote form + stub API)
+- [x] Phase 2 — Core marketing pages (home, fleet, services, about, contact, FAQ, quote form + stub API)
 - [ ] Phase 3 — Programmatic location SEO engine (locations dataset, 3 route levels, ISR, variation system)
 - [ ] Phase 4 — Blogs (index + detail, Article JSON-LD, rewritten + new SEO posts)
 - [ ] Phase 5 — Technical SEO + performance (metadata everywhere, JSON-LD validation, sitemaps, Lighthouse ≥90/95/95)
