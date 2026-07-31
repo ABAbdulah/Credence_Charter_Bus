@@ -1,0 +1,276 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Phone } from "lucide-react";
+
+import { siteConfig } from "@/config/site";
+import { featuredFleet } from "@/data/fleet";
+import {
+  citiesOfState,
+  getCity,
+  getState,
+  locationsBuildConfig,
+  nearbyCities,
+  topCities,
+} from "@/data/locations";
+import { services } from "@/data/services";
+import { buildCityCopy } from "@/lib/variation";
+import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
+import { Section, SectionHeading } from "@/components/ui/section";
+import { BookingSteps } from "@/components/site/booking-steps";
+import { CtaBand } from "@/components/site/cta-band";
+import { FleetCard } from "@/components/site/fleet-card";
+
+export const revalidate = 86400;
+export const dynamicParams = true;
+
+type Props = {
+  params: Promise<{ state: string; city: string }>;
+};
+
+export function generateStaticParams() {
+  return topCities(locationsBuildConfig.prebuildCityLimit).map((city) => ({
+    state: city.stateSlug,
+    city: city.slug,
+  }));
+}
+
+function cityCopy(stateSlug: string, citySlug: string) {
+  const state = getState(stateSlug);
+  const city = getCity(stateSlug, citySlug);
+  if (!state || !city) return null;
+  const nearby = nearbyCities(city);
+  return {
+    state,
+    city,
+    nearby,
+    copy: buildCityCopy({
+      seed: `${stateSlug}/${citySlug}`,
+      city: city.name,
+      state: state.name,
+      abbr: state.abbr,
+      region: state.region,
+      nearby: nearby.map((entry) => entry.name),
+    }),
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { state: stateSlug, city: citySlug } = await params;
+  const data = cityCopy(stateSlug, citySlug);
+  if (!data) return {};
+  return {
+    title: `Charter Bus Rental in ${data.city.name}, ${data.state.name}`,
+    description: data.copy.description,
+    alternates: { canonical: `/locations/${stateSlug}/${citySlug}` },
+  };
+}
+
+export default async function CityPage({ params }: Props) {
+  const { state: stateSlug, city: citySlug } = await params;
+  const data = cityCopy(stateSlug, citySlug);
+  if (!data) notFound();
+
+  const { state, city, nearby, copy } = data;
+  const pageUrl = `${siteConfig.url}/locations/${state.slug}/${city.slug}`;
+  const otherStateCities = citiesOfState(state.slug)
+    .filter((entry) => entry.slug !== city.slug)
+    .slice(0, 8);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        name: `Charter Bus Rental in ${city.name}, ${state.name}`,
+        serviceType: "Charter bus rental",
+        description: copy.description,
+        url: pageUrl,
+        areaServed: {
+          "@type": "City",
+          name: city.name,
+          containedInPlace: { "@type": "State", name: state.name },
+        },
+        provider: { "@id": `${siteConfig.url}/#organization` },
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        telephone: siteConfig.phone.tel,
+        email: siteConfig.email,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: siteConfig.address.street,
+          addressLocality: siteConfig.address.city,
+          addressRegion: siteConfig.address.state,
+          postalCode: siteConfig.address.zip,
+          addressCountry: "US",
+        },
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <Section>
+        <Container>
+          <nav aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center gap-2 text-base text-muted-foreground">
+              <li>
+                <Link href="/locations" className="hover:text-primary hover:underline">
+                  Locations
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link
+                  href={`/locations/${state.slug}`}
+                  className="hover:text-primary hover:underline"
+                >
+                  {state.name}
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" className="text-foreground">
+                {city.name}
+              </li>
+            </ol>
+          </nav>
+          <SectionHeading
+            as="h1"
+            eyebrow={`${city.name}, ${state.abbr}`}
+            title={`Charter Bus Rental in ${city.name}, ${state.name}`}
+            className="mt-6"
+          />
+          <div className="mt-6 flex max-w-3xl flex-col gap-4 text-lg">
+            <p>{copy.opening}</p>
+            <p>{copy.detail}</p>
+          </div>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <Button asChild size="lg">
+              <Link href="/quote">Get a Free Quote</Link>
+            </Button>
+            <Button asChild size="lg" variant="accent">
+              <a href={`tel:${siteConfig.phone.tel}`}>
+                <Phone />
+                Call Now — {siteConfig.phone.display}
+              </a>
+            </Button>
+          </div>
+        </Container>
+      </Section>
+      <Section className="bg-secondary/40">
+        <Container>
+          <SectionHeading
+            eyebrow="Vehicles"
+            title={`Popular vehicles in ${city.name}`}
+            lede="Every rental includes a licensed driver and an itemized, all-in quote."
+          />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredFleet.map((category) => (
+              <FleetCard key={category.slug} category={category} />
+            ))}
+          </div>
+          <div className="mt-8">
+            <Button asChild variant="outline" size="lg">
+              <Link href="/fleet">View the full fleet</Link>
+            </Button>
+          </div>
+        </Container>
+      </Section>
+      <Section>
+        <Container>
+          <SectionHeading
+            eyebrow="Services"
+            title={`What ${city.name} groups book most`}
+          />
+          <ul className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+            {services.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="flex min-h-11 items-center gap-3 rounded-md px-3 font-medium text-primary hover:bg-muted hover:underline"
+                >
+                  <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-accent" />
+                  {service.name} in {city.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+      <Section className="bg-secondary/40">
+        <Container>
+          <SectionHeading
+            eyebrow="How it works"
+            title="Booked in three simple steps"
+          />
+          <div className="mt-10">
+            <BookingSteps />
+          </div>
+        </Container>
+      </Section>
+      <Section>
+        <Container>
+          <SectionHeading
+            eyebrow="Popular routes"
+            title={`Group trips from ${city.name}`}
+            lede="One-way transfers, round trips, and multi-day tours — these nearby routes come up often, and anywhere else is fair game."
+          />
+          <ul className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+            {nearby.map((destination) => (
+              <li key={`${destination.stateSlug}-${destination.slug}`}>
+                <Link
+                  href={`/locations/${destination.stateSlug}/${destination.slug}`}
+                  className="flex min-h-11 items-center rounded-md px-3 font-medium text-primary hover:bg-muted hover:underline"
+                >
+                  {city.name} to {destination.name} charter bus
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {otherStateCities.length > 0 && (
+            <>
+              <h3 className="mt-10 text-xl font-semibold text-primary">
+                More {state.name} cities
+              </h3>
+              <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                {otherStateCities.map((entry) => (
+                  <li key={entry.slug}>
+                    <Link
+                      href={`/locations/${state.slug}/${entry.slug}`}
+                      className="inline-flex min-h-11 items-center font-medium text-primary underline-offset-4 hover:underline"
+                    >
+                      {entry.name}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link
+                    href={`/locations/${state.slug}`}
+                    className="inline-flex min-h-11 items-center font-semibold text-primary underline underline-offset-4"
+                  >
+                    All of {state.name} →
+                  </Link>
+                </li>
+              </ul>
+            </>
+          )}
+        </Container>
+      </Section>
+      <CtaBand
+        title={`Ready to book in ${city.name}?`}
+        lede="Send your trip details and a coordinator will reply with an all-in quote — usually the same day."
+      />
+    </>
+  );
+}
