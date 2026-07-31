@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-bitter), Georgia, serif;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --background: #f7f5f0;
+  --foreground: #22252b;
+  --card: #ffffff;
+  --card-foreground: #22252b;
+  --popover: #ffffff;
+  --popover-foreground: #22252b;
+  --primary: #1b2a4a;
+  --primary-hover: #142138;
+  --primary-foreground: #ffffff;
+  --secondary: #e9e4d8;
+  --secondary-foreground: #1b2a4a;
+  --muted: #efece4;
+  --muted-foreground: #5a6b82;
+  --accent: #c1a15a;
+  --accent-hover: #b08f49;
+  --accent-deep: #7a612a;
+  --accent-foreground: #22252b;
+  --destructive: #9b3b34;
+  --border: #ddd8cc;
+  --input: #857d6d;
+  --ring: #1b2a4a;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    font-size: 112.5%;
+  }
+  body {
+    @apply bg-background text-foreground leading-relaxed;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading text-balance;
+  }
+  :where(a, summary):focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
