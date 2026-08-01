@@ -73,6 +73,9 @@
   h4 {
     @apply font-heading text-balance;
   }
+  :where(button, [role="button"]):not(:disabled) {
+    cursor: pointer;
+  }
   :where(a, summary):focus-visible {
     outline: 3px solid currentColor;
     outline-offset: 3px;
