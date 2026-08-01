@@ -21,7 +21,7 @@ function FleetCard({ category }: { category: FleetCategory }) {
         width={1602}
         height={982}
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-        className="aspect-[3/2] w-full object-cover"
+        className="aspect-3/2 w-full object-cover"
       />
       <CardHeader>
         <CardTitle>{category.name}</CardTitle>

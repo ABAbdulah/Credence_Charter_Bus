@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
 import { Check } from "lucide-react";
 
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { QuoteForm } from "@/components/site/quote-form";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Get a Free Quote",
   description:
     "Tell us your group size, dates, and route — we'll send back a clear, all-in charter quote, usually the same day.",
-};
+  path: "/quote",
+});
 
 const reassurances = [
   "Free and no-obligation — compare us with anyone",

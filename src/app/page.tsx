@@ -1,8 +1,11 @@
 import Link from "next/link";
 
+import { siteConfig } from "@/config/site";
 import { blogPreviews } from "@/data/blogs";
 import { featuredFleet } from "@/data/fleet";
 import { services } from "@/data/services";
+import { formatBlogDate } from "@/lib/blog-format";
+import { pageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -13,12 +16,12 @@ import { FleetCard } from "@/components/site/fleet-card";
 import { Hero } from "@/components/site/hero";
 import { ServiceCard } from "@/components/site/service-card";
 import { StatsBand } from "@/components/site/stats-band";
-import { TestimonialsSection } from "@/components/site/testimonials-section";
 
-const dateFormat = new Intl.DateTimeFormat("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
+export const metadata = pageMetadata({
+  title: { absolute: `${siteConfig.name} — ${siteConfig.tagline}` },
+  description:
+    "Charter bus, mini bus, and sprinter van rentals for groups of every size, serving all 50 states. Request a free quote or call to plan your trip.",
+  path: "/",
 });
 
 export default function Home() {
@@ -71,17 +74,6 @@ export default function Home() {
         </Container>
       </Section>
       <StatsBand />
-      <Section>
-        <Container>
-          <SectionHeading
-            eyebrow="Testimonials"
-            title="Groups that ride with us, again and again"
-          />
-          <div className="mt-10">
-            <TestimonialsSection />
-          </div>
-        </Container>
-      </Section>
       <Section className="bg-secondary/40">
         <Container>
           <SectionHeading
@@ -95,7 +87,7 @@ export default function Home() {
                 <Card className="h-full">
                   <CardContent className="flex h-full flex-col">
                     <p className="text-sm text-muted-foreground">
-                      {dateFormat.format(new Date(post.date))}
+                      {formatBlogDate(post.date)}
                     </p>
                     <h3 className="mt-2 text-xl font-semibold text-primary">
                       <Link

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { citiesOfState, getState, states } from "@/data/locations";
+import { breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
@@ -21,11 +23,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { state: slug } = await params;
   const state = getState(slug);
   if (!state) return {};
-  return {
+  return pageMetadata({
     title: `Charter Bus Rental in ${state.name}`,
     description: `Charter buses, mini buses, and sprinter vans across ${state.name}. Choose your city for local details, or request a free all-in quote for any ${state.abbr} trip.`,
-    alternates: { canonical: `/locations/${state.slug}` },
-  };
+    path: `/locations/${state.slug}`,
+  });
 }
 
 export default async function StatePage({ params }: Props) {
@@ -37,6 +39,13 @@ export default async function StatePage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Locations", path: "/locations" },
+          { name: state.name, path: `/locations/${state.slug}` },
+        ])}
+      />
       <Section>
         <Container>
           <Link

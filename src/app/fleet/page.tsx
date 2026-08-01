@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
-
 import { fleetCategories } from "@/data/fleet";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 import { FleetCard } from "@/components/site/fleet-card";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Our Fleet",
   description:
     "Charter buses, mini buses, sprinter vans, party buses, limousines, SUVs, and sedans — every vehicle with a professional driver and all-in pricing.",
-};
+  path: "/fleet",
+});
 
 export default function FleetPage() {
   return (

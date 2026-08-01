@@ -5,6 +5,8 @@ import { Check } from "lucide-react";
 
 import { getFleetCategory } from "@/data/fleet";
 import { getService, services } from "@/data/services";
+import { breadcrumbJsonLd, JsonLd, serviceJsonLd } from "@/lib/jsonld";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
@@ -22,10 +24,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
-  return {
+  return pageMetadata({
     title: service.name,
     description: service.short,
-  };
+    path: `/services/${service.slug}`,
+  });
 }
 
 export default async function ServicePage({ params }: Props) {
@@ -39,6 +42,20 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: service.name, path: `/services/${service.slug}` },
+        ])}
+      />
+      <JsonLd
+        data={serviceJsonLd({
+          name: service.name,
+          description: service.short,
+          path: `/services/${service.slug}`,
+        })}
+      />
       <Section>
         <Container>
           <Link

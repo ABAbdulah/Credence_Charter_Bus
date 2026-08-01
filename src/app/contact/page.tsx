@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
+import { pageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,11 +14,12 @@ import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact Us",
   description:
     "Call, email, or request a quote — the Credence Charter Bus team answers around the clock.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

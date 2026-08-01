@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
-
 import { services } from "@/data/services";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 import { ServiceCard } from "@/components/site/service-card";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Services",
   description:
     "Corporate travel, event transportation, airport transfers, sports teams, weddings, and school trips — group transportation with a dedicated coordinator.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

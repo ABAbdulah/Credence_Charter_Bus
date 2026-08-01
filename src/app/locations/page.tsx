@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { citiesOfState, statesByRegion } from "@/data/locations";
+import { pageMetadata } from "@/lib/seo";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Charter Bus Rentals by Location",
   description:
     "Find charter bus, mini bus, and sprinter van rentals near you. Credence Charter Bus serves cities in all 50 states with licensed drivers and all-in quotes.",
-  alternates: { canonical: "/locations" },
-};
+  path: "/locations",
+});
 
 export default function LocationsPage() {
   return (

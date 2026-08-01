@@ -2,10 +2,10 @@ import { siteConfig } from "@/config/site"
 import { Container } from "@/components/ui/container"
 
 const stats = [
-  { value: siteConfig.stats.milesDriven, label: "Miles driven" },
-  { value: siteConfig.stats.buses, label: "Vehicles in network" },
-  { value: siteConfig.stats.cities, label: "Cities served" },
-  { value: siteConfig.stats.happyCustomers, label: "Happy customers" },
+  { value: siteConfig.stats.yearsInBusiness, label: "Years in business" },
+  { value: siteConfig.stats.passengersTransported, label: "Passengers transported" },
+  { value: siteConfig.stats.citiesServed, label: "Cities served" },
+  { value: siteConfig.stats.milesTraveled, label: "Miles traveled" },
 ]
 
 function StatsBand() {

@@ -1,17 +1,18 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 
 import { siteConfig } from "@/config/site";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 import { StatsBand } from "@/components/site/stats-band";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About Us",
   description:
     "Credence Charter Bus arranges group transportation in all 50 states — licensed drivers, well-maintained vehicles, and quotes without surprises.",
-};
+  path: "/about",
+});
 
 const values = [
   {
@@ -37,7 +38,7 @@ export default function AboutPage() {
             as="h1"
             eyebrow="About us"
             title="Group travel, done the dependable way"
-            lede={`${siteConfig.name} arranges charter buses, mini buses, and vans for groups across all 50 states.`}
+            lede={`Since ${siteConfig.established}, ${siteConfig.name} has arranged charter buses, mini buses, and vans for groups across all 50 states.`}
           />
           <div className="mt-10 grid items-center gap-10 lg:grid-cols-2">
             <div className="flex flex-col gap-4 text-lg">
@@ -45,7 +46,8 @@ export default function AboutPage() {
                 Booking a bus shouldn&apos;t feel like a gamble. Too many groups
                 have stories about vague quotes, unreachable dispatchers, or a
                 vehicle that didn&apos;t match the photos. We built {siteConfig.name}{" "}
-                to be the company those stories aren&apos;t about.
+                to be the company those stories aren&apos;t about — and
+                we&apos;ve been doing it since {siteConfig.established}.
               </p>
               <p>
                 Our network pairs well-maintained vehicles with professional,
@@ -62,7 +64,7 @@ export default function AboutPage() {
               width={1774}
               height={887}
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="aspect-[3/2] w-full rounded-xl object-cover ring-1 ring-foreground/10"
+              className="aspect-3/2 w-full rounded-xl object-cover ring-1 ring-foreground/10"
             />
           </div>
         </Container>

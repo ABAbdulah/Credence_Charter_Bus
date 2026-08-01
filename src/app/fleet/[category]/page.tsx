@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
 
 import { fleetCategories, getFleetCategory } from "@/data/fleet";
+import { breadcrumbJsonLd, JsonLd, serviceJsonLd } from "@/lib/jsonld";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
@@ -21,10 +23,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category: slug } = await params;
   const category = getFleetCategory(slug);
   if (!category) return {};
-  return {
+  return pageMetadata({
     title: `${category.name} — ${category.capacity}`,
     description: category.short,
-  };
+    path: `/fleet/${category.slug}`,
+    ogImage: {
+      url: category.images.exterior.src,
+      alt: category.images.exterior.alt,
+    },
+  });
 }
 
 export default async function FleetCategoryPage({ params }: Props) {
@@ -40,6 +47,20 @@ export default async function FleetCategoryPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Fleet", path: "/fleet" },
+          { name: category.name, path: `/fleet/${category.slug}` },
+        ])}
+      />
+      <JsonLd
+        data={serviceJsonLd({
+          name: `${category.name} Rental`,
+          description: category.short,
+          path: `/fleet/${category.slug}`,
+        })}
+      />
       <Section>
         <Container>
           <Link
@@ -64,7 +85,7 @@ export default async function FleetCategoryPage({ params }: Props) {
                 width={1602}
                 height={982}
                 sizes="(min-width: 640px) 50vw, 100vw"
-                className="aspect-[3/2] w-full rounded-xl object-cover ring-1 ring-foreground/10"
+                className="aspect-3/2 w-full rounded-xl object-cover ring-1 ring-foreground/10"
               />
             ))}
           </div>

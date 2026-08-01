@@ -1,19 +1,31 @@
-import type { Metadata } from "next";
-
 import { faqItems } from "@/data/faq";
+import { JsonLd } from "@/lib/jsonld";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Frequently Asked Questions",
   description:
     "Booking windows, pricing, drivers, cancellations, and accessibility — answers to the questions groups ask most.",
+  path: "/faq",
+});
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
 };
 
 export default function FaqPage() {
   return (
     <>
+      <JsonLd data={faqJsonLd} />
       <Section>
         <Container>
           <SectionHeading

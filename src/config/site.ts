@@ -14,11 +14,7 @@ export const siteConfig = {
     state: "PLACEHOLDER_STATE",
     zip: "PLACEHOLDER_ZIP",
   },
-  social: {
-    facebook: "PLACEHOLDER_FACEBOOK_URL",
-    instagram: "PLACEHOLDER_INSTAGRAM_URL",
-    linkedin: "PLACEHOLDER_LINKEDIN_URL",
-  },
+  established: 2013,
   hero: {
     mediaType: "image" as "image" | "video",
     mediaSrc: "",
@@ -27,10 +23,10 @@ export const siteConfig = {
       "Charter buses, mini buses, and sprinter vans for groups of every size — with clear pricing and a team you can reach.",
   },
   stats: {
-    milesDriven: "PLACEHOLDER_MILES",
-    buses: "PLACEHOLDER_BUS_COUNT",
-    cities: "PLACEHOLDER_CITY_COUNT",
-    happyCustomers: "PLACEHOLDER_CUSTOMER_COUNT",
+    yearsInBusiness: "12+",
+    passengersTransported: "500K+",
+    citiesServed: "750+",
+    milesTraveled: "15M+",
   },
 } as const;
 

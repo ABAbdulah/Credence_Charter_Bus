@@ -1,0 +1,43 @@
+import type { Metadata } from "next"
+
+import { siteConfig } from "@/config/site"
+
+const defaultOgImage = {
+  url: "/fleet/charter-bus-exterior.png",
+  width: 1602,
+  height: 982,
+  alt: "Credence charter bus ready for boarding",
+}
+
+export function pageMetadata({
+  title,
+  description,
+  path,
+  ogType = "website",
+  ogImage,
+  publishedTime,
+}: {
+  title: string | { absolute: string }
+  description: string
+  path: string
+  ogType?: "website" | "article"
+  ogImage?: { url: string; alt: string }
+  publishedTime?: string
+}): Metadata {
+  const ogTitle = typeof title === "string" ? title : title.absolute
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      title: ogTitle,
+      description,
+      url: path,
+      siteName: siteConfig.name,
+      type: ogType,
+      ...(publishedTime ? { publishedTime } : {}),
+      images: [ogImage ? { ...ogImage, width: 1602, height: 982 } : defaultOgImage],
+    },
+    twitter: { card: "summary_large_image" },
+  }
+}

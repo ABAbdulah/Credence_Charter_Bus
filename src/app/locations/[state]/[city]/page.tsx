@@ -14,6 +14,8 @@ import {
   topCities,
 } from "@/data/locations";
 import { services } from "@/data/services";
+import { breadcrumbJsonLd, JsonLd, organizationId } from "@/lib/jsonld";
+import { pageMetadata } from "@/lib/seo";
 import { buildCityCopy } from "@/lib/variation";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -60,11 +62,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { state: stateSlug, city: citySlug } = await params;
   const data = cityCopy(stateSlug, citySlug);
   if (!data) return {};
-  return {
+  return pageMetadata({
     title: `Charter Bus Rental in ${data.city.name}, ${data.state.name}`,
     description: data.copy.description,
-    alternates: { canonical: `/locations/${stateSlug}/${citySlug}` },
-  };
+    path: `/locations/${stateSlug}/${citySlug}`,
+  });
 }
 
 export default async function CityPage({ params }: Props) {
@@ -80,46 +82,29 @@ export default async function CityPage({ params }: Props) {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Service",
-        name: `Charter Bus Rental in ${city.name}, ${state.name}`,
-        serviceType: "Charter bus rental",
-        description: copy.description,
-        url: pageUrl,
-        areaServed: {
-          "@type": "City",
-          name: city.name,
-          containedInPlace: { "@type": "State", name: state.name },
-        },
-        provider: { "@id": `${siteConfig.url}/#organization` },
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": `${siteConfig.url}/#organization`,
-        name: siteConfig.name,
-        url: siteConfig.url,
-        telephone: siteConfig.phone.tel,
-        email: siteConfig.email,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: siteConfig.address.street,
-          addressLocality: siteConfig.address.city,
-          addressRegion: siteConfig.address.state,
-          postalCode: siteConfig.address.zip,
-          addressCountry: "US",
-        },
-      },
-    ],
+    "@type": "Service",
+    name: `Charter Bus Rental in ${city.name}, ${state.name}`,
+    serviceType: "Charter bus rental",
+    description: copy.description,
+    url: pageUrl,
+    areaServed: {
+      "@type": "City",
+      name: city.name,
+      containedInPlace: { "@type": "State", name: state.name },
+    },
+    provider: { "@id": organizationId },
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-        }}
+      <JsonLd data={jsonLd} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Locations", path: "/locations" },
+          { name: state.name, path: `/locations/${state.slug}` },
+          { name: city.name, path: `/locations/${state.slug}/${city.slug}` },
+        ])}
       />
       <Section>
         <Container>

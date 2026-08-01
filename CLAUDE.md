@@ -20,7 +20,17 @@ Marketing + lead-gen site for a charter bus company (rebrand of "Vanguard Charte
   - Clean up as you go: every touched file leaves with no unused imports, no unused vars/props, no commented-out code, no leftover scaffold cruft.
   - No slop design: no gratuitous gradients-on-everything, no emoji-as-icons, no generic "✨ modern SaaS" look, no wall-of-badges, no fake urgency. Every visual choice must serve the trust-and-ease brief for an older audience.
   - No slop code patterns: no needless wrapper divs, no copy-pasted near-duplicate blocks (extract), no `any`, no default-exported anonymous helpers, no over-abstracted one-use "utils".
-- All business details (name, phone, email, address, social, stats) come ONLY from `src/config/site.ts` — placeholder tokens until the owner fills them. Never hardcode them elsewhere.
+- All business details (name, phone, email, address, stats, established year) come ONLY from `src/config/site.ts` — placeholder tokens until the owner fills them. Never hardcode them elsewhere.
+
+## Client directives (from owner's notes, 31 Jul 2026) — treat as binding
+- **No social media links anywhere.** `siteConfig.social` was REMOVED; JSON-LD has no `sameAs`. Do not re-add.
+- **No reviews/testimonials.** Section and data file deleted ("Cut out reviews. No need to"). Do not re-add.
+- **Neutral palette only — no orange, green, yellow.** Current navy/bronze/cream set is approved; keep it.
+- **Established 2013.** `siteConfig.established`; surfaced in hero trust list, About, footer, and `foundingDate` in JSON-LD.
+- **Real stats (final, not placeholders):** 12+ years, 500K+ passengers, 750+ cities, 15M+ miles.
+- **Locations = "exactly same as vanguard"** — all states/cities/connecting pages. Current engine covers this; needs the owner's full city CSV via the ingestion script.
+- **Fleet/services/blogs/about copy:** must be reworded away from the model site (already written fresh here, not copied). Blog + fleet imagery must be non-copyright — the 18 supplied PNGs are owner-provided and OK.
+- **Still open / needs owner input:** hero animation-vs-photo choice needs approval; "different stats animation" (stats currently render static — a count-up on scroll would need to respect prefers-reduced-motion); driver + affiliate forms not yet built; tour-bus form intentionally folded into `/quote`.
 
 ## Design system (implemented Phase 1)
 - Tokens live in `src/app/globals.css` (`:root` vars + `@theme inline` mapping, shadcn semantic names): background cream `#F7F5F0`, foreground ink `#22252B`, card/surface white, primary navy `#1B2A4A` (+ `--primary-hover #142138`), accent bronze `#C1A15A` (+ `--accent-hover #B08F49`), `--accent-deep #7A612A` (bronze for SMALL text — plain bronze fails 4.5:1 on light bg), muted-foreground slate `#5A6B82`, destructive muted brick `#9B3B34`, border `#DDD8CC`, input border `#857D6D` (3:1 non-text), radius 0.5rem.
@@ -64,6 +74,14 @@ Marketing + lead-gen site for a charter bus company (rebrand of "Vanguard Charte
 - [x] Phase 1 — Design system + shell (tokens, Header/Footer/Logo, primitives, a11y pass)
 - [x] Phase 2 — Core marketing pages (home, fleet, services, about, contact, FAQ, quote form + stub API)
 - [x] Phase 3 — Programmatic location SEO engine (locations dataset, 3 route levels, ISR, variation system)
-- [ ] Phase 4 — Blogs (index + detail, Article JSON-LD, rewritten + new SEO posts)
-- [ ] Phase 5 — Technical SEO + performance (metadata everywhere, JSON-LD validation, sitemaps, Lighthouse ≥90/95/95)
-- [ ] Phase 6 — Final QA (build, link check, no Vanguard tokens, swap-ability confirmed, README)
+- [x] Phase 4 — Blogs (index + detail, Article JSON-LD, rewritten + new SEO posts)
+- [x] Phase 5 — Technical SEO + performance (metadata everywhere, JSON-LD validation, sitemaps, Lighthouse ≥90/95/95)
+- [x] Phase 6 — Final QA (build, link check, no Vanguard tokens, swap-ability confirmed, README)
+
+## Phase 4–6 additions
+- `src/data/blogs.ts` — 6 full posts as typed blocks (p/h2/ul), `planningLinks` for internal links to services/fleet/locations, `relatedPostSlugs`; `blogPreviews` derived for home teaser. `src/lib/blog-format.ts` — date + reading-time helpers.
+- `src/lib/seo.ts` — `pageMetadata()` builds title/description/canonical/OG/twitter for EVERY route; home uses `title: {absolute}`. `src/lib/jsonld.tsx` — `<JsonLd>`, site-wide LocalBusiness (`organizationId` referenced by all Service/Article nodes), `breadcrumbJsonLd`, `serviceJsonLd`. Org JSON-LD rendered once in root layout.
+- Sitemaps: `/sitemap.xml` (index) + `/sitemaps/core.xml` + `/sitemaps/locations-N.xml` (≤50k URLs/shard) via `src/lib/sitemap.ts`; `src/app/robots.ts`. All derive from siteConfig.url + data files — no manual lists.
+- Hero split: `hero-media.tsx` is a SERVER component (image path, quality 50); `hero-video.tsx` is the client half (reduced-motion-aware autoplay). Keep it this way — moving the image back into a client component cost ~2 Lighthouse perf points.
+- Lighthouse (local, throttled mobile): home 90/96/100/100, fleet 97/100/100/100, service 95/100/100/100, blog 96/100/100/100, city 96/100/100/100 (perf/a11y/bp/seo). KNOWN FALSE POSITIVE: axe color-contrast on hero trust list — axe can't attribute gradient backgrounds and assumes cream; real contrast is white on navy ≥9:1. Do not "fix" by removing the gradient.
+- QA verified: 97-page link crawl all 200, zero Vanguard tokens, PLACEHOLDER only in site.ts, logo auto-swap tested both directions.

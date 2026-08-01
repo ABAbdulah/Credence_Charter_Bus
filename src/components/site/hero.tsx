@@ -9,11 +9,15 @@ import { HeroMedia } from "@/components/site/hero-media"
 const onNavyFocus =
   "focus-visible:border-primary-foreground focus-visible:ring-primary-foreground/60"
 
-const trustPoints = ["Serving all 50 states", "Licensed & insured", "24/7 dispatch"]
+const trustPoints = [
+  `Serving groups since ${siteConfig.established}`,
+  "All 50 states",
+  "Licensed & insured",
+]
 
 function Hero() {
   return (
-    <section className="bg-linear-to-br from-primary to-[#24365c]">
+    <section className="bg-primary bg-linear-to-br from-primary to-[#24365c]">
       <Container className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-2">
         <div>
           <p className="text-sm font-semibold tracking-[0.2em] uppercase text-accent">

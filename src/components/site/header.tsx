@@ -11,11 +11,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 border-b bg-card">
       <Container className="relative flex items-center justify-between gap-4 py-3">
-        <Link
-          href="/"
-          aria-label={`${siteConfig.name} — home`}
-          className="shrink-0"
-        >
+        <Link href="/" className="shrink-0">
           <Logo />
         </Link>
         <nav aria-label="Main" className="hidden lg:block">

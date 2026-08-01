@@ -13,12 +13,12 @@ function Footer() {
     <footer className="bg-primary text-primary-foreground">
       <Container className="grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1.2fr]">
         <div className="flex flex-col items-start gap-4">
-          <Link href="/" aria-label={`${siteConfig.name} — home`}>
+          <Link href="/">
             <Logo tone="light" />
           </Link>
           <p className="max-w-xs text-primary-foreground/85">
             Charter buses, mini buses, and vans for groups of every size —
-            serving all 50 states.
+            serving all 50 states since {siteConfig.established}.
           </p>
         </div>
         <nav aria-label="Footer">
