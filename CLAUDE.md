@@ -20,7 +20,52 @@ Marketing + lead-gen site for a charter bus company (rebrand of "Vanguard Charte
   - Clean up as you go: every touched file leaves with no unused imports, no unused vars/props, no commented-out code, no leftover scaffold cruft.
   - No slop design: no gratuitous gradients-on-everything, no emoji-as-icons, no generic "✨ modern SaaS" look, no wall-of-badges, no fake urgency. Every visual choice must serve the trust-and-ease brief for an older audience.
   - No slop code patterns: no needless wrapper divs, no copy-pasted near-duplicate blocks (extract), no `any`, no default-exported anonymous helpers, no over-abstracted one-use "utils".
-- All business details (name, phone, email, address, stats, established year) come ONLY from `src/config/site.ts` — placeholder tokens until the owner fills them. Never hardcode them elsewhere.
+- All business details (name, phone, email, address, stats, established year) come ONLY from `src/config/site.ts`. Never hardcode them elsewhere.
+- **No `PLACEHOLDER_*` tokens in shippable code, ever.** Unknown values use realistic dummy data (see below) so the UI never renders debug strings. Phone dummies must stay in the `555-01xx` range (reserved for fiction — can never ring a real person).
+
+## ⚠️ HARDCODED DATA — PRE-DEPLOY CHECKLIST
+**Ask for this list before deploying to hosting.** Everything below is invented and must be replaced or verified. Nothing here is real client data except where marked ✅.
+
+### 1. Fake contact details — MUST REPLACE (wrong = lost leads)
+All in `src/config/site.ts`, each marked with a `// dummy` comment. Change them there only; every page, JSON-LD, sitemap, and tel: link derives from this file.
+
+| Field | Current dummy value |
+|---|---|
+| `legalName` | Credence Charter Bus LLC |
+| `url` | https://www.credencecharterbus.com |
+| `phone.display` | (800) 555-0142 |
+| `phone.tel` | +18005550142 |
+| `email` | info@credencecharterbus.com |
+| `address.street` | 1200 Transit Way, Suite 400 |
+| `address.city` / `.state` / `.zip` | Dallas / TX / 75201 |
+
+Verify with: `grep -rn "dummy" src/config/site.ts` (should return 0 lines once real values are in).
+`url` MUST be the live domain before launch — canonicals, OpenGraph, and sitemap URLs all build from it.
+
+### 2. Invented business claims — MUST VERIFY WITH OWNER (accuracy/legal risk)
+Written as plausible marketing copy; none confirmed by the client. If any is untrue, edit the source file.
+- **"24/7 dispatch" / "answers around the clock"** — `components/site/header.tsx` ("Call us anytime"), `app/contact/page.tsx`, `data/faq.ts`
+- **Quote turnaround: "same day" / "within one business day"** — `app/quote/page.tsx`, `components/site/quote-form.tsx` (success panel), `data/blogs.ts`, city pages via `lib/variation.ts`
+- **"Licensed & insured", driver vetting/rest claims** — `components/site/hero.tsx` trust list, `app/about/page.tsx`, `data/faq.ts`, `data/services.ts`
+- **All-in pricing promise (driver, fuel, tolls, taxes included)** — repeated in `data/faq.ts`, `data/fleet.ts`, `data/blogs.ts`, `components/site/cta-band.tsx`
+- **ADA/wheelchair-lift vehicles on request** — `data/faq.ts`
+- **Wi-Fi, power outlets, restrooms, seat capacities per vehicle** — `data/fleet.ts` (`capacity`, `amenities`)
+- **Cancellation policy + deposit terms** — `data/faq.ts`
+- **Booking lead time "4–8 weeks"** — `data/faq.ts`, `data/blogs.ts`
+
+### 3. Placeholder content — REVIEW
+- **Blog post dates** (`data/blogs.ts`) — invented June–July 2026 dates; set real publish dates.
+- **Blog author** — renders "By the {siteConfig.name} team"; swap if real bylines are wanted.
+- **Locations dataset** (`data/locations/locations.json`) — seed of 8 states / 60 cities only. Client wants ALL states + cities: run `node scripts/ingest-locations.mjs <full-list.csv>`.
+- **Fleet + service descriptions** — original copy written for this site (intentionally not copied from the model site); owner should approve wording.
+- **Logo** — `<Logo />` renders a text wordmark until `public/brand/logo.svg` exists.
+- **Hero media** — falls back to `/fleet/charter-bus-exterior.png`; real image/video goes in `siteConfig.hero`.
+- **Quote delivery** — `lib/quote-sender.ts` only logs to console. **Quote requests are NOT emailed anywhere until this is wired.** Highest-priority non-cosmetic gap before launch.
+
+### 4. Confirmed real client data ✅ (do not change without owner)
+- `established: 2013`
+- Stats: 12+ years, 500K+ passengers, 750+ cities, 15M+ miles
+- 18 vehicle photos in `public/fleet/` (owner-supplied)
 
 ## Client directives (from owner's notes, 31 Jul 2026) — treat as binding
 - **No social media links anywhere.** `siteConfig.social` was REMOVED; JSON-LD has no `sameAs`. Do not re-add.

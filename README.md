@@ -14,7 +14,17 @@ npm run lint    # ESLint
 
 ## Fill in the business details (one file)
 
-Every business fact on the site — name, phone, email, address, stats, founding year — reads from **`src/config/site.ts`**. Replace each `PLACEHOLDER_*` value and the entire site updates: header, footer, call bar, quote form, JSON-LD structured data, and sitemaps. Set `url` to the real production domain before launch (canonicals, OpenGraph, and sitemaps derive from it).
+Every business fact on the site — name, phone, email, address, stats, founding year — reads from **`src/config/site.ts`**. Change a value there and the whole site updates: header, footer, call bar, quote form, JSON-LD structured data, and sitemaps.
+
+The file currently ships with **realistic dummy data**, so nothing looks broken in review. Each fake value carries a `// dummy` comment — replace them all before launch:
+
+```bash
+grep -n "dummy" src/config/site.ts   # must return nothing once real values are in
+```
+
+Set `url` to the real production domain before launch — canonicals, OpenGraph tags, and sitemap URLs all derive from it. The dummy phone number uses the `555-01xx` range reserved for fictional use, so it can never reach a real person by accident.
+
+> **Full pre-deploy audit:** see the "HARDCODED DATA — PRE-DEPLOY CHECKLIST" section in `CLAUDE.md`. It lists every invented value, including business claims (24/7 dispatch, ADA vehicles, cancellation policy, vehicle amenities) that need owner sign-off for accuracy.
 
 ## Swap the hero media
 

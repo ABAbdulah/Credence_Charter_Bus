@@ -1,18 +1,23 @@
+/**
+ * DUMMY DATA — every value marked `dummy` below must be replaced with the real
+ * business details before deploying to production. See "Hardcoded data" in
+ * CLAUDE.md for the full pre-deploy checklist.
+ */
 export const siteConfig = {
   name: "Credence Charter Bus",
-  legalName: "PLACEHOLDER_LEGAL_NAME",
+  legalName: "Credence Charter Bus LLC", // dummy
   tagline: "Charter Bus & Coach Rentals Nationwide",
-  url: "https://PLACEHOLDER_DOMAIN.com",
+  url: "https://www.credencecharterbus.com", // dummy
   phone: {
-    display: "PLACEHOLDER_PHONE_DISPLAY",
-    tel: "PLACEHOLDER_PHONE_TEL",
+    display: "(800) 555-0142", // dummy
+    tel: "+18005550142", // dummy
   },
-  email: "PLACEHOLDER_EMAIL",
+  email: "info@credencecharterbus.com", // dummy
   address: {
-    street: "PLACEHOLDER_STREET",
-    city: "PLACEHOLDER_CITY",
-    state: "PLACEHOLDER_STATE",
-    zip: "PLACEHOLDER_ZIP",
+    street: "1200 Transit Way, Suite 400", // dummy
+    city: "Dallas", // dummy
+    state: "TX", // dummy
+    zip: "75201", // dummy
   },
   established: 2013,
   hero: {
