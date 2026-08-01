@@ -36,20 +36,25 @@ export default function LocationsPage() {
                     const cityCount = citiesOfState(state.slug).length;
                     return (
                       <li key={state.slug}>
-                        <Card size="sm" className="h-full">
-                          <CardContent>
-                            <Link
-                              href={`/locations/${state.slug}`}
-                              className="text-lg font-semibold text-primary hover:underline"
-                            >
-                              {state.name}
-                            </Link>
-                            <p className="mt-1 text-muted-foreground">
-                              {cityCount} {cityCount === 1 ? "city" : "cities"}{" "}
-                              served
-                            </p>
-                          </CardContent>
-                        </Card>
+                        <Link
+                          href={`/locations/${state.slug}`}
+                          className="group block h-full rounded-xl"
+                        >
+                          <Card
+                            size="sm"
+                            className="h-full transition-colors duration-150 group-hover:bg-muted group-hover:ring-primary/30"
+                          >
+                            <CardContent>
+                              <span className="text-lg font-semibold text-primary group-hover:underline">
+                                {state.name}
+                              </span>
+                              <p className="mt-1 text-muted-foreground">
+                                {cityCount}{" "}
+                                {cityCount === 1 ? "city" : "cities"} served
+                              </p>
+                            </CardContent>
+                          </Card>
+                        </Link>
                       </li>
                     );
                   })}

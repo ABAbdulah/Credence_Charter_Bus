@@ -56,7 +56,7 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 ### 3. Placeholder content — REVIEW
 - **Blog post dates** (`data/blogs.ts`) — invented June–July 2026 dates; set real publish dates.
 - **Blog author** — renders "By the {siteConfig.name} team"; swap if real bylines are wanted.
-- **Locations dataset** (`data/locations/locations.json`) — seed of 8 states / 60 cities only. Client wants ALL states + cities: run `node scripts/ingest-locations.mjs <full-list.csv>`.
+- **Locations dataset** (`data/locations/locations.json`) — now the full national set: 16,399 cities / 50 states + DC, built from GeoNames on 1 Aug 2026. **Attribution is a licence condition** (see SEO rules below) and is not yet on the site.
 - **Fleet + service descriptions** — original copy written for this site (intentionally not copied from the model site); owner should approve wording.
 - **Logo** — `<Logo />` renders a text wordmark until `public/brand/logo.svg` exists.
 - **Hero media** — falls back to `/fleet/charter-bus-exterior.png`; real image/video goes in `siteConfig.hero`.
@@ -110,8 +110,9 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 - `src/data/testimonials.ts`, `src/data/faq.ts` — home/FAQ content
 - `src/data/blogs.ts` — blog preview stub (3 posts); Phase 4 replaces with full content layer
 - `src/lib/quote.ts` — QuoteRequest type + validateQuote (shared client/server); `src/lib/quote-sender.ts` — QuoteSender interface, console stub is the swap point for email/CRM
-- `src/data/locations/locations.json` — canonical state→city dataset (seed: 8 states, 60 cities). Regenerate with `node scripts/ingest-locations.mjs <cities.csv|json>` (columns: city,state,abbr,region,lat,lng,population; region must be Northeast/Midwest/South/West). `src/data/locations/index.ts` — typed accessors, haversine `nearbyCities()` (8 nearest, cross-state allowed), `locationsBuildConfig.prebuildCityLimit` (25 by population; the rest render on-demand via ISR).
-- `src/lib/variation.ts` — deterministic copy variation for city pages: djb2 hash of `state/city` slug picks from template pools (6 openings × 5 details × 3 meta descriptions). Add templates there to increase spread; NEVER use Math.random (breaks stable rebuilds).
+- `src/data/locations/locations.json` — canonical state→city dataset: **16,399 cities across 50 states + DC** (2.7 MB). Regenerate with `node scripts/ingest-locations.mjs <cities.csv|json>` (columns: city,state,abbr,region,lat,lng,population; region must be Northeast/Midwest/South/West). `src/data/locations/index.ts` — typed accessors, haversine `nearbyCities()` (8 nearest, cross-state allowed), `locationsBuildConfig.prebuildCityLimit` (25 by population; the rest render on-demand via ISR) and `stateCityPageSize` (150 per page). State pages are **paginated**, not truncated: page 1 is `/locations/[state]`, pages 2+ are `/locations/[state]/cities/[n]`, so every city is reachable by clicking. Uncapped on one page, California was 575 KB of HTML with ~2,000 links; paginated it is 120 KB and max 7 pages. Pages 2+ are `noindex, follow` (`pageMetadata({ noindex: true })`) — they exist for humans and crawl paths, and every city is already in the sitemap, so they add no thin pages to the index. **The pagination segment is `cities`, not `page`** — "page" is a real city slug (Page, Arizona).
+- **Source of the dataset:** GeoNames `cities1000` (`https://download.geonames.org/export/dump/cities1000.zip`), filtered to `country=US`, feature class `P`, and feature codes `PPL/PPLA/PPLA2/PPLA3/PPLC` only. **`PPLX` (neighbourhood sections like "Central 14th Street / WMATA Northern Bus Barn"), `PPLQ` (abandoned), `PPLS`, `PPLL` must stay excluded** — they produce absurd "Charter Bus Rental in …" pages. Also name-filter `(historical)`, mobile home parks, and courthouse annexes. Dedupe on the **slugified** name per state, not the raw name, or "St. Marys" and "St Marys" collide on one URL.
+- `src/lib/variation.ts` — deterministic copy variation for city pages: djb2 hash of `state/city` slug picks from template pools (12 openings × 10 details × 6 meta descriptions), plus a `scale` paragraph chosen by population tier (metro ≥250k / city ≥50k / town ≥10k / small) that quotes the real population and real distances to nearby cities. Facts differ per city, which is what keeps 16k pages from reading as one template. Add templates to increase spread; NEVER use Math.random (breaks stable rebuilds).
 - ISR note: `export const revalidate` must be a LITERAL (Next static analysis) — it's `86400` at the top of both `/locations/[state]` pages; change it there, not via config import.
 
 ## Assets
@@ -123,7 +124,9 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 - Every route: Metadata API title/description/canonical/OpenGraph. Canonicals self-referencing.
 - JSON-LD: Organization/LocalBusiness site-wide; Service, BreadcrumbList, FAQPage, Article per page type.
 - Location pages must be substantive (unique tokenized intros, nearby-city links, fleet/services blocks) — no thin doorway pages.
-- Sitemap index shards location URLs ≤50k per child sitemap; robots.txt.
+- Sitemap index shards location URLs ≤50k per child sitemap; robots.txt. Currently 16,399 location URLs (one shard) + 80 core URLs.
+- **GeoNames attribution is outstanding.** The city dataset is CC BY 4.0, which requires visible credit. Add a line such as "City data © GeoNames, CC BY 4.0" to the footer or `/locations` before launch — this is a licence obligation, not a nicety.
+- **Scaled-content risk is live now.** 16k programmatic city pages is the exact pattern Google's scaled-content-abuse policy targets. Mitigations in place: per-city population and real inter-city distances in the copy, a 4-tier scale paragraph, and 720 body-template combinations. If rankings stall or pages get deindexed, the fix is fewer/better pages (raise the population floor in the prep step), not more templates.
 
 ## Phase checklist
 - [x] Phase 0 — Recon & baseline (scaffold, siteConfig, CLAUDE.md, smoke test, route/data plan)

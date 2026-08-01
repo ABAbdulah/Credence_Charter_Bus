@@ -7,6 +7,7 @@ import { siteConfig } from "@/config/site";
 import { featuredFleet } from "@/data/fleet";
 import {
   citiesOfState,
+  distanceMiles,
   getCity,
   getState,
   locationsBuildConfig,
@@ -53,7 +54,11 @@ function cityCopy(stateSlug: string, citySlug: string) {
       state: state.name,
       abbr: state.abbr,
       region: state.region,
-      nearby: nearby.map((entry) => entry.name),
+      population: city.population,
+      nearby: nearby.map((entry) => ({
+        name: entry.name,
+        miles: Math.max(1, Math.round(distanceMiles(city, entry))),
+      })),
     }),
   };
 }
@@ -138,6 +143,7 @@ export default async function CityPage({ params }: Props) {
           />
           <div className="mt-6 flex max-w-3xl flex-col gap-4 text-lg">
             <p>{copy.opening}</p>
+            <p>{copy.scale}</p>
             <p>{copy.detail}</p>
           </div>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">

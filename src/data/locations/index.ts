@@ -23,6 +23,12 @@ export const cities = locationsData.cities as CityEntry[]
 
 export const locationsBuildConfig = {
   prebuildCityLimit: 25,
+  stateCityPageSize: 150,
+}
+
+export function stateCityPageCount(stateSlug: string) {
+  const total = cities.filter((city) => city.stateSlug === stateSlug).length
+  return Math.max(1, Math.ceil(total / locationsBuildConfig.stateCityPageSize))
 }
 
 export function getState(slug: string) {

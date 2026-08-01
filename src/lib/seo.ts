@@ -16,6 +16,7 @@ export function pageMetadata({
   ogType = "website",
   ogImage,
   publishedTime,
+  noindex = false,
 }: {
   title: string | { absolute: string }
   description: string
@@ -23,12 +24,14 @@ export function pageMetadata({
   ogType?: "website" | "article"
   ogImage?: { url: string; alt: string }
   publishedTime?: string
+  noindex?: boolean
 }): Metadata {
   const ogTitle = typeof title === "string" ? title : title.absolute
   return {
     title,
     description,
     alternates: { canonical: path },
+    ...(noindex ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       title: ogTitle,
       description,
