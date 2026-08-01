@@ -18,18 +18,18 @@ const trustPoints = [
 function Hero() {
   return (
     <section className="bg-primary bg-linear-to-br from-primary to-[#24365c]">
-      <Container className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-2">
+      <Container className="grid items-center gap-8 py-10 sm:py-14 lg:grid-cols-2 lg:gap-10 lg:py-20">
         <div>
           <p className="text-sm font-semibold tracking-[0.2em] uppercase text-accent">
             Nationwide group transportation
           </p>
-          <h1 className="mt-3 text-4xl font-bold text-primary-foreground sm:text-5xl">
+          <h1 className="mt-3 text-3xl font-bold text-primary-foreground sm:text-4xl lg:text-5xl">
             {siteConfig.hero.fallbackHeadline}
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
+          <p className="mt-5 max-w-xl text-base text-primary-foreground/85 sm:text-lg">
             {siteConfig.hero.fallbackSubheadline}
           </p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <Button asChild size="lg" variant="accent" className={onNavyFocus}>
               <Link href="/quote">Get a Free Quote</Link>
             </Button>
@@ -44,15 +44,13 @@ function Hero() {
               </a>
             </Button>
           </div>
-          <ul className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-primary-foreground/85">
-            {trustPoints.map((point, index) => (
-              <li key={point} className="flex items-center gap-3">
-                {index > 0 && (
-                  <span
-                    aria-hidden="true"
-                    className="size-1.5 rounded-full bg-accent"
-                  />
-                )}
+          <ul className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-base text-primary-foreground/85">
+            {trustPoints.map((point) => (
+              <li key={point} className="flex items-center gap-2.5">
+                <span
+                  aria-hidden="true"
+                  className="size-1.5 shrink-0 rounded-full bg-accent"
+                />
                 {point}
               </li>
             ))}

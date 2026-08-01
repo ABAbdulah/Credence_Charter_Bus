@@ -85,6 +85,15 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 - Primitives: `ui/` button (variants default/accent/outline/ghost; sizes default h-11, lg h-12, icon), card, container (max-w-6xl), section (Section/SectionHeading/RouteLine). Shell: `components/site/` logo (auto-swaps to `/brand/logo.svg` when present; `tone` prop for navy bg), header (sticky, nav via `src/config/nav.ts`), nav-links (client, aria-current + bronze underline), mobile-nav (client disclosure, Esc closes), footer (navy), call-bar (fixed bottom <md; body has pb-24 md:pb-0 to compensate), cta-band.
 - No dark mode by design (light-only trust site). No neon, no saturated red/green.
 
+## Responsive rules (audited across 320/360/390/414/768/1024/1280px)
+- **Buttons must never use `whitespace-nowrap` with a fixed `h-*`.** The cva base wraps text and sizes use `min-h-11`/`min-h-12` + `py-*`, so a long label grows the button instead of overflowing or being clipped. This was the single biggest source of mobile breakage — long labels (`About Wedding & Group Celebrations`, `Call Now — {phone}`) blew out of cards and the call bar.
+- Mobile menu is a **right-side drawer**, not a top dropdown: `fixed inset-y-0 right-0`, `w-[min(21rem,86vw)]`, scrim, body scroll lock, focus trap, Escape/scrim/nav-click all close and return focus. Header is `z-50` so the drawer paints above the `z-40` CallBar — do not lower it or the fixed bar covers the drawer.
+- Type scale steps at three stops, not two: h1 `text-3xl sm:text-4xl lg:text-5xl`, h2 `text-2xl sm:text-3xl lg:text-4xl`, lede `text-base sm:text-lg`. At the 18px root, `text-4xl` is 40.5px — too heavy for a 360px phone.
+- `Section` padding is `py-10 sm:py-14 lg:py-20`. 3-up card grids break at `md:`, not `sm:` (640px is too tight for three columns at 18px base).
+- `body` sets `overflow-wrap: break-word` as a guard against long unbreakable strings (emails, city slugs). Never add `overflow-x: hidden` to html/body — it silently hides real overflow and breaks the sticky header.
+- Footer/nav links use `flex` (not `inline-flex`) so the full row is a ≥44px tap target.
+- Re-verify with a headless pass measuring `documentElement.scrollWidth` vs `clientWidth` per route per width, plus per-element `scrollWidth > clientWidth` (catches content clipped *inside* `overflow-hidden` cards, which page-level overflow checks miss).
+
 ## Accessibility acceptance criteria (verify at end of every UI phase)
 - WCAG 2.1 AA min (AAA body-text contrast where feasible); 18px base font
 - Targets ≥44×44px; keyboard navigable; visible focus rings; landmarks/aria
@@ -128,5 +137,7 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 - `src/lib/seo.ts` — `pageMetadata()` builds title/description/canonical/OG/twitter for EVERY route; home uses `title: {absolute}`. `src/lib/jsonld.tsx` — `<JsonLd>`, site-wide LocalBusiness (`organizationId` referenced by all Service/Article nodes), `breadcrumbJsonLd`, `serviceJsonLd`. Org JSON-LD rendered once in root layout.
 - Sitemaps: `/sitemap.xml` (index) + `/sitemaps/core.xml` + `/sitemaps/locations-N.xml` (≤50k URLs/shard) via `src/lib/sitemap.ts`; `src/app/robots.ts`. All derive from siteConfig.url + data files — no manual lists.
 - Hero split: `hero-media.tsx` is a SERVER component (image path, quality 50); `hero-video.tsx` is the client half (reduced-motion-aware autoplay). Keep it this way — moving the image back into a client component cost ~2 Lighthouse perf points.
-- Lighthouse (local, throttled mobile): home 90/96/100/100, fleet 97/100/100/100, service 95/100/100/100, blog 96/100/100/100, city 96/100/100/100 (perf/a11y/bp/seo). KNOWN FALSE POSITIVE: axe color-contrast on hero trust list — axe can't attribute gradient backgrounds and assumes cream; real contrast is white on navy ≥9:1. Do not "fix" by removing the gradient.
+- Lighthouse (local, throttled mobile, re-verified after the client-notes edits) — perf/a11y/bp/seo: home **91**(median of 4: 87,90,92,92)/100/100/100 · fleet 96/100/100/100 · service 95/100/100/100 · blog 96/100/100/100 · city 95/100/100/100. All targets (≥90/95/95) met.
+- **Perf measurement gotcha:** the FIRST Lighthouse run after `npm run start` scores ~3 points low because `next start` optimizes the 2MB source PNGs on demand (cold cache). Always discard run 1 or take a median. On Vercel these are pre-optimized + CDN-cached, so the warm number is representative.
+- Home LCP is the hero `<h1>` (~3.4s local, render-delay bound), not the image. If real-world perf needs more headroom, the highest-leverage fix is shrinking the source PNGs in `public/fleet/` (currently ~2MB each) — not more code changes.
 - QA verified: 97-page link crawl all 200, zero Vanguard tokens, PLACEHOLDER only in site.ts, logo auto-swap tested both directions.

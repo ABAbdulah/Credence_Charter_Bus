@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/container"
 import { Logo } from "@/components/site/logo"
 
 const footerLinkClass =
-  "inline-flex min-h-11 items-center text-primary-foreground/85 underline-offset-4 hover:text-primary-foreground hover:underline"
+  "flex min-h-11 items-center text-primary-foreground/85 underline-offset-4 hover:text-primary-foreground hover:underline"
 
 function Footer() {
   return (

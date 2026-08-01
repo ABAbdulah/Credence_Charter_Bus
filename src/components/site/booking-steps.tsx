@@ -15,7 +15,7 @@ const steps = [
 
 function BookingSteps() {
   return (
-    <ol className="grid gap-10 sm:grid-cols-3 sm:gap-6">
+    <ol className="grid gap-8 md:grid-cols-3 md:gap-6">
       {steps.map((step, index) => {
         const last = index === steps.length - 1
         return (
@@ -30,7 +30,7 @@ function BookingSteps() {
               {!last && (
                 <span
                   aria-hidden="true"
-                  className="hidden h-0.5 flex-1 rounded-full bg-accent/40 sm:block"
+                  className="hidden h-0.5 flex-1 rounded-full bg-accent/40 md:block"
                 />
               )}
             </div>

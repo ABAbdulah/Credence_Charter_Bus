@@ -17,12 +17,14 @@ function CtaBand({
 }) {
   return (
     <section className="bg-primary">
-      <Container className="flex flex-col items-center gap-6 py-14 text-center sm:py-16">
-        <h2 className="text-3xl font-bold text-primary-foreground sm:text-4xl">
+      <Container className="flex flex-col items-center gap-6 py-12 text-center sm:py-16">
+        <h2 className="text-2xl font-bold text-primary-foreground sm:text-3xl lg:text-4xl">
           {title}
         </h2>
-        <p className="max-w-xl text-lg text-primary-foreground/85">{lede}</p>
-        <div className="flex flex-col gap-4 sm:flex-row">
+        <p className="max-w-xl text-base text-primary-foreground/85 sm:text-lg">
+          {lede}
+        </p>
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4">
           <Button asChild size="lg" variant="accent" className={onNavyFocus}>
             <a href={`tel:${siteConfig.phone.tel}`}>
               <Phone />

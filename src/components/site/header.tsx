@@ -9,15 +9,15 @@ import { NavLinks } from "@/components/site/nav-links"
 
 function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b bg-card">
-      <Container className="relative flex items-center justify-between gap-4 py-3">
+    <header className="sticky top-0 z-50 border-b bg-card">
+      <Container className="flex items-center justify-between gap-3 py-3 sm:gap-4">
         <Link href="/" className="shrink-0">
           <Logo />
         </Link>
         <nav aria-label="Main" className="hidden lg:block">
           <NavLinks className="flex items-center gap-1" />
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <a
             href={`tel:${siteConfig.phone.tel}`}
             className="hidden flex-col rounded-md px-2 py-1 xl:flex"
@@ -32,7 +32,7 @@ function Header() {
           <Button asChild className="hidden sm:inline-flex">
             <Link href="/quote">Get a Free Quote</Link>
           </Button>
-          <MobileNav />
+          <MobileNav brand={<Logo />} />
         </div>
       </Container>
     </header>

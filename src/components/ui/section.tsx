@@ -3,7 +3,9 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 function Section({ className, ...props }: React.ComponentProps<"section">) {
-  return <section className={cn("py-14 sm:py-20", className)} {...props} />
+  return (
+    <section className={cn("py-10 sm:py-14 lg:py-20", className)} {...props} />
+  )
 }
 
 function RouteLine({ className }: { className?: string }) {
@@ -51,13 +53,17 @@ function SectionHeading({
         className={cn(
           "font-bold text-primary",
           eyebrow && "mt-3",
-          Heading === "h1" ? "text-4xl sm:text-5xl" : "text-3xl sm:text-4xl"
+          Heading === "h1"
+            ? "text-3xl sm:text-4xl lg:text-5xl"
+            : "text-2xl sm:text-3xl lg:text-4xl"
         )}
       >
         {title}
       </Heading>
       <RouteLine className={align === "center" ? "justify-center" : undefined} />
-      {lede ? <p className="mt-5 text-lg text-muted-foreground">{lede}</p> : null}
+      {lede ? (
+        <p className="mt-5 text-base text-muted-foreground sm:text-lg">{lede}</p>
+      ) : null}
     </div>
   )
 }

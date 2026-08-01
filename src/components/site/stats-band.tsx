@@ -11,13 +11,15 @@ const stats = [
 function StatsBand() {
   return (
     <section aria-label="Company statistics" className="bg-primary">
-      <Container className="grid grid-cols-2 gap-8 py-12 text-center md:grid-cols-4">
+      <Container className="grid grid-cols-2 gap-x-6 gap-y-8 py-10 text-center sm:py-12 md:grid-cols-4">
         {stats.map((stat) => (
           <div key={stat.label}>
             <p className="font-heading text-3xl font-bold text-accent sm:text-4xl">
               {stat.value}
             </p>
-            <p className="mt-1 text-primary-foreground/85">{stat.label}</p>
+            <p className="mt-1 text-base text-primary-foreground/85">
+              {stat.label}
+            </p>
           </div>
         ))}
       </Container>
