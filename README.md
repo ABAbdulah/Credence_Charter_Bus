@@ -37,7 +37,17 @@ No layout changes needed either way.
 
 ## Swap the logo
 
-Drop your file at **`public/brand/logo.svg`** — the `<Logo />` component detects it and replaces the wordmark automatically in the header and footer. Delete the file to return to the wordmark. Recommended: an SVG around 200×48 with a transparent background.
+Replace **`public/logo.png`** with the new artwork, then run:
+
+```bash
+npm run logo
+```
+
+That regenerates all three derived files — `public/brand/logo-mark.png` (transparent, used in the header, mobile drawer, and footer) plus `src/app/icon.png` and `src/app/apple-icon.png` (browser and iOS icons). Don't edit those by hand; they're overwritten on every run.
+
+The source must be artwork on a **flat, opaque background**. The script cuts it by flooding inward from the edges, so a colour the background shares with the artwork's interior is preserved rather than punched out. A source that is *already* transparent is rejected with an explanatory error rather than processed into garbage.
+
+The current mark contains no company name, so `<Logo />` renders it beside the "Credence / CHARTER BUS" wordmark. If you supply a full lockup that already includes the name, drop the wordmark half from `src/components/site/logo.tsx`.
 
 ## Ingest the full city list (location pages)
 

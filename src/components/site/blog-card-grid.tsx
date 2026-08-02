@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import type { BlogSummary } from "@/data/blogs"
-import { formatBlogDate } from "@/lib/blog-format"
+import { formatBlogDate, framedAspect } from "@/lib/blog-format"
 import { Card, CardContent } from "@/components/ui/card"
 
 function BlogCardGrid({ posts }: { posts: BlogSummary[] }) {
@@ -18,7 +18,8 @@ function BlogCardGrid({ posts }: { posts: BlogSummary[] }) {
               height={post.heroImage.height}
               priority={index < 3}
               sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              className="aspect-3/2 w-full object-cover"
+              style={{ aspectRatio: framedAspect(post.heroImage, 1.3, 1.9) }}
+              className="w-full bg-muted object-cover"
             />
             <CardContent className="flex flex-col">
               <p className="text-sm text-muted-foreground">

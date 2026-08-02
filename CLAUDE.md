@@ -58,7 +58,7 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 - **Blog author** — renders "By the {siteConfig.name} team"; swap if real bylines are wanted.
 - **Locations dataset** (`data/locations/locations.json`) — now the full national set: 16,399 cities / 50 states + DC, built from GeoNames on 1 Aug 2026. **Attribution is a licence condition** (see SEO rules below) and is not yet on the site.
 - **Fleet + service descriptions** — original copy written for this site (intentionally not copied from the model site); owner should approve wording.
-- **Logo** — `<Logo />` renders a text wordmark until `public/brand/logo.svg` exists.
+- **Logo** — owner-supplied bus mark is live (see "Brand logo" below). The mark carries no company name, so `<Logo />` pairs it with the existing text wordmark; a real combined-lockup file from the owner would replace both.
 - **Hero media** — falls back to `/fleet/charter-bus-exterior.png`; real image/video goes in `siteConfig.hero`.
 - **Quote delivery** — `lib/quote-sender.ts` only logs to console. **Quote requests are NOT emailed anywhere until this is wired.** Highest-priority non-cosmetic gap before launch.
 
@@ -82,7 +82,7 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 - **Contrast rules:** never white text on bronze (2.6:1 — always ink); small bronze text uses `text-accent-deep` on light bg, plain `text-accent` is OK on navy (5.3:1); buttons on navy bg need `focus-visible:ring-primary-foreground/60` override (see CtaBand).
 - Type: Bitter (--font-heading, headings/wordmark, slab = transit heritage) + Source Sans 3 (--font-sans, body). 18px base via `html { font-size: 112.5% }`. h1–h4 get font-heading + text-balance globally.
 - Signature motif: bronze "route line" (dot—line—ring, origin→destination) via `<RouteLine />` in `section.tsx`; reuse for 3-step process connector. Keep everything else quiet.
-- Primitives: `ui/` button (variants default/accent/outline/ghost; sizes default h-11, lg h-12, icon), card, container (max-w-6xl), section (Section/SectionHeading/RouteLine). Shell: `components/site/` logo (auto-swaps to `/brand/logo.svg` when present; `tone` prop for navy bg), header (sticky, nav via `src/config/nav.ts`), nav-links (client, aria-current + bronze underline), mobile-nav (client disclosure, Esc closes), footer (navy), call-bar (fixed bottom <md; body has pb-24 md:pb-0 to compensate), cta-band.
+- Primitives: `ui/` button (variants default/accent/outline/ghost; sizes default h-11, lg h-12, icon), card, container (max-w-6xl), section (Section/SectionHeading/RouteLine). Shell: `components/site/` logo (bus mark + wordmark lockup; `tone` prop for navy bg), header (sticky, nav via `src/config/nav.ts`), nav-links (client, aria-current + bronze underline), mobile-nav (client disclosure, Esc closes), footer (navy), call-bar (fixed bottom <md; body has pb-24 md:pb-0 to compensate), cta-band.
 - No dark mode by design (light-only trust site). No neon, no saturated red/green.
 - **Tailwind v4 gotcha:** v4's preflight does NOT give `<button>` `cursor: pointer` (v3 did). `globals.css` restores it once via `:where(button, [role="button"]):not(:disabled)` — zero specificity so utilities still win, and disabled controls correctly keep the default arrow. Don't sprinkle `cursor-pointer` on individual buttons.
 - **Never combine `active:translate-y-px` (button base) with a positioning `-translate-y-1/2`** — they set the same `--tw-translate-y`, so pressing the button makes it jump half its height and the mouseup lands elsewhere, silently swallowing the click. Center overlay controls with a `flex items-center` wrapper instead (see `fleet-gallery.tsx`).
@@ -119,7 +119,23 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 ## Assets
 - Vehicle images arrived during Phase 1: 18 PNGs in `public/` root, 9 types × ext/int (charter bus, motor coach, mini bus, sprinter van, party bus, school bus, stretch limo — filename typo "strecth", SUV, sedan). ~2MB+ each, ~1536×1024. Phase 2: move to `public/fleet/` with kebab-case names, map into fleet data model, serve via next/image (never raw — too heavy). Motor coach folds into the Charter/Coach category.
 - Hero media: single swappable config value at `siteConfig.hero` (image or video).
-- Logo: `<Logo />` renders placeholder wordmark; auto-uses `/public/brand/logo.svg` when present.
+
+## Brand logo
+
+Owner supplied `public/logo.png` — a 900×900 bus mark on a flat cream canvas, **no company name in it**. `npm run logo` (`scripts/prepare-logo.mjs`) is the only thing that may write the derived files; all three are generated, never hand-edited:
+- `public/brand/logo-mark.png` (497×304, transparent) — used by `<Logo />`
+- `src/app/icon.png` (512) + `src/app/apple-icon.png` (180) — Next file-convention favicons, which replaced the stock create-next-app `favicon.ico`
+
+### Why the background removal is a flood fill, not a colour key
+**The bus body is filled with the same cream as the canvas** (rgb 250,236,203 vs 251,238,202). A global colour key erases the vehicle and leaves a floating outline. The script instead floods inward from the border, so only background *connected to the edge* is cut. Do not "simplify" this to a colour key.
+- Edge pixels get graded alpha plus un-premultiplication (`ALPHA_LOW`/`ALPHA_HIGH`), which is what keeps a cream halo off the navy footer. Verified by compositing on magenta, not assumed.
+- The retained body cream is remapped to the site cream `#F7F5F0` (`BODY_MATCH`). Without it the warm original reads as a yellow patch on the cream header. This is why the mark works on both cream and navy unchanged — there is no light/dark variant.
+
+### Favicon is navy, the mark is not
+`squareIcon` puts the mark on navy, not on the logo's own cream: at 32 px the cream-on-cream line art greys out into an unreadable smear (checked at 16/32/48). Navy holds the silhouette. The mark is a 1.63:1 horizontal badge, so it can never fill a square icon — if the tab icon needs to be stronger, the fix is a separate monogram, not more cropping.
+
+### Lockup + the 320px constraint
+`<Logo />` is mark + wordmark because the supplied art has no company name. The mark adds ~74 px, which **overflowed the 320 px header** (348 > 320) — hence `max-[360px]:hidden`, dropping the mark below 360 px while every other width keeps it. Re-run the responsive overflow audit if the lockup, header gaps, or the Menu button change.
 
 ## SEO rules
 - Every route: Metadata API title/description/canonical/OpenGraph. Canonicals self-referencing.
@@ -178,6 +194,7 @@ The written brief asked for 20–30 company hubs and "clear visual dominance of 
 - Sitemaps: `/sitemap.xml` (index) + `/sitemaps/core.xml` + `/sitemaps/locations-N.xml` (≤50k URLs/shard) via `src/lib/sitemap.ts`; `src/app/robots.ts`. All derive from siteConfig.url + data files — no manual lists.
 - Hero split: `hero-media.tsx` is a SERVER component (image path, quality 50); `hero-video.tsx` is the client half (reduced-motion-aware autoplay). Keep it this way — moving the image back into a client component cost ~2 Lighthouse perf points.
 - Lighthouse (local, throttled mobile, re-verified after the client-notes edits) — perf/a11y/bp/seo: home **91**(median of 4: 87,90,92,92)/100/100/100 · fleet 96/100/100/100 · service 95/100/100/100 · blog 96/100/100/100 · city 95/100/100/100. All targets (≥90/95/95) met.
+- **Next 16 `images.qualities` is mandatory.** Any `quality` prop not listed in `next.config.ts` makes `/_next/image` return **400 "q parameter (quality) of N is not allowed"** — the hero uses `quality={50}`, so the home page's LCP image was silently broken in production, and in dev the repeated optimizer failures killed the worker (`write EPIPE` → `Jest worker encountered 2 child process exceptions`, which surfaced as a Runtime Error overlay on unrelated pages such as `/services/[slug]`). Config now declares `qualities: [50, 75]`. **Adding a new `quality` value anywhere means adding it there too**, and the dev server must be restarted for the change to load.
 - **Perf measurement gotcha:** the FIRST Lighthouse run after `npm run start` scores ~3 points low because `next start` optimizes the 2MB source PNGs on demand (cold cache). Always discard run 1 or take a median. On Vercel these are pre-optimized + CDN-cached, so the warm number is representative.
 - Home LCP is the hero `<h1>` (~3.4s local, render-delay bound), not the image. If real-world perf needs more headroom, the highest-leverage fix is shrinking the source PNGs in `public/fleet/` (currently ~2MB each) — not more code changes.
 - QA verified: 97-page link crawl all 200, zero Vanguard tokens, PLACEHOLDER only in site.ts, logo auto-swap tested both directions.

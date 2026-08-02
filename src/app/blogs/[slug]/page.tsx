@@ -10,7 +10,7 @@ import {
   getBlogSummary,
   type BlogBlock,
 } from "@/data/blogs";
-import { formatBlogDate, readingMinutes } from "@/lib/blog-format";
+import { formatBlogDate, framedAspect, readingMinutes } from "@/lib/blog-format";
 import { breadcrumbJsonLd, JsonLd, organizationId } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Card, CardContent } from "@/components/ui/card";
@@ -153,7 +153,8 @@ export default async function BlogPostPage({ params }: Props) {
               height={post.heroImage.height}
               priority
               sizes="(min-width: 1024px) 56rem, 100vw"
-              className="mt-8 aspect-2/1 w-full rounded-xl object-cover ring-1 ring-foreground/10"
+              style={{ aspectRatio: framedAspect(post.heroImage, 1.4, 2) }}
+              className="mt-8 w-full rounded-xl bg-muted object-cover ring-1 ring-foreground/10"
             />
             <div className="mt-4">
               {post.body.slice(0, breakAt).map((block, index) => (
@@ -167,7 +168,8 @@ export default async function BlogPostPage({ params }: Props) {
                 width={post.extraImage.width}
                 height={post.extraImage.height}
                 sizes="(min-width: 1024px) 56rem, 100vw"
-                className="mt-10 aspect-2/1 w-full rounded-xl object-cover ring-1 ring-foreground/10"
+                style={{ aspectRatio: framedAspect(post.extraImage, 1.4, 2) }}
+                className="mt-10 w-full rounded-xl bg-muted object-cover ring-1 ring-foreground/10"
               />
             )}
             <div>
