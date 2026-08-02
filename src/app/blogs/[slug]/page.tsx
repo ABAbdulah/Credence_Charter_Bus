@@ -4,7 +4,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { siteConfig } from "@/config/site";
-import { allBlogPostsSorted, getBlogPost, type BlogBlock } from "@/data/blogs";
+import {
+  allBlogPostsSorted,
+  getBlogPost,
+  getBlogSummary,
+  type BlogBlock,
+} from "@/data/blogs";
 import { formatBlogDate, readingMinutes } from "@/lib/blog-format";
 import { breadcrumbJsonLd, JsonLd, organizationId } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
@@ -23,7 +28,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = getBlogSummary(slug);
   if (!post) return {};
   return pageMetadata({
     title: post.title,
@@ -33,6 +38,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     publishedTime: post.date,
     ogImage: { url: post.heroImage.src, alt: post.heroImage.alt },
   });
+}
+
+const inlineLinkPattern = /\[([^\]]+)\]\((\/[^)]*)\)/g;
+
+function InlineText({ text }: { text: string }) {
+  const nodes: React.ReactNode[] = [];
+  let cursor = 0;
+  for (const match of text.matchAll(inlineLinkPattern)) {
+    if (match.index > cursor) nodes.push(text.slice(cursor, match.index));
+    nodes.push(
+      <Link
+        key={match.index}
+        href={match[2]}
+        className="font-medium text-primary underline underline-offset-4 hover:text-accent-deep"
+      >
+        {match[1]}
+      </Link>,
+    );
+    cursor = match.index + match[0].length;
+  }
+  if (cursor < text.length) nodes.push(text.slice(cursor));
+  return <>{nodes}</>;
 }
 
 function BlockRenderer({ block }: { block: BlogBlock }) {
@@ -48,24 +75,36 @@ function BlockRenderer({ block }: { block: BlogBlock }) {
                 aria-hidden="true"
                 className="mt-2.5 size-2 shrink-0 rounded-full bg-accent"
               />
-              {item}
+              <span>
+                <InlineText text={item} />
+              </span>
             </li>
           ))}
         </ul>
       );
     default:
-      return <p className="mt-4 text-lg">{block.text}</p>;
+      return (
+        <p className="mt-4 text-lg">
+          <InlineText text={block.text} />
+        </p>
+      );
   }
 }
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPost(slug);
   if (!post) notFound();
 
   const related = post.relatedPostSlugs
-    .map(getBlogPost)
+    .map(getBlogSummary)
     .filter((entry) => entry !== undefined);
+
+  const midpoint = Math.ceil(post.body.length / 2);
+  const nextHeading = post.body.findIndex(
+    (block, index) => index >= midpoint && block.type === "h2",
+  );
+  const breakAt = nextHeading === -1 ? midpoint : nextHeading;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -110,15 +149,30 @@ export default async function BlogPostPage({ params }: Props) {
             <Image
               src={post.heroImage.src}
               alt={post.heroImage.alt}
-              width={1602}
-              height={982}
+              width={post.heroImage.width}
+              height={post.heroImage.height}
               priority
               sizes="(min-width: 1024px) 56rem, 100vw"
               className="mt-8 aspect-2/1 w-full rounded-xl object-cover ring-1 ring-foreground/10"
             />
             <div className="mt-4">
-              {post.body.map((block, index) => (
+              {post.body.slice(0, breakAt).map((block, index) => (
                 <BlockRenderer key={index} block={block} />
+              ))}
+            </div>
+            {post.extraImage && (
+              <Image
+                src={post.extraImage.src}
+                alt={post.extraImage.alt}
+                width={post.extraImage.width}
+                height={post.extraImage.height}
+                sizes="(min-width: 1024px) 56rem, 100vw"
+                className="mt-10 aspect-2/1 w-full rounded-xl object-cover ring-1 ring-foreground/10"
+              />
+            )}
+            <div>
+              {post.body.slice(breakAt).map((block, index) => (
+                <BlockRenderer key={breakAt + index} block={block} />
               ))}
             </div>
           </article>
@@ -147,7 +201,10 @@ export default async function BlogPostPage({ params }: Props) {
               <ul className="mt-6 grid gap-6 sm:grid-cols-2">
                 {related.map((entry) => (
                   <li key={entry.slug}>
-                    <Card size="sm" className="h-full">
+                    <Card
+                      size="sm"
+                      className="relative h-full transition-shadow duration-150 hover:shadow-md"
+                    >
                       <CardContent>
                         <p className="text-sm text-muted-foreground">
                           {formatBlogDate(entry.date)}
@@ -155,7 +212,7 @@ export default async function BlogPostPage({ params }: Props) {
                         <h3 className="mt-2 font-heading text-lg font-semibold text-primary">
                           <Link
                             href={`/blogs/${entry.slug}`}
-                            className="hover:underline"
+                            className="after:absolute after:inset-0 group-hover/card:underline"
                           >
                             {entry.title}
                           </Link>

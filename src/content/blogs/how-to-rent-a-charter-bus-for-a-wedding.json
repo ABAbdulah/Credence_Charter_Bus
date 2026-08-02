@@ -1,0 +1,92 @@
+{
+  "slug": "how-to-rent-a-charter-bus-for-a-wedding",
+  "title": "How to Rent a Charter Bus for a Wedding",
+  "excerpt": "Guest shuttles, timing, and the questions to ask before you sign — a practical guide to wedding transportation.",
+  "date": "2026-07-15",
+  "state": "",
+  "stateAbbr": "",
+  "stateSlug": "",
+  "heroImage": {
+    "src": "/fleet/stretch-limo-exterior.png",
+    "alt": "Stretch limousine waiting outside a wedding venue",
+    "width": 1536,
+    "height": 1024
+  },
+  "extraImage": null,
+  "body": [
+    {
+      "type": "p",
+      "text": "A wedding day runs on a timeline, and transportation is the thread that holds it together. Guests staying at three hotels, a ceremony across town, a reception that ends at midnight — a well-planned shuttle turns all of that from a risk into a detail nobody has to think about."
+    },
+    {
+      "type": "h2",
+      "text": "Start with the guest count, not the vehicle"
+    },
+    {
+      "type": "p",
+      "text": "Before you look at buses, count riders. A good rule: about 60 to 70 percent of out-of-town guests will use a shuttle if you offer one. For 120 invited guests with 80 from out of town, plan seats for roughly 50 to 60 riders — one full-size charter bus, or two mini buses running a loop."
+    },
+    {
+      "type": "h2",
+      "text": "Map the day before you request quotes"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Pickup points: usually one or two hotels where room blocks are held",
+        "Ceremony arrival: shuttles should land 20–30 minutes before start time",
+        "The gap: if there's downtime between ceremony and reception, decide where guests wait",
+        "The night run: schedule at least two departure times so early leavers don't strand the dance floor"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Book the wedding party separately"
+    },
+    {
+      "type": "p",
+      "text": "The wedding party moves on a different schedule — photos, first looks, a champagne toast en route. A limousine or party bus for 6 to 20 keeps that group together without holding up guest shuttles. Book it as its own vehicle with its own itinerary."
+    },
+    {
+      "type": "h2",
+      "text": "Questions to ask before signing"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Is the quote all-in — driver, fuel, tolls, and taxes included?",
+        "How is overtime billed if the reception runs long?",
+        "Who is the day-of contact, and are they reachable during the event?",
+        "What is the cancellation and weather policy?"
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Book eight to twelve weeks out for peak months — May, June, September, and October fill first. A deposit typically holds the vehicle, and a final headcount is usually due two weeks before the day."
+    }
+  ],
+  "planningLinks": [
+    {
+      "label": "Wedding & group celebration transportation",
+      "href": "/services/wedding-transportation"
+    },
+    {
+      "label": "Limousines in our fleet",
+      "href": "/fleet/limousines"
+    },
+    {
+      "label": "Mini buses for guest shuttles",
+      "href": "/fleet/mini-buses"
+    },
+    {
+      "label": "Get a wedding shuttle quote",
+      "href": "/quote"
+    }
+  ],
+  "relatedPostSlugs": [
+    "what-a-charter-bus-quote-should-include",
+    "charter-bus-vs-mini-bus"
+  ],
+  "source": "original",
+  "reviewed": false
+}

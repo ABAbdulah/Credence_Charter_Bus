@@ -25,18 +25,19 @@ export const fleetCategories: FleetCategory[] = [
     slug: "charter-buses",
     name: "Charter Buses",
     vehicleName: "charter bus",
-    capacity: "36–56 passengers",
+    capacity: "40–56 passengers",
     short:
       "Full-size motorcoaches for large groups traveling together in comfort — the workhorse of long-distance group travel.",
     description:
-      "Our full-size charter buses and motorcoaches carry 36 to 56 passengers with room to spare for luggage underneath. Reclining seats, climate control, and a restroom on board make them the right choice for long-distance trips, multi-day tours, and any occasion where a large group needs to arrive together and on time.",
+      "Our full-size charter buses and motorcoaches carry 40 to 56 passengers with room to spare for luggage underneath. Reclining seats, climate control, and a restroom on board make them the right choice for long-distance trips, multi-day tours, and any occasion where a large group needs to arrive together and on time.",
     amenities: [
       "Reclining seats with seat belts",
       "On-board restroom",
       "Climate control",
+      "Wi-Fi on board",
+      "Power outlets",
       "PA system for your trip leader",
       "Under-bus luggage bays",
-      "Power outlets and Wi-Fi on request",
     ],
     idealFor: [
       "Long-distance group trips",
@@ -70,14 +71,15 @@ export const fleetCategories: FleetCategory[] = [
     slug: "mini-buses",
     name: "Mini Buses",
     vehicleName: "mini bus",
-    capacity: "20–35 passengers",
+    capacity: "20–32 passengers",
     short:
       "Mid-size comfort for groups that don't need a full coach — easier to load, easier to park, same reliable ride.",
     description:
-      "Mini buses seat 20 to 35 passengers, hitting the sweet spot between a van and a full-size coach. They board quickly, navigate city streets and hotel entrances with ease, and still give every passenger a comfortable forward-facing seat — ideal for shuttles, day trips, and mid-size groups.",
+      "Mini buses seat 20 to 32 passengers, hitting the sweet spot between a van and a full-size coach. They board quickly, navigate city streets and hotel entrances with ease, and still give every passenger a comfortable reclining seat — ideal for shuttles, day trips, and mid-size groups.",
     amenities: [
-      "Forward-facing cushioned seats",
+      "Reclining forward-facing seats",
       "Climate control",
+      "Wi-Fi on board",
       "Overhead storage",
       "PA system",
       "Luggage space",
@@ -104,15 +106,16 @@ export const fleetCategories: FleetCategory[] = [
     slug: "sprinter-vans",
     name: "Sprinter Vans",
     vehicleName: "sprinter van",
-    capacity: "8–15 passengers",
+    capacity: "10–14 passengers",
     short:
       "Premium vans for small groups — executive comfort, airport-friendly, and quick around town.",
     description:
-      "Sprinter vans carry 8 to 15 passengers in a tall, walk-in cabin with premium seating. They're the go-to for executive teams, airport transfers, and small groups that want to travel together without the footprint of a bus.",
+      "Sprinter vans carry 10 to 14 passengers in a tall, walk-in cabin with premium seating. They're the go-to for executive teams, airport transfers, and small groups that want to travel together without the footprint of a bus.",
     amenities: [
       "High-roof walk-in cabin",
       "Leather or executive seating",
       "Climate control",
+      "Wi-Fi on board",
       "Luggage space",
       "Power outlets",
     ],
@@ -138,7 +141,7 @@ export const fleetCategories: FleetCategory[] = [
     slug: "school-buses",
     name: "School Buses",
     vehicleName: "school bus",
-    capacity: "40–48 passengers",
+    capacity: "28–60 passengers",
     short:
       "The budget-friendly classic for short trips, school events, and shuttles where simple works best.",
     description:
@@ -171,7 +174,7 @@ export const fleetCategories: FleetCategory[] = [
     slug: "party-buses",
     name: "Party Buses",
     vehicleName: "party bus",
-    capacity: "20–40 passengers",
+    capacity: "14–40 passengers",
     short:
       "Celebration on wheels — perimeter seating, lighting, and sound for birthdays, bachelor and bachelorette parties, and nights out.",
     description:
@@ -179,8 +182,9 @@ export const fleetCategories: FleetCategory[] = [
     amenities: [
       "Perimeter wraparound seating",
       "Premium sound system",
-      "Accent lighting",
-      "Coolers and cup holders",
+      "LED accent lighting",
+      "Dance floor",
+      "Bar area with coolers",
       "Professional chauffeur",
     ],
     idealFor: [
@@ -205,7 +209,7 @@ export const fleetCategories: FleetCategory[] = [
     slug: "limousines",
     name: "Limousines",
     vehicleName: "stretch limousine",
-    capacity: "6–10 passengers",
+    capacity: "Up to 10 passengers",
     short:
       "Classic stretch limousines for weddings, formal evenings, and arrivals that deserve an entrance.",
     description:
@@ -239,15 +243,16 @@ export const fleetCategories: FleetCategory[] = [
     slug: "suvs",
     name: "SUVs",
     vehicleName: "luxury SUV",
-    capacity: "1–6 passengers",
+    capacity: "Up to 7 passengers",
     short:
       "Roomy, discreet luxury SUVs for executives, families, and airport runs with extra luggage.",
     description:
-      "Luxury SUVs offer room for up to six passengers plus luggage, with the comfort and discretion executives and families expect. A strong choice for airport transfers, client pickups, and city-to-city runs.",
+      "Luxury SUVs offer room for up to seven passengers plus luggage, with the comfort and discretion executives and families expect. A strong choice for airport transfers, client pickups, and city-to-city runs.",
     amenities: [
-      "Leather seating",
-      "Generous luggage space",
+      "Premium leather seating",
+      "Generous cargo space",
       "Climate control",
+      "Entertainment system",
       "Professional chauffeur",
     ],
     idealFor: [
@@ -272,14 +277,15 @@ export const fleetCategories: FleetCategory[] = [
     slug: "sedans",
     name: "Sedans",
     vehicleName: "executive sedan",
-    capacity: "1–3 passengers",
+    capacity: "Up to 4 passengers",
     short:
       "Executive sedans for individuals and pairs — punctual, polished, point-to-point.",
     description:
-      "Executive sedans are the simplest way to move one to three people in comfort. Airport pickups, business meetings, and evening events — on time, every time, with a professional behind the wheel.",
+      "Executive sedans are the simplest way to move up to four people in comfort. Airport pickups, business meetings, and evening events — on time, every time, with a professional behind the wheel.",
     amenities: [
-      "Leather seating",
-      "Quiet, smooth ride",
+      "Premium leather interior",
+      "Climate control",
+      "Entertainment system",
       "Meet-and-greet service",
       "Professional chauffeur",
     ],

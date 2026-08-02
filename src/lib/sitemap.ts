@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site"
-import { allBlogPostsSorted } from "@/data/blogs"
+import { allBlogPostsSorted, blogStates } from "@/data/blogs"
 import { fleetCategories } from "@/data/fleet"
 import { cities, states } from "@/data/locations"
 import { services } from "@/data/services"
@@ -18,6 +18,7 @@ export function corePaths() {
     "/faq",
     "/quote",
     "/blogs",
+    ...blogStates().map((state) => `/blogs/state/${state.slug}`),
     ...allBlogPostsSorted().map((post) => `/blogs/${post.slug}`),
     "/locations",
     ...states.map((state) => `/locations/${state.slug}`),

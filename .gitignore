@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scraped source HTML for scripts/ingest-blogs.mjs
+/.cache

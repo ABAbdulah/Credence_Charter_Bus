@@ -1,0 +1,82 @@
+{
+  "slug": "corporate-event-transportation-guide",
+  "title": "Corporate Event Transportation: A Planner's Guide",
+  "excerpt": "Offsites, conferences, and client days — how to move a company without losing a single working hour.",
+  "date": "2026-06-17",
+  "state": "",
+  "stateAbbr": "",
+  "stateSlug": "",
+  "heroImage": {
+    "src": "/fleet/sprinter-van-exterior.png",
+    "alt": "Executive sprinter van outside an office",
+    "width": 1672,
+    "height": 941
+  },
+  "extraImage": null,
+  "body": [
+    {
+      "type": "p",
+      "text": "The measure of corporate transportation is simple: nobody talks about it afterward. The team arrives together, on time, expenses land on one invoice, and the planner never takes a panicked call. Getting there is mostly about decisions made before the quote request."
+    },
+    {
+      "type": "h2",
+      "text": "Match the vehicle to the meeting"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Executive groups of 10–14: a sprinter van — walk-in cabin, room for laptops and garment bags",
+        "Department offsites of 20–32: a mini bus keeps the group together without coach-scale logistics",
+        "Company-wide moves of 40+: full charter buses, staggered if the venue loads slowly"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "The three details planners forget"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Load time: boarding 45 people takes 15 minutes, not five — build it into the agenda",
+        "The return trigger: set a hard departure time or a named decision-maker, not 'when it wraps up'",
+        "Phone chain: driver, coordinator, and one on-site contact should have each other's numbers before the day"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Recurring routes deserve a standing arrangement"
+    },
+    {
+      "type": "p",
+      "text": "If your company runs the same shuttle every quarter — airport to HQ, campus to conference center — ask for a recurring arrangement. You'll get the same coordinator, consistent vehicles, and pricing that doesn't reset with every request. Procurement gets one vendor file; you get a phone number that already knows your account."
+    },
+    {
+      "type": "p",
+      "text": "Send us your event date and headcount, and we'll return an itemized quote with a load plan — usually the same business day."
+    }
+  ],
+  "planningLinks": [
+    {
+      "label": "Corporate travel services",
+      "href": "/services/corporate-travel"
+    },
+    {
+      "label": "Sprinter vans for executive teams",
+      "href": "/fleet/sprinter-vans"
+    },
+    {
+      "label": "Airport transfer service",
+      "href": "/services/airport-transfers"
+    },
+    {
+      "label": "Get a corporate quote",
+      "href": "/quote"
+    }
+  ],
+  "relatedPostSlugs": [
+    "charter-bus-vs-mini-bus",
+    "what-a-charter-bus-quote-should-include"
+  ],
+  "source": "original",
+  "reviewed": false
+}

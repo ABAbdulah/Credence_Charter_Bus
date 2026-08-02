@@ -1,0 +1,82 @@
+{
+  "slug": "what-a-charter-bus-quote-should-include",
+  "title": "What a Charter Bus Quote Should Include",
+  "excerpt": "Driver, fuel, tolls, gratuity — learn what belongs in an honest quote and the red flags to watch for.",
+  "date": "2026-07-01",
+  "state": "",
+  "stateAbbr": "",
+  "stateSlug": "",
+  "heroImage": {
+    "src": "/fleet/charter-bus-exterior.png",
+    "alt": "Charter bus ready for departure",
+    "width": 1602,
+    "height": 982
+  },
+  "extraImage": null,
+  "body": [
+    {
+      "type": "p",
+      "text": "Two quotes for the same trip can differ by hundreds of dollars — and the cheaper one can cost more by the end. The difference is almost always what's left out. Here's what a complete charter quote includes, so you can compare like for like."
+    },
+    {
+      "type": "h2",
+      "text": "The six line items that belong in every quote"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Base rate: hourly, daily, or per-mile — stated clearly with the applicable minimum",
+        "Driver: wages and, on multi-day trips, the driver's lodging",
+        "Fuel: included, or estimated with the assumption written down",
+        "Tolls and parking: itemized for your actual route and venues",
+        "Taxes and fees: spelled out, not summarized as 'plus fees'",
+        "Gratuity: whether it's included, expected, or genuinely optional"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Red flags worth walking away from"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "A total that isn't itemized — 'all-inclusive' with no breakdown",
+        "Fuel surcharges 'to be determined' after the trip",
+        "No written overtime rate for events that might run long",
+        "A deposit larger than 50 percent, or cancellation terms that aren't in writing"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Questions that separate good operators from cheap ones"
+    },
+    {
+      "type": "p",
+      "text": "Ask how old the vehicle is and whether the one quoted is the one that arrives. Ask about the interstate operating authority and insurance minimums — a legitimate operator answers without hesitation. Ask who you call at 6 a.m. on trip day. The quality of those answers predicts the quality of the trip."
+    },
+    {
+      "type": "p",
+      "text": "Our quotes arrive itemized and all-in by default — the number you see is the number you pay. If you're comparing us against someone else's quote, we'll walk through both with you line by line."
+    }
+  ],
+  "planningLinks": [
+    {
+      "label": "Request an itemized quote",
+      "href": "/quote"
+    },
+    {
+      "label": "Pricing questions in our FAQ",
+      "href": "/faq"
+    },
+    {
+      "label": "Browse the fleet",
+      "href": "/fleet"
+    }
+  ],
+  "relatedPostSlugs": [
+    "charter-bus-vs-mini-bus",
+    "how-to-rent-a-charter-bus-for-a-wedding"
+  ],
+  "source": "original",
+  "reviewed": false
+}

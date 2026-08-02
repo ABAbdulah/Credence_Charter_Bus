@@ -1,0 +1,86 @@
+{
+  "slug": "charter-bus-vs-mini-bus",
+  "title": "Charter Bus vs. Mini Bus: Which Fits Your Group?",
+  "excerpt": "Capacity, cost, and comfort compared side by side, so you book the right size the first time.",
+  "date": "2026-07-08",
+  "state": "",
+  "stateAbbr": "",
+  "stateSlug": "",
+  "heroImage": {
+    "src": "/fleet/mini-bus-exterior.png",
+    "alt": "Mini bus parked beside a full-size charter bus",
+    "width": 1622,
+    "height": 970
+  },
+  "extraImage": null,
+  "body": [
+    {
+      "type": "p",
+      "text": "The most common question we hear: do we need a full-size charter bus, or will a mini bus do? The honest answer depends on three things — headcount, trip length, and luggage. Here's how to decide in five minutes."
+    },
+    {
+      "type": "h2",
+      "text": "Headcount is the first filter"
+    },
+    {
+      "type": "p",
+      "text": "A full-size charter bus seats 40 to 56 passengers; a mini bus seats 20 to 32. If your confirmed count is under 30, a mini bus almost always wins on price and maneuverability. Between 30 and 40, get quotes for both — the price gap narrows and the coach adds comfort."
+    },
+    {
+      "type": "h2",
+      "text": "Trip length changes the math"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Under two hours each way: mini bus comfort is fine for most groups",
+        "Two to five hours: the coach's reclining seats and on-board restroom start earning their keep",
+        "Overnight or multi-day: full-size charter, almost without exception — luggage bays matter"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Where the mini bus wins"
+    },
+    {
+      "type": "p",
+      "text": "Tight city streets, hotel porte-cochères, winery driveways, and parking lots that were never designed for a 45-foot coach. Mini buses load faster, park closer, and cost less per trip. For shuttle loops — weddings, conferences, campus tours — they're usually the right call."
+    },
+    {
+      "type": "h2",
+      "text": "Where the charter bus wins"
+    },
+    {
+      "type": "p",
+      "text": "Long highway miles with a big group. The restroom means fewer stops, under-bus bays swallow everyone's luggage, and the ride is noticeably smoother at speed. Per-person, a full coach is often the cheapest way to move 40+ people anywhere."
+    },
+    {
+      "type": "p",
+      "text": "Still torn? Send us both scenarios in one quote request — we'll price each and tell you plainly which we'd book for your trip."
+    }
+  ],
+  "planningLinks": [
+    {
+      "label": "Charter buses in detail",
+      "href": "/fleet/charter-buses"
+    },
+    {
+      "label": "Mini buses in detail",
+      "href": "/fleet/mini-buses"
+    },
+    {
+      "label": "Compare the full fleet",
+      "href": "/fleet"
+    },
+    {
+      "label": "Price both options with one quote",
+      "href": "/quote"
+    }
+  ],
+  "relatedPostSlugs": [
+    "what-a-charter-bus-quote-should-include",
+    "corporate-event-transportation-guide"
+  ],
+  "source": "original",
+  "reviewed": false
+}

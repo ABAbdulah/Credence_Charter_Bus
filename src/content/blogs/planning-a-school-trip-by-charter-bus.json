@@ -1,0 +1,86 @@
+{
+  "slug": "planning-a-school-trip-by-charter-bus",
+  "title": "Planning a School Trip by Charter Bus: A Checklist for Organizers",
+  "excerpt": "Approvals, chaperone ratios, and vehicle choice — everything a teacher or administrator needs to book student travel with confidence.",
+  "date": "2026-06-24",
+  "state": "",
+  "stateAbbr": "",
+  "stateSlug": "",
+  "heroImage": {
+    "src": "/fleet/school-bus-exterior.png",
+    "alt": "School bus ready for a field trip departure",
+    "width": 1536,
+    "height": 1024
+  },
+  "extraImage": null,
+  "body": [
+    {
+      "type": "p",
+      "text": "School trips carry a longer checklist than any other charter — approvals, permission slips, chaperone ratios, and a schedule that has to work around the bell. Handled in the right order, none of it is difficult. Here's the sequence experienced organizers follow."
+    },
+    {
+      "type": "h2",
+      "text": "Eight weeks out: lock the framework"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Get administrative approval and confirm the budget owner",
+        "Request quotes with your student count, grade level, and any district vendor requirements",
+        "Confirm the operator's insurance certificates and driver vetting meet district policy"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Choosing the vehicle"
+    },
+    {
+      "type": "p",
+      "text": "For local trips under two hours, a classic school bus is the economical, familiar choice. For longer academic travel — state competitions, college visits, overnight trips — a full charter bus earns its cost with seat belts, luggage bays, a restroom, and a smoother highway ride that keeps students rested."
+    },
+    {
+      "type": "h2",
+      "text": "Two weeks out: finalize the manifest"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Confirm final headcount and the chaperone ratio your district requires",
+        "Share the seating plan and emergency contact sheet with the operator",
+        "Walk the schedule with your coordinator: load time, rest stops, and pickup point for the return"
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "On the day"
+    },
+    {
+      "type": "p",
+      "text": "Board by roster, count twice, and exchange cell numbers with the driver before wheels roll. A good operator's dispatch stays reachable for the whole trip — if a museum runs late or weather shifts the schedule, one call adjusts the plan."
+    }
+  ],
+  "planningLinks": [
+    {
+      "label": "School trip transportation",
+      "href": "/services/school-trips"
+    },
+    {
+      "label": "School buses in our fleet",
+      "href": "/fleet/school-buses"
+    },
+    {
+      "label": "Charter buses for longer trips",
+      "href": "/fleet/charter-buses"
+    },
+    {
+      "label": "Get a school trip quote",
+      "href": "/quote"
+    }
+  ],
+  "relatedPostSlugs": [
+    "what-a-charter-bus-quote-should-include",
+    "charter-bus-vs-mini-bus"
+  ],
+  "source": "original",
+  "reviewed": false
+}

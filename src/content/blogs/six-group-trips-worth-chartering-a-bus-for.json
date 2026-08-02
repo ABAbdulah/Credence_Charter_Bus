@@ -1,0 +1,98 @@
+{
+  "slug": "six-group-trips-worth-chartering-a-bus-for",
+  "title": "Six Group Trips Worth Chartering a Bus For",
+  "excerpt": "From Texas Hill Country to the Georgia coast — destination ideas where the bus ride is part of the fun.",
+  "date": "2026-06-10",
+  "state": "",
+  "stateAbbr": "",
+  "stateSlug": "",
+  "heroImage": {
+    "src": "/fleet/motor-coach-exterior.png",
+    "alt": "Motorcoach on a scenic highway",
+    "width": 1774,
+    "height": 887
+  },
+  "extraImage": null,
+  "body": [
+    {
+      "type": "p",
+      "text": "Some trips only work when everyone rides together — the tasting tour where nobody should drive, the game day where parking costs more than tickets, the reunion where the conversation on the bus is half the point. Six ideas our groups book again and again."
+    },
+    {
+      "type": "h2",
+      "text": "1. Texas Hill Country wine trail"
+    },
+    {
+      "type": "p",
+      "text": "The stretch between Austin and Fredericksburg holds dozens of wineries along winding ranch roads. A chartered mini bus turns a designated-driver problem into a rolling party of 20 — and the vineyards welcome groups that arrive on one vehicle."
+    },
+    {
+      "type": "h2",
+      "text": "2. The Georgia coast: Savannah in a day"
+    },
+    {
+      "type": "p",
+      "text": "Squares draped in live oak, a walkable historic district, and a riverfront made for long lunches. From Atlanta, Savannah is a comfortable coach ride — leave at seven, walk the squares by eleven, and sleep on the way home."
+    },
+    {
+      "type": "h2",
+      "text": "3. Fall football Saturdays"
+    },
+    {
+      "type": "p",
+      "text": "College game days were built for buses: tailgate gear in the luggage bays, no parking scramble, and the group stays together from lot to gate. Book early for rivalry weekends — vehicles sell out weeks ahead in every college town."
+    },
+    {
+      "type": "h2",
+      "text": "4. Arizona's red rock country"
+    },
+    {
+      "type": "p",
+      "text": "Phoenix to Sedona is two hours of climbing scenery with a payoff at every overlook. For retreats and family reunions, a charter turns the drive into the opening act — and nobody white-knuckles the switchbacks."
+    },
+    {
+      "type": "h2",
+      "text": "5. The Florida theme park run"
+    },
+    {
+      "type": "p",
+      "text": "Church groups, school bands, and family reunions converge on Orlando year-round. A coach with a restroom and movie screens is the difference between arriving frazzled and arriving ready — especially with kids aboard."
+    },
+    {
+      "type": "h2",
+      "text": "6. City food and history crawls"
+    },
+    {
+      "type": "p",
+      "text": "Philadelphia, Chicago, San Antonio — pick a city, chain four neighborhoods, and let a mini bus do the connecting. It's the reunion format that works for every generation: everyone walks the fun parts and rides the boring ones."
+    }
+  ],
+  "planningLinks": [
+    {
+      "label": "Charter buses in Texas",
+      "href": "/locations/texas"
+    },
+    {
+      "label": "Charter buses in Georgia",
+      "href": "/locations/georgia"
+    },
+    {
+      "label": "Charter buses in Arizona",
+      "href": "/locations/arizona"
+    },
+    {
+      "label": "Charter buses in Florida",
+      "href": "/locations/florida"
+    },
+    {
+      "label": "Event transportation services",
+      "href": "/services/event-transportation"
+    }
+  ],
+  "relatedPostSlugs": [
+    "charter-bus-vs-mini-bus",
+    "how-to-rent-a-charter-bus-for-a-wedding"
+  ],
+  "source": "original",
+  "reviewed": false
+}
