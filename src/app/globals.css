@@ -11,6 +11,8 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-map-coverage: var(--map-coverage);
+  --color-map-company: var(--map-company);
   --color-accent-deep: var(--accent-deep);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
@@ -47,6 +49,8 @@
   --accent: #c1a15a;
   --accent-hover: #b08f49;
   --accent-deep: #7a612a;
+  --map-coverage: #3d6193;
+  --map-company: #a82c31;
   --accent-foreground: #22252b;
   --destructive: #9b3b34;
   --border: #ddd8cc;

@@ -1,11 +1,15 @@
 import Link from "next/link";
 
 import { citiesOfState, statesByRegion } from "@/data/locations";
+import { networkSummary } from "@/data/network";
 import { pageMetadata } from "@/lib/seo";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
+import { NetworkHubs } from "@/components/site/network-hubs";
+import { NetworkMap } from "@/components/site/network-map";
+import { NetworkSummary } from "@/components/site/network-summary";
 
 export const metadata = pageMetadata({
   title: "Charter Bus Rentals by Location",
@@ -21,16 +25,37 @@ export default function LocationsPage() {
         <Container>
           <SectionHeading
             as="h1"
-            eyebrow="Locations"
-            title="Charter bus rentals across the country"
-            lede="Choose your state to see the cities we serve. Don't see yours yet? We arrange trips in all 50 states — call us and we'll set it up."
+            eyebrow="Nationwide operations network"
+            title="Door-to-door charter service across all 50 states"
+            lede={`Our ${networkSummary.hubs} operations hubs are drawn from the ${networkSummary.cities.toLocaleString(
+              "en-US"
+            )} cities we serve, grouped so that every region has coverage close by. Wherever your group starts, there is a hub within reach.`}
+          />
+          <NetworkMap />
+          <NetworkSummary />
+        </Container>
+      </Section>
+      <Section>
+        <Container>
+          <SectionHeading
+            title="Operations hubs by region"
+            lede="Each hub anchors the cities around it. Open one to see fleet, pricing, and pickup details for that area."
+          />
+          <NetworkHubs />
+        </Container>
+      </Section>
+      <Section className="pt-0 sm:pt-0 lg:pt-0">
+        <Container>
+          <SectionHeading
+            title="Browse every city we serve"
+            lede="Choose your state to see the full list. Don't see yours yet? We arrange trips in all 50 states — call us and we'll set it up."
           />
           <div className="mt-10 flex flex-col gap-12">
             {statesByRegion().map((group) => (
               <div key={group.region}>
-                <h2 className="text-2xl font-semibold text-primary">
+                <h3 className="text-2xl font-semibold text-primary">
                   {group.region}
-                </h2>
+                </h3>
                 <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {group.states.map((state) => {
                     const cityCount = citiesOfState(state.slug).length;
