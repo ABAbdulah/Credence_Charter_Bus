@@ -13,43 +13,12 @@ import {
   type QuoteRequest,
 } from "@/lib/quote"
 import { Button } from "@/components/ui/button"
+import { Field } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Select } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 
 type Status = "idle" | "submitting" | "success" | "error"
-
-function Field({
-  id,
-  label,
-  optional,
-  error,
-  children,
-}: {
-  id: string
-  label: string
-  optional?: boolean
-  error?: string
-  children: React.ReactNode
-}) {
-  return (
-    <div className="flex flex-col gap-2">
-      <Label htmlFor={id}>
-        {label}
-        {optional && (
-          <span className="font-normal text-muted-foreground">(optional)</span>
-        )}
-      </Label>
-      {children}
-      {error && (
-        <p id={`${id}-error`} className="font-medium text-destructive">
-          {error}
-        </p>
-      )}
-    </div>
-  )
-}
 
 function QuoteForm() {
   const [data, setData] = React.useState<QuoteRequest>(emptyQuoteRequest)

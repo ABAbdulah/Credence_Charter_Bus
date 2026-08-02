@@ -60,7 +60,7 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 - **Fleet + service descriptions** — original copy written for this site (intentionally not copied from the model site); owner should approve wording.
 - **Logo** — owner-supplied bus mark is live (see "Brand logo" below). The mark carries no company name, so `<Logo />` pairs it with the existing text wordmark; a real combined-lockup file from the owner would replace both.
 - **Hero media** — falls back to `/fleet/charter-bus-exterior.png`; real image/video goes in `siteConfig.hero`.
-- **Quote delivery** — `lib/quote-sender.ts` only logs to console. **Quote requests are NOT emailed anywhere until this is wired.** Highest-priority non-cosmetic gap before launch.
+- **Quote delivery** — `lib/quote-sender.ts` only logs to console. **Quote requests are NOT emailed anywhere until this is wired.** Highest-priority non-cosmetic gap before launch — now doubly so, since the home hero collects leads directly.
 
 ### 4. Confirmed real client data ✅ (do not change without owner)
 - `established: 2013`
@@ -119,6 +119,34 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 ## Assets
 - Vehicle images arrived during Phase 1: 18 PNGs in `public/` root, 9 types × ext/int (charter bus, motor coach, mini bus, sprinter van, party bus, school bus, stretch limo — filename typo "strecth", SUV, sedan). ~2MB+ each, ~1536×1024. Phase 2: move to `public/fleet/` with kebab-case names, map into fleet data model, serve via next/image (never raw — too heavy). Motor coach folds into the Charter/Coach category.
 - Hero media: single swappable config value at `siteConfig.hero` (image or video).
+
+## Home hero (rebuilt — full-bleed + inline quote form)
+
+The old hero was a centred `max-w-6xl` column with a framed photo beside it. On a 1920px monitor that left ~310px of empty navy each side and the section read as under-filled; the only conversion path was a button to `/quote`.
+
+Now: `Container size="wide"` (max-w-7xl), a **full-bleed backdrop** (`hero-media.tsx`), copy on the left, and `hero-quote-form.tsx` — a 6-field quote card — on the right. `Container` gained a `size` prop (`default` = max-w-6xl, `wide` = max-w-7xl); the hero is the only caller of `wide`.
+- **`bg-primary` on the section + a `-z-10` backdrop = invisible photo.** A negative-z child paints *behind* its parent's background. The backdrop is plain `absolute inset-0` and the `Container` is `relative`; `bg-primary` stays on the section only as a pre-load fallback. Don't reintroduce `-z-10`.
+- Two scrims, not one: a flat `bg-primary/88` below `lg` (text sits over the whole width when stacked) and `bg-linear-to-r from-primary/96 via-primary/92 via-65% to-primary/40` at `lg+`. The `via-65%` stop is load-bearing — see contrast below.
+- Video still works unchanged via `siteConfig.hero.mediaType`; it just fills the backdrop instead of a framed box.
+
+### Contrast over a photo — measure, don't eyeball
+A photo backdrop **breaks the design system's "bronze on navy is 5.3:1" guarantee**, because the effective background is now the scrimmed photo, not the token. Measured worst-case over the bright coach/sky, the bronze eyebrow was **3.64:1 (fail)**. Raising the left scrim from `/95→/80` to `/96→/92 via-65%` brought it to 4.87:1; h1/subhead/trust are all 9:1+. Re-measure after any scrim, photo, or hero-copy change.
+- Measure by hiding the text (`visibility:hidden`), screenshotting, and sampling the worst pixel under each text rect — then composite the text colour over it using its real alpha.
+- **Tailwind v4 emits `oklab()` for `text-primary-foreground/85`.** A naive `/\d+/` regex reads `oklab(0.999994 …)` as RGB ≈ (1,0,0) and reports a bogus 1.36:1 failure. Read colours through a 1×1 canvas (`fillStyle` + `getImageData`), which returns sRGB + alpha.
+
+### Headless screenshots lie about freshly-decoded images
+`waitUntil: "networkidle"` fires **before the compositor paints a just-decoded image**, so `page.screenshot()` returns the hero as flat navy while `locator.screenshot()` of the same `<img>` shows the photo. This cost a wrong "the image isn't rendering" diagnosis. Always `await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))))` before screenshotting. Confirmed by byte size: 7.4 KB (flat) vs 36 KB (photo present).
+
+### Quick quote mode
+`validateQuote(data, mode)` takes `QuoteMode = "full" | "quick"`. Quick drops the **email and tripType** requirements (email is still format-checked when present) so the hero card asks only date / passengers / pick-up / destination / name / phone. The API reads the mode via `toQuoteMode(payload)` from a `mode` key in the JSON body; anything other than `"quick"` is treated as `full`, so existing callers are unaffected. `Field` moved from `quote-form.tsx` to `ui/field.tsx` and is shared by both forms.
+
+## Fleet photo grading
+
+`npm run fleet-photos` (`scripts/grade-fleet-photos.mjs`). **`assets/fleet-source/` holds the pristine owner originals; `public/fleet/` is generated** — never edit `public/fleet/` by hand, and never grade in place (re-running would compound the correction). Paths and filenames are unchanged, so `data/fleet.ts`, `seo.ts`, `jsonld.tsx` and the 14 blog image refs needed no edits.
+- Exteriors are graded; **interiors are byte-copied**. The party bus interior is deliberately purple and the cabins deliberately dim — neutralising them would erase the product. Byte-identical copies also mean git dedupes them, so only the 9 graded exteriors cost new blobs.
+- **Grey-world white balance was wrong here and was reverted.** It read the blue sky reflected in the *white* coach as a cast and turned the paint cream, and forcing every photo to a common mean washed out the black vans — a photo of a black vehicle *should* be darker. The shipped grade is per-channel black/white points (0.5/99.5 percentile → 6/249, at 0.6 strength) plus a **midtone-weighted** cast correction (`4t(1-t)`, zero at both ends) and 0.9 saturation. Worst cast 28 → 18, brightness spread 69–128 → 92–120.
+- Ceiling worth knowing: a LUT cannot make a sunny blue-sky shot match a grey overcast one. The residual mismatch is a *content* difference. If it still reads inconsistent, the fix is tighter crops or a reshoot, not more grading.
+- **PNG re-encode is larger than the source** (2.01 MB → 2.44 MB), so output stays PNG at native size. WebP would be ~179 KB (11×) but would change ~35 image paths including blog JSON that `check-blogs.mjs` validates — deferred, not done.
 
 ## Brand logo
 

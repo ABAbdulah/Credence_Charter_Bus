@@ -1,0 +1,297 @@
+{
+  "targetBlack": 6,
+  "targetWhite": 249,
+  "levelsStrength": 0.5,
+  "castStrength": 0.3,
+  "saturation": 0.9,
+  "files": [
+    {
+      "file": "charter-bus-exterior.png",
+      "action": "graded",
+      "points": [
+        {
+          "black": 0,
+          "white": 246
+        },
+        {
+          "black": 1,
+          "white": 246
+        },
+        {
+          "black": 0,
+          "white": 246
+        }
+      ],
+      "before": [
+        105.10237966289593,
+        117.77420599505201,
+        133.54307052538707
+      ],
+      "after": [
+        112.47081359603958,
+        119.7583551365274,
+        130.9014343069127
+      ]
+    },
+    {
+      "file": "charter-bus-interior.png",
+      "action": "copied"
+    },
+    {
+      "file": "mini-bus-exterior.png",
+      "action": "graded",
+      "points": [
+        {
+          "black": 0,
+          "white": 217
+        },
+        {
+          "black": 0,
+          "white": 215
+        },
+        {
+          "black": 0,
+          "white": 234
+        }
+      ],
+      "before": [
+        99.81052855708238,
+        104.77473972567913,
+        102.4501684314897
+      ],
+      "after": [
+        109.84517523230834,
+        113.97097003826255,
+        107.95914741886686
+      ]
+    },
+    {
+      "file": "mini-bus-interior.png",
+      "action": "copied"
+    },
+    {
+      "file": "motor-coach-exterior.png",
+      "action": "graded",
+      "points": [
+        {
+          "black": 0,
+          "white": 247
+        },
+        {
+          "black": 0,
+          "white": 248
+        },
+        {
+          "black": 0,
+          "white": 248
+        }
+      ],
+      "before": [
+        102.0582858501034,
+        112.09701132098493,
+        117.11973145866195
+      ],
+      "after": [
+        107.17984503710746,
+        113.54672654870744,
+        117.30988765444495
+      ]
+    },
+    {
+      "file": "motor-coach-interior.png",
+      "action": "copied"
+    },
+    {
+      "file": "party-bus-exterior.png",
+      "action": "graded",
+      "points": [
+        {
+          "black": 0,
+          "white": 226
+        },
+        {
+          "black": 0,
+          "white": 182
+        },
+        {
+          "black": 0,
+          "white": 216
+        }
+      ],
+      "before": [
+        80.64491798402392,
+        69.62585104922483,
+        84.57442326955443
+      ],
+      "after": [
+        86.61748038582593,
+        87.26971459660648,
+        90.89266991747556
+      ]
+    },
+    {
+      "file": "party-bus-interior.png",
+      "action": "copied"
+    },
+    {
+      "file": "school-bus-exterior.png",
+      "action": "graded",
+      "points": [
+        {
+          "black": 3,
+          "white": 254
+        },
+        {
+          "black": 2,
+          "white": 254
+        },
+        {
+          "black": 0,
+          "white": 254
+        }
+      ],
+      "before": [
+        122.18267504374187,
+        122.09755643208821,
+        122.74261156717937
+      ],
+      "after": [
+        122.91721280415852,
+        122.26498285929362,
+        124.20024681091309
+      ]
+    },
+    {
+      "file": "school-bus-interior.png",
+      "action": "copied"
+    },
+    {
+      "file": "sedan-exterior.png",
+      "action": "graded",
+      "points": [
+        {
+          "black": 1,
+          "white": 202
+        },
+        {
+          "black": 0,
+          "white": 201
+        },
+        {
+          "black": 0,
+          "white": 203
+        }
+      ],
+      "before": [
+        101.70654487609863,
+        97.04697291056316,
+        88.76033719380696
+      ],
+      "after": [
+        112.79755210876465,
+        109.8434289296468,
+        103.42526753743489
+      ]
+    },
+    {
+      "file": "sedan-interior.png",
+      "action": "copied"
+    },
+    {
+      "file": "sprinter-van-exterior.png",
+      "action": "graded",
+      "points": [
+        {
+          "black": 2,
+          "white": 236
+        },
+        {
+          "black": 4,
+          "white": 238
+        },
+        {
+          "black": 5,
+          "white": 239
+        }
+      ],
+      "before": [
+        130.50351351763624,
+        127.95960153862582,
+        126.2008774895891
+      ],
+      "after": [
+        134.18327176626718,
+        131.43553254452914,
+        129.74605047058765
+      ]
+    },
+    {
+      "file": "sprinter-van-interior.png",
+      "action": "copied"
+    },
+    {
+      "file": "stretch-limo-exterior.png",
+      "action": "graded",
+      "points": [
+        {
+          "black": 1,
+          "white": 245
+        },
+        {
+          "black": 1,
+          "white": 245
+        },
+        {
+          "black": 1,
+          "white": 246
+        }
+      ],
+      "before": [
+        111.3364086151123,
+        109.66696739196777,
+        105.59388097127278
+      ],
+      "after": [
+        112.7760861714681,
+        111.69915453592937,
+        108.72502009073894
+      ]
+    },
+    {
+      "file": "stretch-limo-interior.png",
+      "action": "copied"
+    },
+    {
+      "file": "suv-exterior.png",
+      "action": "graded",
+      "points": [
+        {
+          "black": 1,
+          "white": 190
+        },
+        {
+          "black": 0,
+          "white": 194
+        },
+        {
+          "black": 0,
+          "white": 212
+        }
+      ],
+      "before": [
+        69.24285125732422,
+        70.85558001200359,
+        66.92289543151855
+      ],
+      "after": [
+        81.55707867940266,
+        82.22890790303548,
+        76.1614564259847
+      ]
+    },
+    {
+      "file": "suv-interior.png",
+      "action": "copied"
+    }
+  ]
+}

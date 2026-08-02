@@ -14,6 +14,13 @@ export type QuoteRequest = {
 
 export type QuoteFieldErrors = Partial<Record<keyof QuoteRequest, string>>
 
+/**
+ * The hero form trades completeness for reach: it asks only what an operator
+ * needs to price a trip and call back. Email and trip type are collected on
+ * `/quote` instead.
+ */
+export type QuoteMode = "full" | "quick"
+
 export const emptyQuoteRequest: QuoteRequest = {
   name: "",
   phone: "",
@@ -54,7 +61,18 @@ export function toQuoteRequest(payload: unknown): QuoteRequest {
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/
 
-export function validateQuote(data: QuoteRequest): QuoteFieldErrors {
+export function toQuoteMode(payload: unknown): QuoteMode {
+  const source =
+    typeof payload === "object" && payload !== null
+      ? (payload as Record<string, unknown>)
+      : {}
+  return source.mode === "quick" ? "quick" : "full"
+}
+
+export function validateQuote(
+  data: QuoteRequest,
+  mode: QuoteMode = "full"
+): QuoteFieldErrors {
   const errors: QuoteFieldErrors = {}
   if (data.name.length < 2) {
     errors.name = "Enter your name so we know who to address the quote to."
@@ -62,10 +80,13 @@ export function validateQuote(data: QuoteRequest): QuoteFieldErrors {
   if (data.phone.replace(/\D/g, "").length < 7) {
     errors.phone = "Enter the phone number we should call about your trip."
   }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+  if (
+    (mode === "full" || data.email) &&
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)
+  ) {
     errors.email = "Enter a valid email address for your written quote."
   }
-  if (!data.tripType) {
+  if (mode === "full" && !data.tripType) {
     errors.tripType = "Choose the option closest to your trip."
   }
   const passengerCount = Number(data.passengers)

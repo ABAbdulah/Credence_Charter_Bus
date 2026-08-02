@@ -1,4 +1,4 @@
-import { toQuoteRequest, validateQuote } from "@/lib/quote"
+import { toQuoteMode, toQuoteRequest, validateQuote } from "@/lib/quote"
 import { quoteSender } from "@/lib/quote-sender"
 
 export async function POST(request: Request) {
@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     )
   }
   const data = toQuoteRequest(payload)
-  const errors = validateQuote(data)
+  const errors = validateQuote(data, toQuoteMode(payload))
   if (Object.keys(errors).length > 0) {
     return Response.json({ ok: false, errors }, { status: 422 })
   }

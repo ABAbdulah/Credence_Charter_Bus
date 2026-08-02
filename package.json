@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "network-map": "node scripts/generate-network-map.mjs",
-    "logo": "node scripts/prepare-logo.mjs"
+    "logo": "node scripts/prepare-logo.mjs",
+    "fleet-photos": "node scripts/grade-fleet-photos.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
