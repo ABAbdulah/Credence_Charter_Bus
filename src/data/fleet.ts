@@ -27,9 +27,9 @@ export const fleetCategories: FleetCategory[] = [
     vehicleName: "charter bus",
     capacity: "40–56 passengers",
     short:
-      "Full-size motorcoaches for large groups traveling together in comfort — the workhorse of long-distance group travel.",
+      "Full-size buses for large groups traveling together in comfort — the workhorse of group travel.",
     description:
-      "Our full-size charter buses and motorcoaches carry 40 to 56 passengers with room to spare for luggage underneath. Reclining seats, climate control, and a restroom on board make them the right choice for long-distance trips, multi-day tours, and any occasion where a large group needs to arrive together and on time.",
+      "Our full-size charter buses carry 40 to 56 passengers with room to spare for luggage underneath. Reclining seats, climate control, and a restroom on board make them the right choice for long-distance trips, multi-day tours, and any occasion where a large group needs to arrive together and on time.",
     amenities: [
       "Reclining seats with seat belts",
       "On-board restroom",
@@ -54,18 +54,44 @@ export const fleetCategories: FleetCategory[] = [
         src: "/fleet/charter-bus-interior.png",
         alt: "Charter bus interior with rows of reclining seats",
       },
-      extra: [
-        {
-          src: "/fleet/motor-coach-exterior.png",
-          alt: "Motorcoach exterior on the road",
-        },
-        {
-          src: "/fleet/motor-coach-interior.png",
-          alt: "Motorcoach interior with high-back seating",
-        },
-      ],
     },
     featured: true,
+  },
+  {
+    slug: "motor-coaches",
+    name: "Motor Coaches",
+    vehicleName: "motor coach",
+    capacity: "50–56 passengers",
+    short:
+      "Our largest coaches, built for the long haul — high-back seating, deep luggage bays, and a smooth ride hour after hour.",
+    description:
+      "Motor coaches seat 50 to 56 passengers and are built for distance. Raised-deck seating gives every passenger a view and a quieter ride, the luggage bays underneath swallow suitcases and equipment for a week away, and an on-board restroom keeps stops to a minimum. When a group is crossing state lines or touring for several days, this is the vehicle we recommend first.",
+    amenities: [
+      "Reclining high-back seats with seat belts",
+      "On-board restroom",
+      "Climate control",
+      "Wi-Fi on board",
+      "Power outlets",
+      "Overhead monitors and PA system",
+      "Oversized under-bus luggage bays",
+    ],
+    idealFor: [
+      "Cross-country and interstate travel",
+      "Multi-day tours and itineraries",
+      "Conferences and convention groups",
+      "Band, choir, and team travel with equipment",
+    ],
+    images: {
+      exterior: {
+        src: "/fleet/motor-coach-exterior.png",
+        alt: "Motor coach exterior parked and ready for a long-distance trip",
+      },
+      interior: {
+        src: "/fleet/motor-coach-interior.png",
+        alt: "Motor coach interior with high-back reclining seats",
+      },
+    },
+    featured: false,
   },
   {
     slug: "mini-buses",

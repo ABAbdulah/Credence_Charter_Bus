@@ -8,7 +8,7 @@ import { FleetCard } from "@/components/site/fleet-card";
 export const metadata = pageMetadata({
   title: "Our Fleet",
   description:
-    "Charter buses, mini buses, sprinter vans, party buses, limousines, SUVs, and sedans — every vehicle with a professional driver and all-in pricing.",
+    "Charter buses, motor coaches, mini buses, sprinter vans, party buses, limousines, SUVs, and sedans — every vehicle with a professional driver and all-in pricing.",
   path: "/fleet",
 });
 
@@ -21,7 +21,7 @@ export default function FleetPage() {
             as="h1"
             eyebrow="Our fleet"
             title="Vehicles for every group size"
-            lede="Eight vehicle types, one standard: clean, safe, and on time. Every rental includes a licensed professional driver and a clear, itemized quote."
+            lede="Nine vehicle types, one standard: clean, safe, and on time. Every rental includes a licensed professional driver and a clear, itemized quote."
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {fleetCategories.map((category) => (
