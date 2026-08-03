@@ -48,6 +48,47 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   }
 }
 
+export const blogId = `${siteConfig.url}/blogs#blog`
+
+export function blogJsonLd({
+  name,
+  description,
+  path,
+}: {
+  name: string
+  description: string
+  path: string
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": blogId,
+    name,
+    description,
+    url: `${siteConfig.url}${path}`,
+    inLanguage: "en-US",
+    publisher: { "@id": organizationId },
+  }
+}
+
+export function itemListJsonLd(
+  items: { name: string; path: string }[],
+  { startAt = 1 }: { startAt?: number } = {}
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: startAt + index,
+      name: item.name,
+      url: `${siteConfig.url}${item.path}`,
+    })),
+  }
+}
+
 export function serviceJsonLd({
   name,
   description,

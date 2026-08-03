@@ -10,8 +10,13 @@ import {
   getBlogSummary,
   type BlogBlock,
 } from "@/data/blogs";
-import { formatBlogDate, framedAspect, readingMinutes } from "@/lib/blog-format";
-import { breadcrumbJsonLd, JsonLd, organizationId } from "@/lib/jsonld";
+import {
+  formatBlogDate,
+  framedAspect,
+  readingMinutes,
+  wordCount,
+} from "@/lib/blog-format";
+import { blogId, breadcrumbJsonLd, JsonLd, organizationId } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -31,12 +36,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlogSummary(slug);
   if (!post) return {};
   return pageMetadata({
-    title: post.title,
+    title: post.seoTitle,
     description: post.excerpt,
     path: `/blogs/${post.slug}`,
     ogType: "article",
     publishedTime: post.date,
-    ogImage: { url: post.heroImage.src, alt: post.heroImage.alt },
+    ogImage: {
+      url: post.heroImage.src,
+      alt: post.heroImage.alt,
+      width: post.heroImage.width,
+      height: post.heroImage.height,
+    },
   });
 }
 
@@ -106,16 +116,31 @@ export default async function BlogPostPage({ params }: Props) {
   );
   const breakAt = nextHeading === -1 ? midpoint : nextHeading;
 
+  const url = `${siteConfig.url}/blogs/${post.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
-    image: `${siteConfig.url}${post.heroImage.src}`,
-    author: { "@type": "Organization", name: siteConfig.name },
+    dateModified: post.date,
+    wordCount: wordCount(post.body),
+    inLanguage: "en-US",
+    ...(post.state ? { articleSection: post.state } : {}),
+    image: [post.heroImage, post.extraImage]
+      .filter((image) => image !== null)
+      .map((image) => ({
+        "@type": "ImageObject",
+        url: `${siteConfig.url}${image.src}`,
+        caption: image.alt,
+        width: image.width,
+        height: image.height,
+      })),
+    author: { "@id": organizationId },
     publisher: { "@id": organizationId },
-    mainEntityOfPage: `${siteConfig.url}/blogs/${post.slug}`,
+    isPartOf: { "@id": blogId },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 
   return (

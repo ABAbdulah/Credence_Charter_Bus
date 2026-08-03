@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { blogStates, getBlogState } from "@/data/blogs";
-import { breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, itemListJsonLd, JsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const archive = getBlogState(slug);
   if (!archive) return {};
   return pageMetadata({
-    title: `${archive.name} Group Travel Guides`,
-    description: `${archive.posts.length} destination guides for group trips across ${archive.name} — where to go, which vehicle fits, and how to charter a bus to each one.`,
+    title: `${archive.name} Charter Bus Trip Guides`,
+    description: `${archive.posts.length} charter bus destination guides for group trips across ${archive.name} — where to go, which vehicle fits, and how to plan each trip.`,
     path: `/blogs/state/${archive.slug}`,
   });
 }
@@ -43,6 +43,14 @@ export default async function BlogStatePage({ params }: Props) {
           { name: "Blog", path: "/blogs" },
           { name: archive.name, path: `/blogs/state/${archive.slug}` },
         ])}
+      />
+      <JsonLd
+        data={itemListJsonLd(
+          archive.posts.map((post) => ({
+            name: post.title,
+            path: `/blogs/${post.slug}`,
+          })),
+        )}
       />
       <Section>
         <Container>

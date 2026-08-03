@@ -1,14 +1,15 @@
 {
   "slug": "charter-bus-vs-mini-bus",
   "title": "Charter Bus vs. Mini Bus: Which Fits Your Group?",
-  "excerpt": "Capacity, cost, and comfort compared side by side, so you book the right size the first time.",
+  "seoTitle": "Charter Bus vs Mini Bus: Which Size Fits Your Group?",
+  "excerpt": "Charter bus or mini bus? Compare capacity, cost and comfort side by side so you book the right size vehicle the first time.",
   "date": "2026-07-08",
   "state": "",
   "stateAbbr": "",
   "stateSlug": "",
   "heroImage": {
     "src": "/fleet/mini-bus-exterior.png",
-    "alt": "Mini bus parked beside a full-size charter bus",
+    "alt": "A mini bus parked alongside a full-size charter bus, showing the difference in length and door height",
     "width": 1622,
     "height": 970
   },
@@ -16,7 +17,7 @@
   "body": [
     {
       "type": "p",
-      "text": "The most common question we hear: do we need a full-size charter bus, or will a mini bus do? The honest answer depends on three things — headcount, trip length, and luggage. Here's how to decide in five minutes."
+      "text": "The most common question we hear when a quote request lands: do we need a full-size charter bus, or will a mini bus do? The honest answer depends on three things — headcount, trip length, and luggage. Neither vehicle is better than the other; they solve different problems, and booking the wrong one costs you either money or comfort. Here is how to decide in about five minutes."
     },
     {
       "type": "h2",
@@ -24,19 +25,43 @@
     },
     {
       "type": "p",
-      "text": "A full-size charter bus seats 40 to 56 passengers; a mini bus seats 20 to 32. If your confirmed count is under 30, a mini bus almost always wins on price and maneuverability. Between 30 and 40, get quotes for both — the price gap narrows and the coach adds comfort."
+      "text": "A full-size [charter bus](/fleet/charter-buses) seats 40 to 56 passengers. A [mini bus](/fleet/mini-buses) seats 20 to 32. If your confirmed count is under 30, the mini bus almost always wins on price and maneuverability. Between 30 and 40, ask for both prices — the gap narrows quickly at that end of the range, and the coach adds comfort you may decide is worth the difference."
+    },
+    {
+      "type": "p",
+      "text": "Count riders, not invitations. Groups routinely give us a headcount that includes everyone invited, then travel with two-thirds of that number and pay for seats nobody sat in. If your count is genuinely uncertain, tell us the range rather than the optimistic figure. We can hold the larger vehicle and adjust before the balance is due, which is far easier than finding a second bus a week out."
     },
     {
       "type": "h2",
       "text": "Trip length changes the math"
     },
     {
+      "type": "p",
+      "text": "Distance shifts the answer more than most planners expect. A vehicle that is perfectly comfortable for forty minutes can feel cramped after three hours, and the features that seem like luxuries on a short hop become the whole point on a long one."
+    },
+    {
       "type": "ul",
       "items": [
-        "Under two hours each way: mini bus comfort is fine for most groups",
-        "Two to five hours: the coach's reclining seats and on-board restroom start earning their keep",
-        "Overnight or multi-day: full-size charter, almost without exception — luggage bays matter"
+        "Under two hours each way: a mini bus suits most groups, and the easier parking usually settles it.",
+        "Two to five hours: reclining seats and an on-board restroom start earning their keep, especially with a mixed-age group.",
+        "Overnight or multi-day: a full-size charter, almost without exception — the under-floor luggage bays are the reason."
       ]
+    },
+    {
+      "type": "h2",
+      "text": "Luggage is the quiet deciding factor"
+    },
+    {
+      "type": "p",
+      "text": "Mini buses carry bags in the cabin or in a modest rear compartment. That is fine for a day trip with handbags and a cooler. It is not fine for a week of suitcases, a sports team's equipment, or a school band's instruments. A charter bus takes all of it below the floor, out of the aisle and out of the way. If every passenger is bringing a checked-size bag, the decision has already been made for you."
+    },
+    {
+      "type": "h2",
+      "text": "How the two compare on price"
+    },
+    {
+      "type": "p",
+      "text": "Charter pricing is per vehicle and per day, not per seat, so the number worth calculating is cost per passenger. A mini bus quotes lower in absolute terms, but a coach carrying fifty people usually beats it per head. Where the mini bus genuinely saves money is short local work — a three-hour shuttle loop where a coach's extra capacity would sit unused all afternoon. Ask for both prices against your actual itinerary rather than reasoning from the base rates, because tolls, parking and driver hours move with the route rather than with the vehicle."
     },
     {
       "type": "h2",
@@ -44,7 +69,7 @@
     },
     {
       "type": "p",
-      "text": "Tight city streets, hotel porte-cochères, winery driveways, and parking lots that were never designed for a 45-foot coach. Mini buses load faster, park closer, and cost less per trip. For shuttle loops — weddings, conferences, campus tours — they're usually the right call."
+      "text": "Tight city streets, hotel porte-cochères, winery driveways, and parking lots that were never designed for a 45-foot coach. Mini buses load faster, park closer, and cost less per trip. For shuttle loops — weddings, conferences, campus tours — they are usually the right call, because the vehicle runs several short legs rather than one long one. Our [wedding transportation](/services/wedding-transportation) bookings lean on mini buses for exactly this reason."
     },
     {
       "type": "h2",
@@ -52,11 +77,31 @@
     },
     {
       "type": "p",
-      "text": "Long highway miles with a big group. The restroom means fewer stops, under-bus bays swallow everyone's luggage, and the ride is noticeably smoother at speed. Per-person, a full coach is often the cheapest way to move 40+ people anywhere."
+      "text": "Long highway miles with a large group. The restroom means fewer stops, the bays swallow everyone's luggage, and the ride is noticeably smoother at speed. Per person, a full coach is often the cheapest way to move forty or more people anywhere: the base rate is higher, but you are dividing it across more seats."
     },
     {
       "type": "p",
-      "text": "Still torn? Send us both scenarios in one quote request — we'll price each and tell you plainly which we'd book for your trip."
+      "text": "It also wins whenever splitting the group would be a problem. Two mini buses can seat the same fifty people, but they arrive at different moments, need two drivers, and give you two of every conversation about where to meet and when to leave."
+    },
+    {
+      "type": "h2",
+      "text": "What about two mini buses instead of one coach?"
+    },
+    {
+      "type": "p",
+      "text": "It is a fair question, and occasionally it is the right answer — when the venue genuinely cannot take a coach, or when the group needs to be in two places at once. Price it before assuming it is cheaper. Two vehicles means two drivers, two base rates, and two sets of parking. In most quotes we run, one coach beats two mini buses on total cost once the group passes about thirty-five people."
+    },
+    {
+      "type": "h2",
+      "text": "Booking either vehicle"
+    },
+    {
+      "type": "p",
+      "text": "Whichever way you lean, the process is the same: dates, headcount, every stop you are considering, and any venue that has already told you what it can and cannot accommodate. If you are searching for charter bus rental near me and comparing operators, ask each one to itemise the quote — that is where the real difference between two prices usually sits, and we break it down in [what a charter bus quote should include](/blogs/what-a-charter-bus-quote-should-include)."
+    },
+    {
+      "type": "p",
+      "text": "Still torn between the two? Send both scenarios in a single [quote request](/quote) and we will price each one, then tell you plainly which we would book for your trip. You can also see which vehicles we run [across the country](/locations) if you want to check what is available near your pickup point."
     }
   ],
   "planningLinks": [
@@ -79,8 +124,9 @@
   ],
   "relatedPostSlugs": [
     "what-a-charter-bus-quote-should-include",
-    "corporate-event-transportation-guide"
+    "corporate-event-transportation-guide",
+    "planning-a-school-trip-by-charter-bus"
   ],
   "source": "original",
-  "reviewed": false
+  "reviewed": true
 }

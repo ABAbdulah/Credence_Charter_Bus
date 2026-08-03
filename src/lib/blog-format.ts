@@ -25,11 +25,14 @@ export function stripInlineLinks(text: string) {
   return text.replace(/\[([^\]]+)\]\(\/[^)]*\)/g, "$1")
 }
 
-export function readingMinutes(body: BlogBlock[]) {
-  const words = stripInlineLinks(
+export function wordCount(body: BlogBlock[]) {
+  return stripInlineLinks(
     body
       .map((block) => (block.type === "ul" ? block.items.join(" ") : block.text))
       .join(" ")
-  ).split(/\s+/).length
-  return Math.max(1, Math.round(words / 220))
+  ).split(/\s+/).filter(Boolean).length
+}
+
+export function readingMinutes(body: BlogBlock[]) {
+  return Math.max(1, Math.round(wordCount(body) / 220))
 }

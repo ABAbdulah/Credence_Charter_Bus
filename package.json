@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "blog-index": "node scripts/build-blog-index.mjs",
+    "check-blogs": "node scripts/check-blogs.mjs",
     "network-map": "node scripts/generate-network-map.mjs",
     "logo": "node scripts/prepare-logo.mjs",
     "fleet-photos": "node scripts/grade-fleet-photos.mjs"

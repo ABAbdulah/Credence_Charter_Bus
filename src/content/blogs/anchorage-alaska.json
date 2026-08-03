@@ -1,6 +1,7 @@
 {
   "slug": "anchorage-alaska",
   "title": "Anchorage, Alaska",
+  "seoTitle": "Charter Bus to Anchorage, Alaska: Group Trip Guide",
   "excerpt": "Anchorage is the gateway to the Last Frontier. Where to take a group, which vehicle fits, and how a charter bus to Anchorage keeps the whole trip simple.",
   "date": "2025-09-29",
   "state": "Alaska",
@@ -110,7 +111,28 @@
       "text": "Whether it is a family reunion, a school group, a corporate retreat or a club tour, our [event transportation](/services/event-transportation) team handles the logistics so your group can spend the drive looking out of the window. [Request an all-in quote](/quote) with your dates and headcount and you will usually have an itemised price back the same day — driver, fuel, tolls and taxes included, with nothing appearing later."
     }
   ],
-  "planningLinks": [],
+  "planningLinks": [
+    {
+      "label": "Charter buses and motorcoaches",
+      "href": "/fleet/charter-buses"
+    },
+    {
+      "label": "Mini buses for smaller groups",
+      "href": "/fleet/mini-buses"
+    },
+    {
+      "label": "Event transportation",
+      "href": "/services/event-transportation"
+    },
+    {
+      "label": "Charter bus rental in Anchorage, AK",
+      "href": "/locations/alaska/anchorage"
+    },
+    {
+      "label": "Get an all-in quote for this trip",
+      "href": "/quote"
+    }
+  ],
   "relatedPostSlugs": [
     "aleutian-islands-alaska",
     "denali-national-park-alaska"

@@ -1,5 +1,7 @@
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs"
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { resolve } from "node:path"
+
+import { buildBlogIndex } from "./build-blog-index.mjs"
 
 const usage = `Usage: node scripts/ingest-blogs.mjs [options]
 
@@ -169,8 +171,6 @@ const slugify = (value) =>
 const stateEntries = JSON.parse(
   readFileSync(resolve(root, "src/data/locations/locations.json"), "utf8"),
 ).states
-
-const regionByState = new Map(stateEntries.map((entry) => [entry.name, entry.region]))
 
 function stateFromTitle(title) {
   let best = null
@@ -523,24 +523,7 @@ for (const entry of parsed) {
   writeFileSync(target, `${JSON.stringify(entry.post, null, 2)}\n`)
 }
 
-const indexEntries = readdirSync(contentDir)
-  .filter((file) => file.endsWith(".json") && file !== "index.json")
-  .map((file) => JSON.parse(readFileSync(resolve(contentDir, file), "utf8")))
-  .map((post) => ({
-    slug: post.slug,
-    title: post.title,
-    excerpt: post.excerpt,
-    date: post.date,
-    state: post.state,
-    stateAbbr: post.stateAbbr,
-    stateSlug: post.stateSlug,
-    stateRegion: regionByState.get(post.state) ?? "",
-    heroImage: post.heroImage,
-    source: post.source,
-  }))
-  .sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug))
-
-writeFileSync(resolve(contentDir, "index.json"), `${JSON.stringify(indexEntries, null, 2)}\n`)
+const indexEntries = buildBlogIndex()
 writeFileSync(failureLog, JSON.stringify(failures, null, 2))
 
 const words = parsed.map((entry) => entry.wordCount).sort((a, b) => a - b)

@@ -22,7 +22,7 @@ export function pageMetadata({
   description: string
   path: string
   ogType?: "website" | "article"
-  ogImage?: { url: string; alt: string }
+  ogImage?: { url: string; alt: string; width?: number; height?: number }
   publishedTime?: string
   noindex?: boolean
 }): Metadata {
@@ -39,7 +39,15 @@ export function pageMetadata({
       siteName: siteConfig.name,
       type: ogType,
       ...(publishedTime ? { publishedTime } : {}),
-      images: [ogImage ? { ...ogImage, width: 1602, height: 982 } : defaultOgImage],
+      images: [
+        ogImage
+          ? {
+              ...ogImage,
+              width: ogImage.width ?? defaultOgImage.width,
+              height: ogImage.height ?? defaultOgImage.height,
+            }
+          : defaultOgImage,
+      ],
     },
     twitter: { card: "summary_large_image" },
   }

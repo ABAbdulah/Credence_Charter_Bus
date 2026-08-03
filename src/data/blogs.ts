@@ -10,6 +10,7 @@ export type BlogImage = { src: string; alt: string; width: number; height: numbe
 export type BlogSummary = {
   slug: string
   title: string
+  seoTitle: string
   excerpt: string
   date: string
   state: string
