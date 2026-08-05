@@ -19,6 +19,18 @@ const CAST_STRENGTH = 0.3
 const SATURATION = 0.9
 
 /**
+ * Fleet cards and category heroes render exteriors in a 3:2 box with
+ * object-cover, so anything much wider gets its front and rear cropped off —
+ * the 2:1 motor coach lost a third of the vehicle. Sources at or above
+ * PAD_MIN_ASPECT are extended to 3:2 by mirroring the photo's own sky and
+ * pavement (blurred), so the full vehicle shows without inventing imagery.
+ * Blog JSONs that reference these files store per-image dimensions and must
+ * be kept in sync when this threshold changes.
+ */
+const CARD_ASPECT = 3 / 2
+const PAD_MIN_ASPECT = 1.7
+
+/**
  * Interiors keep their lighting: the party bus is deliberately purple and the
  * cabins are deliberately dim. Neutralising those would erase the product.
  */
@@ -75,6 +87,32 @@ function applyLut(data, luts) {
   }
 }
 
+async function padToCardAspect(buffer) {
+  const { width, height } = await sharp(buffer).metadata()
+  if (width / height < PAD_MIN_ASPECT) return null
+  const targetHeight = Math.round(width / CARD_ASPECT)
+  const padTop = Math.round((targetHeight - height) * 0.45)
+  const padBottom = targetHeight - height - padTop
+  const skyStrip = await sharp(buffer)
+    .extract({ left: 0, top: 0, width, height: padTop })
+    .toBuffer()
+  const sky = await sharp(skyStrip).flip().blur(12).toBuffer()
+  const pavementStrip = await sharp(buffer)
+    .extract({ left: 0, top: height - padBottom, width, height: padBottom })
+    .toBuffer()
+  const pavement = await sharp(pavementStrip).flip().blur(8).toBuffer()
+  return sharp({
+    create: { width, height: targetHeight, channels: 3, background: "#ffffff" },
+  })
+    .composite([
+      { input: sky, top: 0, left: 0 },
+      { input: buffer, top: padTop, left: 0 },
+      { input: pavement, top: padTop + height, left: 0 },
+    ])
+    .png({ compressionLevel: 9 })
+    .toBuffer()
+}
+
 mkdirSync(outDir, { recursive: true })
 const report = []
 
@@ -95,18 +133,29 @@ for (const file of readdirSync(sourceDir).filter((f) => f.endsWith(".png"))) {
 
   applyLut(data, buildLut(points, before))
 
-  const output = await sharp(data, {
+  const graded = await sharp(data, {
     raw: { width: info.width, height: info.height, channels: 3 },
   })
     .modulate({ saturation: SATURATION })
     .png({ compressionLevel: 9 })
     .toBuffer()
+  const padded = await padToCardAspect(graded)
+  const output = padded ?? graded
   writeFileSync(to, output)
 
   const after = (await sharp(output).stats()).channels
     .slice(0, 3)
     .map((c) => c.mean)
-  report.push({ file, action: "graded", points, before, after })
+  const { width, height } = await sharp(output).metadata()
+  report.push({
+    file,
+    action: "graded",
+    points,
+    before,
+    after,
+    padded: Boolean(padded),
+    size: `${width}x${height}`,
+  })
 }
 
 const cast = (m) => Math.max(...m) - Math.min(...m)
@@ -118,7 +167,7 @@ for (const row of report) {
     console.log(`${row.file.padEnd(30)} copied (interior lighting preserved)`)
   } else {
     console.log(
-      `${row.file.padEnd(30)} ${fmt(row.before).padEnd(14)} -> ${fmt(row.after).padEnd(14)} cast ${cast(row.before).toFixed(0)} -> ${cast(row.after).toFixed(0)}`
+      `${row.file.padEnd(30)} ${fmt(row.before).padEnd(14)} -> ${fmt(row.after).padEnd(14)} cast ${cast(row.before).toFixed(0)} -> ${cast(row.after).toFixed(0)}${row.padded ? ` padded to 3:2 (${row.size})` : ""}`
     )
   }
 }
