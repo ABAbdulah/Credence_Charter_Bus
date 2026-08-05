@@ -1,4 +1,4 @@
-import { faqItems } from "@/data/faq";
+import { faqCategories, faqItems } from "@/data/faq";
 import { JsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
@@ -34,16 +34,25 @@ export default function FaqPage() {
             title="Answers before you ask"
             lede="Everything is written out below — no clicking to reveal. If your question isn't here, call us and a person will answer."
           />
-          <dl className="mt-10 flex max-w-3xl flex-col gap-10">
-            {faqItems.map((item) => (
-              <div key={item.question}>
-                <dt className="font-heading text-xl font-semibold text-primary">
-                  {item.question}
-                </dt>
-                <dd className="mt-3">{item.answer}</dd>
-              </div>
+          <div className="mt-10 flex max-w-3xl flex-col gap-14">
+            {faqCategories.map((category) => (
+              <section key={category} aria-label={category}>
+                <h2 className="text-2xl">{category}</h2>
+                <dl className="mt-6 flex flex-col gap-8 border-l-2 border-accent/40 pl-5">
+                  {faqItems
+                    .filter((item) => item.category === category)
+                    .map((item) => (
+                      <div key={item.question}>
+                        <dt className="font-heading text-xl font-semibold text-primary">
+                          {item.question}
+                        </dt>
+                        <dd className="mt-3">{item.answer}</dd>
+                      </div>
+                    ))}
+                </dl>
+              </section>
             ))}
-          </dl>
+          </div>
         </Container>
       </Section>
       <CtaBand

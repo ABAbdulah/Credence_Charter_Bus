@@ -15,14 +15,14 @@
   },
   "extraImage": {
     "src": "/blogs/nantucket-massachusetts-2.webp",
-    "alt": "Cobbled Main Street in Nantucket town lined with grey-shingled buildings",
+    "alt": "Cobbled Main Street in Nantucket town lined with gray-shingled buildings",
     "width": 1024,
     "height": 1024
   },
   "body": [
     {
       "type": "p",
-      "text": "Nantucket is thirty miles out into the Atlantic, fourteen miles long, and for a few decades in the early 1800s it was the whaling capital of the world. What survives is an almost intact grey-shingled town that has been protected from development for a century. A charter bus to Nantucket is, in practice, a charter bus to the ferry — and understanding that early makes the rest of the planning straightforward."
+      "text": "Nantucket is thirty miles out into the Atlantic, fourteen miles long, and for a few decades in the early 1800s it was the whaling capital of the world. What survives is an almost intact gray-shingled town that has been protected from development for a century. A charter bus to Nantucket is, in practice, a charter bus to the ferry — and understanding that early makes the rest of the planning straightforward."
     },
     {
       "type": "h2",
@@ -48,7 +48,7 @@
       "type": "ul",
       "items": [
         "The Whaling Museum: built around a candle factory with a full sperm whale skeleton overhead. The best single explanation of why this island mattered, and worth ninety minutes.",
-        "Brant Point Lighthouse: the small white light at the harbour entrance, and the thing every group photographs from the ferry as it comes in.",
+        "Brant Point Lighthouse: the small white light at the harbor entrance, and the thing every group photographs from the ferry as it comes in.",
         "The Old Mill, built in 1746 and still grinding corn — the oldest working windmill in the country.",
         "Siasconset: a village of rose-covered cottages at the eastern end, with a bluff walk along the shore. About twenty minutes from town.",
         "Sankaty Head Lighthouse: red-banded, on an eroding bluff, and moved bodily inland in 2007 to save it."
@@ -124,7 +124,7 @@
     },
     {
       "type": "p",
-      "text": "[Request an all-in quote](/quote) and you will usually have an itemised price back the same day, driver, fuel, tolls and taxes included."
+      "text": "[Request an all-in quote](/quote) and you will usually have an itemized price back the same day, driver, fuel, tolls and taxes included."
     }
   ],
   "planningLinks": [

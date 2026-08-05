@@ -11,12 +11,6 @@ const outFile = resolve(root, "src/data/network/network-map.json")
 const svgFile = resolve(root, "public/brand/network-map.svg")
 const stillSvgFile = resolve(root, "public/brand/network-map-still.svg")
 
-const TARGET_HUBS = 150
-const COMPANY_HUBS = 70
-const COMPANY_MIN_SEPARATION_MILES = 55
-const SEPARATION_AT_LARGE_METRO = 48
-const SEPARATION_AT_SMALL_TOWN = 155
-const ANCHOR_HUBS = 108
 const COVERAGE_GAP_MILES = 100
 const RING_MIN_MILES = 78
 const RING_MAX_MILES = 230
@@ -31,8 +25,6 @@ const RING_NEIGHBOR_FACTOR = 1
 // it lifts sparse and dense together and leaves the contrast that caused the
 // misread. The range has to compress.
 const BASE_COVERAGE_OPACITY = 0.34
-const MIN_MARKET_POPULATION = 45000
-const SNAP_MILES = 15
 
 const VIEW_WIDTH = 1000
 const MAP_PAD = 10
@@ -209,7 +201,7 @@ const escapeXml = (value) =>
   value.replace(/[&<>"]/g, (char) => `&${{ "&": "amp", "<": "lt", ">": "gt", '"': "quot" }[char]};`)
 
 // Animations are staggered by longitude so the map reads as one slow wave
-// crossing the country rather than 150 elements flickering independently.
+// crossing the country rather than a hundred elements flickering independently.
 const wave = (x, duration) => `animation-delay:${(-(x / VIEW_WIDTH) * duration).toFixed(2)}s`
 
 function ringMarkup(hub, animated) {
@@ -329,36 +321,127 @@ const locations = JSON.parse(
 const stateBySlug = new Map(locations.states.map((state) => [state.slug, state]))
 const stateByName = new Map(locations.states.map((state) => [state.name, state]))
 
-const NON_CIVILIAN = /air force base|naval|army|marine corps|arsenal|proving ground/i
+// The hub roster is owner-supplied (5 Aug 2026) and verbatim — the earlier
+// algorithmic selection (market floor, separation, gap-fill) is retired. Order
+// within each list is the owner's; company/partner assignment is fixed here,
+// not derived. Every id must exist in locations.json or the build fails.
+const COMPANY_HUB_IDS = [
+  "new-york/new-york-city",
+  "california/los-angeles",
+  "illinois/chicago",
+  "texas/dallas",
+  "texas/houston",
+  "georgia/atlanta",
+  "florida/orlando",
+  "florida/miami",
+  "district-of-columbia/washington",
+  "nevada/las-vegas",
+  "massachusetts/boston",
+  "pennsylvania/philadelphia",
+  "california/san-francisco",
+  "california/san-jose",
+  "washington/seattle",
+  "colorado/denver",
+  "arizona/phoenix",
+  "california/san-diego",
+  "north-carolina/charlotte",
+  "tennessee/nashville",
+  "texas/austin",
+  "texas/san-antonio",
+  "florida/tampa",
+  "florida/jacksonville",
+  "minnesota/minneapolis",
+  "michigan/detroit",
+  "ohio/columbus",
+  "indiana/indianapolis",
+  "missouri/kansas-city",
+  "missouri/st-louis",
+  "louisiana/new-orleans",
+  "maryland/baltimore",
+  "california/sacramento",
+  "oregon/portland",
+  "texas/fort-worth",
+  "california/riverside",
+  "california/anaheim",
+  "new-jersey/newark",
+  "virginia/virginia-beach",
+  "utah/salt-lake-city",
+]
 
-// GeoNames reports 288,649 for this ~7k-person CDP, which would otherwise beat
-// Huntington, WV for the Tri-State hub. Remove once locations.json is corrected.
-const BAD_POPULATION = new Set(["kentucky/meads"])
-
-// Below the population floor, only the transport centre of a region that has no
-// larger city near it qualifies. Every entry is a market with real motorcoach
-// operators; without them their state or region would have no reachable hub.
-const REGIONAL_MARKETS = new Set([
-  "vermont/burlington",
-  "maine/bangor",
-  "montana/bozeman",
+const PARTNER_HUB_IDS = [
+  "north-carolina/raleigh",
+  "ohio/cincinnati",
+  "ohio/cleveland",
+  "wisconsin/milwaukee",
+  "virginia/richmond",
+  "virginia/norfolk",
+  "new-york/buffalo",
+  "new-york/rochester",
+  "new-york/albany",
+  "connecticut/hartford",
+  "connecticut/new-haven",
+  "rhode-island/providence",
+  "new-jersey/jersey-city",
+  "new-jersey/trenton",
+  "delaware/wilmington",
+  "south-carolina/charleston",
+  "south-carolina/columbia",
+  "south-carolina/greenville",
+  "alabama/birmingham",
+  "alabama/huntsville",
+  "alabama/montgomery",
+  "tennessee/memphis",
+  "tennessee/knoxville",
+  "kentucky/louisville",
+  "kentucky/lexington",
+  "oklahoma/oklahoma-city",
+  "oklahoma/tulsa",
+  "nebraska/omaha",
+  "iowa/des-moines",
+  "kansas/wichita",
+  "arkansas/little-rock",
+  "louisiana/baton-rouge",
+  "louisiana/shreveport",
+  "texas/el-paso",
+  "texas/lubbock",
+  "texas/corpus-christi",
+  "texas/mcallen",
+  "texas/brownsville",
+  "california/fresno",
+  "california/bakersfield",
+  "california/long-beach",
+  "california/irvine",
+  "california/santa-ana",
+  "california/stockton",
+  "nevada/reno",
+  "idaho/boise",
+  "washington/spokane",
+  "washington/tacoma",
+  "new-mexico/albuquerque",
+  "arizona/tucson",
+  "wisconsin/madison",
+  "michigan/grand-rapids",
+  "ohio/toledo",
+  "north-carolina/greensboro",
+  "pennsylvania/pittsburgh",
+  "hawaii/honolulu",
+  "alaska/anchorage",
+  "hawaii/kahului",
   "alaska/fairbanks",
-  "hawaii/hilo",
-])
+]
 
-// Candidates rank by city population, so San Jose (997k) displaced San Francisco
-// (828k) 42 miles away and the Bay Area's dot carried the wrong name. Ranking by
-// metro instead would hand it to Hayward, whose 25-mile rollup is the largest in
-// the region — which city a reader expects is a recognition judgement, not a
-// population fact. Seeding these ahead of the ranking makes separation block
-// their neighbours rather than them.
-const PRINCIPAL_MARKETS = new Set(["california/san-francisco"])
-
-const hubCandidates = locations.cities.filter(
-  (city) =>
-    !NON_CIVILIAN.test(city.name) &&
-    !BAD_POPULATION.has(`${city.stateSlug}/${city.slug}`)
+const cityById = new Map(
+  locations.cities.map((city) => [`${city.stateSlug}/${city.slug}`, city])
 )
+
+const resolveHub = (id) => {
+  const city = cityById.get(id)
+  if (!city) throw new Error(`Hub city missing from locations.json: ${id}`)
+  return city
+}
+
+const hubCities = [...COMPANY_HUB_IDS, ...PARTNER_HUB_IDS].map(resolveHub)
+const companyIndexes = new Set(COMPANY_HUB_IDS.keys())
 
 const METRO_RADIUS_MILES = 25
 const CELL_DEGREES = 0.5
@@ -390,106 +473,7 @@ function addMetroWeights(pool) {
   }
 }
 
-function requiredSeparation(metro) {
-  const scale = Math.min(1, Math.max(0, (Math.log10(Math.max(metro, 1)) - 3.6) / 3))
-  return SEPARATION_AT_SMALL_TOWN - (SEPARATION_AT_SMALL_TOWN - SEPARATION_AT_LARGE_METRO) * scale
-}
-
-function snapToLocalAnchor(city, pool, taken) {
-  let best = city
-  for (const other of pool) {
-    if (
-      other.population > best.population &&
-      !taken.includes(other) &&
-      haversine(city.lat, city.lng, other.lat, other.lng) <= SNAP_MILES
-    ) {
-      best = other
-    }
-  }
-  return best
-}
-
-function selectHubs(pool, budget, { gapMiles, anchors }) {
-  const ranked = [...pool].sort((a, b) => {
-    const principalA = PRINCIPAL_MARKETS.has(`${a.stateSlug}/${a.slug}`)
-    const principalB = PRINCIPAL_MARKETS.has(`${b.stateSlug}/${b.slug}`)
-    if (principalA !== principalB) return principalA ? -1 : 1
-    return b.population - a.population
-  })
-  const chosen = []
-  for (const city of ranked) {
-    if (chosen.length >= Math.min(anchors ?? budget, budget)) break
-    const sep = requiredSeparation(city.metro)
-    const clear = chosen.every((hub) => {
-      const limit = Math.min(sep, requiredSeparation(hub.metro))
-      return haversine(city.lat, city.lng, hub.lat, hub.lng) >= limit
-    })
-    if (clear) chosen.push(snapToLocalAnchor(city, pool, chosen))
-  }
-
-  // Every state needs a visible dot, however well its neighbours' rings cover it.
-  const represented = new Set(chosen.map((city) => city.stateSlug))
-  for (const city of ranked) {
-    if (chosen.length >= budget) break
-    if (represented.has(city.stateSlug)) continue
-    represented.add(city.stateSlug)
-    chosen.push(city)
-  }
-
-  const nearest = pool.map((city) =>
-    chosen.reduce(
-      (min, hub) => Math.min(min, haversine(city.lat, city.lng, hub.lat, hub.lng)),
-      Infinity
-    )
-  )
-  while (chosen.length < budget) {
-    let pick = -1
-    let pickScore = 0
-    for (let i = 0; i < pool.length; i += 1) {
-      if (nearest[i] <= gapMiles) continue
-      const score = nearest[i] * Math.log10(pool[i].population)
-      if (score > pickScore) {
-        pickScore = score
-        pick = i
-      }
-    }
-    if (pick < 0) break
-    const city = snapToLocalAnchor(pool[pick], pool, chosen)
-    chosen.push(city)
-    for (let i = 0; i < pool.length; i += 1) {
-      const d = haversine(city.lat, city.lng, pool[i].lat, pool[i].lng)
-      if (d < nearest[i]) nearest[i] = d
-    }
-  }
-  return chosen
-}
-
-addMetroWeights(hubCandidates)
-
-// A hub claims a garage, drivers and coaches parked in that city. Anything the
-// reader recognises as a small town reads as invented and discredits the rest of
-// the map, so candidates are real markets only — never a gap that merely needs
-// filling.
-const marketPool = hubCandidates.filter(
-  (city) =>
-    city.population >= MIN_MARKET_POPULATION ||
-    REGIONAL_MARKETS.has(`${city.stateSlug}/${city.slug}`)
-)
-
-const mainland = marketPool.filter(
-  (city) => city.stateSlug !== "alaska" && city.stateSlug !== "hawaii"
-)
-const alaskaCities = marketPool.filter((city) => city.stateSlug === "alaska")
-const hawaiiCities = marketPool.filter((city) => city.stateSlug === "hawaii")
-
-const hubCities = [
-  ...selectHubs(mainland, TARGET_HUBS - 4, {
-    gapMiles: COVERAGE_GAP_MILES,
-    anchors: ANCHOR_HUBS,
-  }),
-  ...selectHubs(alaskaCities, 2, { gapMiles: 250 }),
-  ...selectHubs(hawaiiCities, 2, { gapMiles: 120 }),
-]
+addMetroWeights(locations.cities)
 
 const assignedCities = hubCities.map(() => 0)
 let covered = 0
@@ -505,25 +489,6 @@ for (const city of locations.cities) {
   }
   assignedCities[best] += 1
   if (bestDistance <= COVERAGE_GAP_MILES) covered += 1
-}
-
-// Ranked on the size of the hub's own metro, not on its assigned catchment.
-// Catchment is a Voronoi share, so it rewards isolation: it made Peoria and
-// Green Bay company hubs while Baltimore, Boise and Spokane came out partner.
-const companyRanked = hubCities
-  .map((city, index) => ({ city, index, weight: city.metro }))
-  .sort((a, b) => b.weight - a.weight)
-const companyIndexes = new Set()
-for (const entry of companyRanked) {
-  if (companyIndexes.size >= COMPANY_HUBS) break
-  const clear = [...companyIndexes].every((index) => {
-    const other = hubCities[index]
-    return (
-      haversine(entry.city.lat, entry.city.lng, other.lat, other.lng) >=
-      COMPANY_MIN_SEPARATION_MILES
-    )
-  })
-  if (clear) companyIndexes.add(entry.index)
 }
 
 const geo = topojson.feature(usTopo, usTopo.objects.states)
@@ -563,7 +528,6 @@ const insetSpecs = [
     label: "AK",
     features: features.filter((feature) => feature.properties.name === "Alaska"),
     projection: makeAlbers({ parallels: [55, 65], rotate: 154, center: [-2, 58.5] }),
-    cities: alaskaCities,
   },
   {
     key: "hawaii",
@@ -571,7 +535,6 @@ const insetSpecs = [
     label: "HI",
     features: features.filter((feature) => feature.properties.name === "Hawaii"),
     projection: makeAlbers({ parallels: [8, 18], rotate: 157, center: [-3, 19.9] }),
-    cities: hawaiiCities,
   },
 ]
 
@@ -768,7 +731,7 @@ const summary = {
 const description =
   `Map of the United States showing ${summary.hubs} Credence Charter Bus operations hubs — ` +
   `${summary.company} company-owned and ${summary.partner} partner — with overlapping ` +
-  `service areas covering all ${summary.states - 1} states and the District of Columbia.`
+  `service areas spanning the continental United States, Alaska and Hawaii.`
 
 const output = {
   generatedAt: new Date().toISOString().slice(0, 10),

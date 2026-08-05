@@ -115,6 +115,7 @@ function MobileNav({ brand }: { brand: React.ReactNode }) {
               <NavLinks
                 className="flex flex-col gap-1"
                 linkClassName="min-h-12 text-lg"
+                orientation="vertical"
               />
             </nav>
             <div className="flex flex-col gap-3 border-t px-4 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">

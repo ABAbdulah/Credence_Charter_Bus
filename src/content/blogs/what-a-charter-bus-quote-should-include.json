@@ -29,8 +29,8 @@
         "Base rate: hourly, daily, or per-mile — stated clearly, with the applicable minimum spelled out.",
         "Driver: wages, and on multi-day trips the driver's lodging, which is a real cost somebody has to carry.",
         "Fuel: included, or estimated with the assumption written down so you can check it against your route.",
-        "Tolls and parking: itemised for your actual route and venues, not averaged across the region.",
-        "Taxes and fees: listed individually rather than summarised as 'plus fees'.",
+        "Tolls and parking: itemized for your actual route and venues, not averaged across the region.",
+        "Taxes and fees: listed individually rather than summarized as 'plus fees'.",
         "Gratuity: whether it is included, expected, or genuinely optional."
       ]
     },
@@ -45,7 +45,7 @@
     {
       "type": "ul",
       "items": [
-        "A total that is not itemised — 'all-inclusive' with no breakdown behind it.",
+        "A total that is not itemized — 'all-inclusive' with no breakdown behind it.",
         "Fuel surcharges 'to be determined' after the trip has finished.",
         "No written overtime rate, on an event that might well run long.",
         "A deposit larger than fifty percent, or cancellation terms that are not in writing."
@@ -73,7 +73,7 @@
     },
     {
       "type": "p",
-      "text": "The same six line items apply to every booking, but their weight changes with the occasion. A wedding shuttle quote lives or dies on the overtime rate, because receptions run long. A [corporate travel](/services/corporate-travel) quote is usually judged on whether the invoice clears procurement without a follow-up call, so itemisation matters more than the headline figure. A multi-day tour quote hangs on driver lodging and hours-of-service limits, which cap how far one driver can legally take you in a day."
+      "text": "The same six line items apply to every booking, but their weight changes with the occasion. A wedding shuttle quote lives or dies on the overtime rate, because receptions run long. A [corporate travel](/services/corporate-travel) quote is usually judged on whether the invoice clears procurement without a follow-up call, so itemization matters more than the headline figure. A multi-day tour quote hangs on driver lodging and hours-of-service limits, which cap how far one driver can legally take you in a day."
     },
     {
       "type": "p",
@@ -101,7 +101,7 @@
     },
     {
       "type": "p",
-      "text": "If you are weighing our price against someone else's, send us theirs. We will walk both through line by line, including the parts where they beat us. [Request an itemised quote](/quote) with your dates, headcount and stops, and you will usually have a full breakdown back the same day. For a specific pickup point, our [local service pages](/locations) show what we run in each state."
+      "text": "If you are weighing our price against someone else's, send us theirs. We will walk both through line by line, including the parts where they beat us. [Request an itemized quote](/quote) with your dates, headcount and stops, and you will usually have a full breakdown back the same day. For a specific pickup point, our [local service pages](/locations) show what we run in each state."
     }
   ],
   "planningLinks": [

@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
+import { ContactForm } from "@/components/site/contact-form";
 import { CtaBand } from "@/components/site/cta-band";
 
 export const metadata = pageMetadata({
@@ -97,6 +98,20 @@ export default function ContactPage() {
             <Button asChild size="lg">
               <Link href="/quote">Request a Free Quote</Link>
             </Button>
+          </div>
+        </Container>
+      </Section>
+      <Section className="bg-secondary/40">
+        <Container>
+          <div className="mx-auto max-w-2xl">
+            <SectionHeading
+              eyebrow="Write to us"
+              title="Send us a message"
+              lede="Questions about a reservation, pricing, or anything else — send it here and a coordinator will write back within one business day."
+            />
+            <div className="mt-10">
+              <ContactForm />
+            </div>
           </div>
         </Container>
       </Section>

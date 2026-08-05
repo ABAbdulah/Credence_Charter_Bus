@@ -68,13 +68,13 @@ const detailTemplates: ReadonlyArray<Template> = [
   (c) =>
     `From quick shuttles across town to weekend trips toward ${c.nearby[0].name} or ${c.nearby[1].name}, groups in ${c.city} ride with drivers who know the ${c.region}'s roads and a support line that answers around the clock.`,
   (c) =>
-    `${c.nearby[0].name} sits roughly ${c.nearby[0].miles} miles from ${c.city}, and ${c.nearby[1].name} about ${c.nearby[1].miles} — both common stops on routes we run. Longer hauls across ${c.state} and into neighbouring states are just as routine.`,
+    `${c.nearby[0].name} sits roughly ${c.nearby[0].miles} miles from ${c.city}, and ${c.nearby[1].name} about ${c.nearby[1].miles} — both common stops on routes we run. Longer hauls across ${c.state} and into neighboring states are just as routine.`,
   (c) =>
     `A typical ${c.city} booking covers a single day and a handful of stops, but multi-day itineraries through ${c.nearby[0].name} and beyond are priced the same transparent way: driver, fuel, tolls, and taxes in one number.`,
   (c) =>
     `Groups leaving ${c.city} regularly head toward ${c.nearby[0].name} and ${c.nearby[1].name}. Wherever you are going, we confirm pickup points and travel time up front so your schedule holds.`,
   (c) =>
-    `Whether you need a short hop to ${c.nearby[0].name} or a full week touring the ${c.region}, the same coordinator handles your ${c.city} booking end to end — no call centre, no handoffs.`,
+    `Whether you need a short hop to ${c.nearby[0].name} or a full week touring the ${c.region}, the same coordinator handles your ${c.city} booking end to end — no call center, no handoffs.`,
   (c) =>
     `Airport transfers, venue shuttles, and intercity runs toward ${c.nearby[1].name} all leave from ${c.city} on a regular basis. Tell us the headcount and the date, and we will size the vehicle to fit.`,
 ]

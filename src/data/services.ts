@@ -94,6 +94,40 @@ export const services: Service[] = [
     relatedFleetSlugs: ["limousines", "party-buses", "mini-buses", "school-buses"],
   },
   {
+    slug: "city-tours",
+    name: "City Tours",
+    short:
+      "Sightseeing charters with a driver who knows the route — hop between landmarks without hunting for parking.",
+    intro: [
+      "Seeing a city with a group is better when nobody has to navigate, park, or count heads across three rideshares. Your driver handles the route while your group watches the city go by together.",
+      "We plan tour charters around your list of stops — museums, landmarks, neighborhoods, restaurants — with dwell time at each and a warm bus waiting when you're ready for the next one.",
+    ],
+    whatWeHandle: [
+      "Sightseeing loops and landmark routes",
+      "Museum and attraction hops with timed stops",
+      "Food and neighborhood tours",
+      "Visiting groups, reunions, and conventions",
+    ],
+    relatedFleetSlugs: ["mini-buses", "charter-buses", "sprinter-vans"],
+  },
+  {
+    slug: "long-distance-charter",
+    name: "Long-Distance Charter",
+    short:
+      "Interstate and cross-country trips with rested drivers, planned stops, and a coach built for the miles.",
+    intro: [
+      "Long trips are where a real coach earns its keep: reclining seats, an on-board restroom, luggage space for everyone, and a driver whose hours are managed so the trip never depends on one person pushing through.",
+      "We plan multi-day itineraries end to end — fuel and rest stops, driver lodging, overnight parking — so a 900-mile trip runs as smoothly as a crosstown shuttle.",
+    ],
+    whatWeHandle: [
+      "Interstate and cross-country charters",
+      "Multi-day tours with overnight stays",
+      "Relief drivers and rest compliance on long hauls",
+      "Route planning with fuel and meal stops",
+    ],
+    relatedFleetSlugs: ["motor-coaches", "charter-buses", "coach-buses"],
+  },
+  {
     slug: "school-trips",
     name: "School Trips",
     short:

@@ -17,11 +17,13 @@ import { Field } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Select } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { HoneypotField } from "@/components/site/honeypot-field"
 
 type Status = "idle" | "submitting" | "success" | "error"
 
 function QuoteForm() {
   const [data, setData] = React.useState<QuoteRequest>(emptyQuoteRequest)
+  const [website, setWebsite] = React.useState("")
   const [errors, setErrors] = React.useState<QuoteFieldErrors>({})
   const [status, setStatus] = React.useState<Status>("idle")
 
@@ -57,7 +59,7 @@ function QuoteForm() {
       const response = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, website }),
       })
       if (!response.ok) throw new Error(`Request failed: ${response.status}`)
       setStatus("success")
@@ -95,6 +97,11 @@ function QuoteForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate aria-busy={status === "submitting"}>
+      <HoneypotField
+        id="quote-website"
+        value={website}
+        onChange={(event) => setWebsite(event.target.value)}
+      />
       <div className="grid gap-6 sm:grid-cols-2">
         <Field id="name" label="Your name" error={errors.name}>
           <Input

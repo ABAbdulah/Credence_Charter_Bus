@@ -6,12 +6,12 @@ function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
   return (
     <span className="flex items-center gap-2 sm:gap-2.5">
       <Image
-        src="/brand/logo-mark.png"
+        src="/brand/credence-mark.svg"
         alt=""
-        width={497}
-        height={304}
+        width={994}
+        height={608}
         priority
-        sizes="72px"
+        unoptimized
         className="h-9 w-auto max-[360px]:hidden sm:h-10"
       />
       <span className="flex flex-col">

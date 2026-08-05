@@ -94,6 +94,41 @@ export const fleetCategories: FleetCategory[] = [
     featured: false,
   },
   {
+    slug: "coach-buses",
+    name: "Coach Buses",
+    vehicleName: "coach bus",
+    capacity: "40–45 passengers",
+    short:
+      "A step between mini bus and full-size coach — full comfort for mid-large groups without paying for empty seats.",
+    description:
+      "Coach buses seat 40 to 45 passengers — the right size when a full 56-seat coach would ride half empty but a mini bus can't hold everyone. You keep the comforts that matter on a longer ride, with a vehicle matched to your actual headcount.",
+    amenities: [
+      "Reclining seats with seat belts",
+      "Climate control",
+      "Wi-Fi on board",
+      "Power outlets",
+      "PA system",
+      "Under-bus luggage bays",
+    ],
+    idealFor: [
+      "Mid-large group trips",
+      "Regional day trips and outings",
+      "Church and community travel",
+      "Conference and event shuttles",
+    ],
+    images: {
+      exterior: {
+        src: "/fleet/motor-coach-exterior.png",
+        alt: "Coach bus exterior ready for boarding",
+      },
+      interior: {
+        src: "/fleet/motor-coach-interior.png",
+        alt: "Coach bus interior with reclining seats",
+      },
+    },
+    featured: false,
+  },
+  {
     slug: "mini-buses",
     name: "Mini Buses",
     vehicleName: "mini bus",

@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Field } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { HoneypotField } from "@/components/site/honeypot-field"
 
 type Status = "idle" | "submitting" | "success" | "error"
 
@@ -26,6 +27,7 @@ const todayOnServer = () => ""
 
 function HeroQuoteForm() {
   const [data, setData] = React.useState<QuoteRequest>(emptyQuoteRequest)
+  const [website, setWebsite] = React.useState("")
   const [errors, setErrors] = React.useState<QuoteFieldErrors>({})
   const [status, setStatus] = React.useState<Status>("idle")
   const today = React.useSyncExternalStore(
@@ -63,7 +65,7 @@ function HeroQuoteForm() {
       const response = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, mode: "quick" }),
+        body: JSON.stringify({ ...data, mode: "quick", website }),
       })
       if (!response.ok) throw new Error(`Request failed: ${response.status}`)
       setStatus("success")
@@ -114,6 +116,11 @@ function HeroQuoteForm() {
         aria-busy={status === "submitting"}
         className="mt-6 flex flex-col gap-5"
       >
+        <HoneypotField
+          id="hero-website"
+          value={website}
+          onChange={(event) => setWebsite(event.target.value)}
+        />
         <div className="grid gap-5 sm:grid-cols-2">
           <Field
             id="hero-departureDate"

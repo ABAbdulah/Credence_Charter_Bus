@@ -1,7 +1,14 @@
+import { isHoneypotTripped, isRateLimited } from "@/lib/anti-spam"
 import { toQuoteMode, toQuoteRequest, validateQuote } from "@/lib/quote"
 import { quoteSender } from "@/lib/quote-sender"
 
 export async function POST(request: Request) {
+  if (isRateLimited(request, "quote")) {
+    return Response.json(
+      { ok: false, message: "Too many requests. Please try again later." },
+      { status: 429 }
+    )
+  }
   let payload: unknown
   try {
     payload = await request.json()
@@ -10,6 +17,9 @@ export async function POST(request: Request) {
       { ok: false, message: "The request could not be read." },
       { status: 400 }
     )
+  }
+  if (isHoneypotTripped(payload)) {
+    return Response.json({ ok: true })
   }
   const data = toQuoteRequest(payload)
   const errors = validateQuote(data, toQuoteMode(payload))
