@@ -73,7 +73,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) handles the run down to Hyannis from Boston, Providence or further, with an on-board restroom for what can be a slow summer drive.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) handles the run down to Hyannis from Boston, Providence or further, with an on-board restroom for what can be a slow summer drive.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) suits a smaller historical society or club and is easier around the Hyannis terminal.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) works for a small corporate group or a family party."
       ]
@@ -130,7 +130,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Sprinter vans for executive groups",

@@ -64,7 +64,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is the right call if the gardens are one stop on a longer Central Valley itinerary, with luggage bays and an on-board restroom for the drive.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is the right call if the gardens are one stop on a longer Central Valley itinerary, with luggage bays and an on-board restroom for the drive.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) matches the tour group sizes the site handles most easily and parks with less fuss.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a garden club or a small historical society outing."
       ]
@@ -118,7 +118,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

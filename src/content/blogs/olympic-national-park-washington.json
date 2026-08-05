@@ -57,7 +57,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) handles US-101 and the main spurs comfortably, and the on-board restroom earns its cost on a route with long gaps between facilities.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) handles US-101 and the main spurs comfortably, and the on-board restroom earns its cost on a route with long gaps between facilities.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is easier on the narrower spur roads and at the smaller trailhead lots, particularly at the Hoh.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) reaches everything and suits a small photography or hiking group."
       ]
@@ -118,7 +118,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

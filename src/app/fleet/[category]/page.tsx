@@ -23,9 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category: slug } = await params;
   const category = getFleetCategory(slug);
   if (!category) return {};
+  const rentalName = category.vehicleName.replace(/\b[a-z]/g, (c) => c.toUpperCase());
+  const article = /^[aeiou]/i.test(category.vehicleName) ? "an" : "a";
+  const capacity = category.capacity[0].toLowerCase() + category.capacity.slice(1);
   return pageMetadata({
-    title: `${category.name} — ${category.capacity}`,
-    description: category.short,
+    title: `${rentalName} Rental — ${category.capacity}`,
+    description: `Rent ${article} ${category.vehicleName} for ${capacity} with a professional driver and a clear, itemized quote — available nationwide.`,
     path: `/fleet/${category.slug}`,
     ogImage: {
       url: category.images.exterior.src,

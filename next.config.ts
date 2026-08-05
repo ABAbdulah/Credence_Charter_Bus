@@ -5,10 +5,16 @@ import type { NextConfig } from "next";
  * future 301 of the old domain land on real pages. Aliases cover both the
  * old `/fleet/category/{slug}` category level and the old `/fleet/{slug}`
  * vehicle-detail level, which the current site flattens into one page.
+ * `charter-buses` is this site's own retired category (owner folded it into
+ * Motor Coaches / Coach Buses), so it redirects too.
  */
 const fleetAliases: Record<string, string[]> = {
-  "charter-buses": ["charter-bus"],
-  "motor-coaches": ["motor-coach", "charter-bus-56"],
+  "motor-coaches": [
+    "motor-coach",
+    "charter-bus-56",
+    "charter-bus",
+    "charter-buses",
+  ],
   "coach-buses": ["coach-bus"],
   "mini-buses": ["mini-bus", "mini-bus-35"],
   "sprinter-vans": ["sprinter-van", "sprinter-van-14"],

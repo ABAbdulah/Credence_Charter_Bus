@@ -69,7 +69,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) for the run to Woods Hole from Boston, Providence or New York, with luggage bays for a weekend group.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) for the run to Woods Hole from Boston, Providence or New York, with luggage bays for a weekend group.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the practical size if you genuinely need a vehicle on the island, and far cheaper to ferry.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) crosses without difficulty and suits a small wedding party or executive group."
       ]
@@ -122,7 +122,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Sprinter vans for executive groups",

@@ -61,7 +61,7 @@
       "type": "ul",
       "items": [
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the right vehicle here. It reaches the trailheads, turns around at the end, and does not commit you to a drop-and-return arrangement.",
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is comfortable for the drive from Pittsburgh or Harrisburg, but confirm the specific trailhead and turning space before booking — plan on a drop-off with the coach waiting in Breezewood rather than at the trail.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is comfortable for the drive from Pittsburgh or Harrisburg, but confirm the specific trailhead and turning space before booking — plan on a drop-off with the coach waiting in Breezewood rather than at the trail.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a photography group working around the light at either tunnel mouth."
       ]
     },
@@ -125,7 +125,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

@@ -47,7 +47,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is comfortable for what is a long drive from almost any direction, and the park has parking that takes coaches.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is comfortable for what is a long drive from almost any direction, and the park has parking that takes coaches.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) suits a senior travel club or a smaller society outing and handles the rural approach easily.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) works for a small photography or railway-history group."
       ]
@@ -128,7 +128,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

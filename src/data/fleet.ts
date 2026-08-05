@@ -22,42 +22,6 @@ export type FleetCategory = {
 
 export const fleetCategories: FleetCategory[] = [
   {
-    slug: "charter-buses",
-    name: "Charter Buses",
-    vehicleName: "charter bus",
-    capacity: "40–56 passengers",
-    short:
-      "Full-size buses for large groups traveling together in comfort — the workhorse of group travel.",
-    description:
-      "Our full-size charter buses carry 40 to 56 passengers with room to spare for luggage underneath. Reclining seats, climate control, and a restroom on board make them the right choice for long-distance trips, multi-day tours, and any occasion where a large group needs to arrive together and on time.",
-    amenities: [
-      "Reclining seats with seat belts",
-      "On-board restroom",
-      "Climate control",
-      "Wi-Fi on board",
-      "Power outlets",
-      "PA system for your trip leader",
-      "Under-bus luggage bays",
-    ],
-    idealFor: [
-      "Long-distance group trips",
-      "Corporate outings and conferences",
-      "Multi-day tours",
-      "Large wedding parties",
-    ],
-    images: {
-      exterior: {
-        src: "/fleet/charter-bus-exterior.png",
-        alt: "Full-size charter bus parked and ready for boarding",
-      },
-      interior: {
-        src: "/fleet/charter-bus-interior.png",
-        alt: "Charter bus interior with rows of reclining seats",
-      },
-    },
-    featured: true,
-  },
-  {
     slug: "motor-coaches",
     name: "Motor Coaches",
     vehicleName: "motor coach",
@@ -91,7 +55,7 @@ export const fleetCategories: FleetCategory[] = [
         alt: "Motor coach interior with high-back reclining seats",
       },
     },
-    featured: false,
+    featured: true,
   },
   {
     slug: "coach-buses",
@@ -118,7 +82,7 @@ export const fleetCategories: FleetCategory[] = [
     ],
     images: {
       exterior: {
-        src: "/fleet/motor-coach-exterior.png",
+        src: "/fleet/coach-bus-exterior.png",
         alt: "Coach bus exterior ready for boarding",
       },
       interior: {

@@ -64,7 +64,7 @@
       "type": "ul",
       "items": [
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the standard Napa vehicle. It fits winery driveways and lots that a full coach cannot, and most estates are used to them.",
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) works well for a corporate group or a wedding party moving as one unit, provided the wineries have confirmed they can take it.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) works well for a corporate group or a wedding party moving as one unit, provided the wineries have confirmed they can take it.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits an executive group or a small celebration, and reaches the boutique producers with tight driveways.",
         "A celebration rather than a tasting tour: a [party bus](/fleet/party-buses) for 14 to 40 keeps a bachelorette or a birthday group together between stops."
       ]
@@ -121,7 +121,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Party buses for celebrations",

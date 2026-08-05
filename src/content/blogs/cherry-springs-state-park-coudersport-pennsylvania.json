@@ -67,7 +67,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is the right vehicle for an astronomy club or a school group traveling any distance, with bays for telescopes and chairs and a restroom for a site that has only basic facilities.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is the right vehicle for an astronomy club or a school group traveling any distance, with bays for telescopes and chairs and a restroom for a site that has only basic facilities.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) suits a smaller club and handles the rural approach comfortably.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) works for a small group carrying serious equipment."
       ]
@@ -116,7 +116,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

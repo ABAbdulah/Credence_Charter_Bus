@@ -51,7 +51,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) handles the approach roads and the valley loop, and there is designated bus parking near Yosemite Village. The most comfortable choice for the two to four hour drive in.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) handles the approach roads and the valley loop, and there is designated bus parking near Yosemite Village. The most comfortable choice for the two to four hour drive in.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) has an easier time on the winding approach from the south and at the smaller Mariposa Grove and Glacier Point lots.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a small group and parks anywhere a car does, which in Yosemite is worth more than it sounds."
       ]
@@ -113,7 +113,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

@@ -81,7 +81,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is right for the long approach, with an on-board restroom that earns its cost on the Eastern Shore run.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is right for the long approach, with an on-board restroom that earns its cost on the Eastern Shore run.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is easier on the island's narrow streets and in the refuge parking areas.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a birding group or a family party."
       ]
@@ -138,7 +138,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

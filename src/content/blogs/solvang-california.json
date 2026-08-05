@@ -70,7 +70,7 @@
       "type": "ul",
       "items": [
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the standard vehicle for valley wine days, fitting winery driveways that a full coach cannot.",
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) works well for a club outing or a corporate group coming from Los Angeles, with an on-board restroom for the drive up.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) works well for a club outing or a corporate group coming from Los Angeles, with an on-board restroom for the drive up.",
         "A celebration: a [party bus](/fleet/party-buses) for 14 to 40 suits a birthday or bachelorette group moving between tasting rooms.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) reaches the smallest producers and parks anywhere in the village."
       ]
@@ -119,7 +119,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

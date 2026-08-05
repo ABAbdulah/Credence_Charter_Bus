@@ -72,7 +72,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is right for the run down from Boston or Providence to Woods Hole, with luggage bays for an overnight group.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is right for the run down from Boston or Providence to Woods Hole, with luggage bays for an overnight group.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the more practical vehicle if you do intend to take it across, and considerably cheaper on the ferry.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) crosses easily and suits a small group that wants a vehicle on the island."
       ]
@@ -121,7 +121,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

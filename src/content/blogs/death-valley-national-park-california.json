@@ -57,7 +57,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is comfortable on the long approach and fine on the main park highways. It cannot do Artist's Drive or Dante's View.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is comfortable on the long approach and fine on the main park highways. It cannot do Artist's Drive or Dante's View.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the vehicle that unlocks the whole park, including both restricted roads, while still carrying a real group.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) goes everywhere and suits photography groups working around sunrise and sunset."
       ]
@@ -122,7 +122,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

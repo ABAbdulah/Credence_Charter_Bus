@@ -56,7 +56,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) handles the highways and both scenic parkways comfortably, and the long drive up the coast is much better on a coach than in a car.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) handles the highways and both scenic parkways comfortably, and the long drive up the coast is much better on a coach than in a car.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) reaches the smaller trailhead lots and is the better tool if the itinerary includes the narrower park roads.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) can take on the gravel routes a larger vehicle has to skip."
       ]
@@ -113,7 +113,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

@@ -25,7 +25,7 @@
     },
     {
       "type": "p",
-      "text": "A full-size [charter bus](/fleet/charter-buses) seats 40 to 56 passengers. A [mini bus](/fleet/mini-buses) seats 20 to 32. If your confirmed count is under 30, the mini bus almost always wins on price and maneuverability. Between 30 and 40, ask for both prices — the gap narrows quickly at that end of the range, and the coach adds comfort you may decide is worth the difference."
+      "text": "A full-size [charter bus](/fleet/motor-coaches) seats 40 to 56 passengers. A [mini bus](/fleet/mini-buses) seats 20 to 32. If your confirmed count is under 30, the mini bus almost always wins on price and maneuverability. Between 30 and 40, ask for both prices — the gap narrows quickly at that end of the range, and the coach adds comfort you may decide is worth the difference."
     },
     {
       "type": "p",
@@ -107,7 +107,7 @@
   "planningLinks": [
     {
       "label": "Charter buses in detail",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses in detail",
@@ -123,9 +123,9 @@
     }
   ],
   "relatedPostSlugs": [
-    "what-a-charter-bus-quote-should-include",
-    "corporate-event-transportation-guide",
-    "planning-a-school-trip-by-charter-bus"
+    "charter-bus-sizes-seating-capacity-guide",
+    "how-much-does-it-cost-to-rent-a-charter-bus",
+    "what-a-charter-bus-quote-should-include"
   ],
   "source": "original",
   "reviewed": true

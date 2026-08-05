@@ -73,7 +73,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is the standard school-group vehicle, with luggage bays for a multi-day trip and an on-board restroom that matters on the Mall.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is the standard school-group vehicle, with luggage bays for a multi-day trip and an on-board restroom that matters on the Mall.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is markedly easier in DC traffic and at the tighter loading zones, and the better choice for a smaller group.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a delegation or an executive group working between offices on the Hill.",
         "Twenty-eight to sixty: a [school bus](/fleet/school-buses) is economical for districts within about two hours."
@@ -123,7 +123,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "School buses for student trips",

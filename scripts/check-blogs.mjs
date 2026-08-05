@@ -49,6 +49,7 @@ const staticPaths = new Set([
   "/services",
   "/locations",
   "/blogs",
+  "/how-to-book",
 ])
 
 const files = readdirSync(contentDir).filter((f) => f.endsWith(".json") && f !== "index.json")

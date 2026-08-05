@@ -65,7 +65,7 @@
       "type": "ul",
       "items": [
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the vehicle that can run the whole road, including the southern tunnels, and fits the smaller overlooks.",
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is comfortable on the Virginia section and for the approach drives, with an on-board restroom that matters on a road with few facilities.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is comfortable on the Virginia section and for the approach drives, with an on-board restroom that matters on a road with few facilities.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) reaches every pull-off and suits a photography group."
       ]
     },
@@ -125,7 +125,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

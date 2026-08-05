@@ -61,7 +61,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is comfortable for the long approach from Los Angeles or San Diego and fine on the main park road. Plan stops at the larger lots and skip the small pullouts.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is comfortable for the long approach from Los Angeles or San Diego and fine on the main park road. Plan stops at the larger lots and skip the small pullouts.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) reaches everything, parks at the smaller trailheads, and is the easiest vehicle to run inside the park.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a small group or a photography trip built around sunrise and sunset positions."
       ]
@@ -122,7 +122,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

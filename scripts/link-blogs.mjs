@@ -38,7 +38,7 @@ for (const city of locations.cities) {
 }
 
 const FLEET_LABELS = {
-  "charter-buses": "Charter buses and motorcoaches",
+  "motor-coaches": "Charter buses and motorcoaches",
   "mini-buses": "Mini buses for smaller groups",
   "sprinter-vans": "Sprinter vans for executive groups",
   "school-buses": "School buses for student trips",
@@ -147,7 +147,7 @@ function pickFleetAndService(text) {
   const services = scored.slice(0, 2).map((entry) => entry.profile.service)
   if (services.length === 0) services.push("event-transportation")
 
-  const fleet = ["charter-buses"]
+  const fleet = ["motor-coaches"]
   for (const entry of scored) {
     for (const slug of entry.profile.fleet) {
       if (!fleet.includes(slug) && fleet.length < 3) fleet.push(slug)

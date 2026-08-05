@@ -61,7 +61,7 @@
       "items": [
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the sensible choice and the largest vehicle we would recommend without checking first.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) parks without any difficulty and suits a scout troop, a geology club or a family group.",
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is workable only as a drop-off with the coach waiting elsewhere. Tell us in advance and we will arrange it rather than discovering the problem on the lane."
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is workable only as a drop-off with the coach waiting elsewhere. Tell us in advance and we will arrange it rather than discovering the problem on the lane."
       ]
     },
     {
@@ -116,7 +116,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

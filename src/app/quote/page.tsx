@@ -6,9 +6,9 @@ import { Section, SectionHeading } from "@/components/ui/section";
 import { QuoteForm } from "@/components/site/quote-form";
 
 export const metadata = pageMetadata({
-  title: "Get a Free Quote",
+  title: "Get a Free Charter Bus Quote",
   description:
-    "Tell us your group size, dates, and route — we'll send back a clear, all-in charter quote, usually the same day.",
+    "Request a free charter bus rental quote — group size, dates, and route are all we need. Clear, itemized pricing, usually the same day.",
   path: "/quote",
 });
 

@@ -79,7 +79,7 @@
       "type": "ul",
       "items": [
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the most flexible vehicle on this road — it clears the tunnel comfortably and fits the smaller overlooks.",
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is comfortable for the approach and fine on the main road, subject to the tunnel clearance. Plan stops at the larger overlooks.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is comfortable for the approach and fine on the main road, subject to the tunnel clearance. Plan stops at the larger overlooks.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a photography group working the light at dawn and dusk."
       ]
     },
@@ -131,7 +131,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

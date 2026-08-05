@@ -72,7 +72,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is the standard school-group vehicle, with designated coach parking at the visitor center and the Jamestown and Yorktown sites.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is the standard school-group vehicle, with designated coach parking at the visitor center and the Jamestown and Yorktown sites.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) suits a smaller class or a senior group and moves more easily between the three towns.",
         "Twenty-eight to sixty: a [school bus](/fleet/school-buses) is economical for Virginia districts within about two hours.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) works for a family reunion or a small historical society."
@@ -126,7 +126,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

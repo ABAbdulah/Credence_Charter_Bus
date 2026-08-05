@@ -60,7 +60,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is the standard vehicle for school and church groups coming from Philadelphia, New York or New Jersey, and there is room for coaches on site.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is the standard vehicle for school and church groups coming from Philadelphia, New York or New Jersey, and there is room for coaches on site.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) suits a senior excursion or a smaller class and maneuvers more easily on the Pocono back roads.",
         "Twenty-eight to sixty: a [school bus](/fleet/school-buses) remains the most economical option for a local school district trip under two hours each way."
       ]
@@ -117,7 +117,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

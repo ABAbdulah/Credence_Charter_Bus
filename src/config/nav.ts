@@ -18,7 +18,6 @@ export const mainNav: NavItem[] = [
     href: "/fleet",
     children: [
       { label: "All Fleet Vehicles", href: "/fleet" },
-      { label: "Charter Buses", href: "/fleet/charter-buses" },
       { label: "Motor Coaches", href: "/fleet/motor-coaches" },
       { label: "Coach Buses", href: "/fleet/coach-buses" },
       { label: "Mini Buses", href: "/fleet/mini-buses" },

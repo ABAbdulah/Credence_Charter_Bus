@@ -14,10 +14,10 @@ export const siteConfig = {
   },
   email: "info@credencecharterbus.com", // dummy
   address: {
-    street: "1200 Transit Way, Suite 400", // dummy
-    city: "Dallas", // dummy
-    state: "TX", // dummy
-    zip: "75201", // dummy
+    street: "7901 4th St N, Ste 31686",
+    city: "St. Petersburg",
+    state: "FL",
+    zip: "33702",
   },
   established: 2013,
   hero: {

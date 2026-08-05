@@ -72,7 +72,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) for the run from Seattle or Bellingham to Anacortes, with luggage bays for an overnight group.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) for the run from Seattle or Bellingham to Anacortes, with luggage bays for an overnight group.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the practical size if you genuinely want a vehicle on the island, and far cheaper on the ferry.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) crosses easily and suits a small corporate retreat."
       ]
@@ -129,7 +129,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

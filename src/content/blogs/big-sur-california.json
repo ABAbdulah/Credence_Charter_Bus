@@ -62,7 +62,7 @@
       "type": "ul",
       "items": [
         "Twenty to thirty-two passengers: a [mini bus](/fleet/mini-buses) is the sweet spot for this coast. It fits the state park lots, turns where a coach cannot, and still keeps the group together.",
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is comfortable for the long approach from San Francisco or Los Angeles, but plan the stops around it — a few of the smaller pullouts are simply not options.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is comfortable for the long approach from San Francisco or Los Angeles, but plan the stops around it — a few of the smaller pullouts are simply not options.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) reaches everything, and for a small group it is the least compromised way to do the drive."
       ]
     },
@@ -106,7 +106,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

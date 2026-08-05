@@ -1,6 +1,7 @@
 export type Service = {
   slug: string
   name: string
+  seoTitle: string
   short: string
   intro: string[]
   whatWeHandle: string[]
@@ -11,6 +12,7 @@ export const services: Service[] = [
   {
     slug: "corporate-travel",
     name: "Corporate Travel",
+    seoTitle: "Corporate Bus Rental & Employee Shuttle Service",
     short:
       "Shuttles, offsites, and conference transport that keep your team moving on schedule.",
     intro: [
@@ -23,11 +25,12 @@ export const services: Service[] = [
       "Offsite retreats and team events",
       "Client and investor transportation",
     ],
-    relatedFleetSlugs: ["charter-buses", "mini-buses", "sprinter-vans"],
+    relatedFleetSlugs: ["coach-buses", "mini-buses", "sprinter-vans"],
   },
   {
     slug: "event-transportation",
     name: "Event Transportation",
+    seoTitle: "Event Transportation & Shuttle Bus Service",
     short:
       "Concerts, festivals, reunions, and big days — everyone arrives together, parking solved.",
     intro: [
@@ -40,11 +43,12 @@ export const services: Service[] = [
       "Church and community events",
       "Convention and expo shuttles",
     ],
-    relatedFleetSlugs: ["charter-buses", "party-buses", "mini-buses"],
+    relatedFleetSlugs: ["coach-buses", "party-buses", "mini-buses"],
   },
   {
     slug: "airport-transfers",
     name: "Airport Transfers",
+    seoTitle: "Airport Shuttle Service & Group Airport Transfers",
     short:
       "Group airport pickups and drop-offs with flight tracking and meet-and-greet service.",
     intro: [
@@ -62,6 +66,7 @@ export const services: Service[] = [
   {
     slug: "sports-team-travel",
     name: "Sports Team Travel",
+    seoTitle: "Sports Team Transportation & Team Bus Rental",
     short:
       "Team, gear, and staff to the venue on time — game days, tournaments, and full seasons.",
     intro: [
@@ -74,11 +79,12 @@ export const services: Service[] = [
       "Equipment and gear hauling",
       "Fan and booster shuttles",
     ],
-    relatedFleetSlugs: ["charter-buses", "mini-buses", "school-buses"],
+    relatedFleetSlugs: ["motor-coaches", "mini-buses", "school-buses"],
   },
   {
     slug: "wedding-transportation",
     name: "Wedding & Group Celebrations",
+    seoTitle: "Wedding Transportation & Wedding Shuttle Service",
     short:
       "Guest shuttles, wedding-party limos, and send-offs — timed to the minute on the big day.",
     intro: [
@@ -96,6 +102,7 @@ export const services: Service[] = [
   {
     slug: "city-tours",
     name: "City Tours",
+    seoTitle: "City Tours, Sightseeing & Tour Bus Rental",
     short:
       "Sightseeing charters with a driver who knows the route — hop between landmarks without hunting for parking.",
     intro: [
@@ -108,11 +115,12 @@ export const services: Service[] = [
       "Food and neighborhood tours",
       "Visiting groups, reunions, and conventions",
     ],
-    relatedFleetSlugs: ["mini-buses", "charter-buses", "sprinter-vans"],
+    relatedFleetSlugs: ["mini-buses", "coach-buses", "sprinter-vans"],
   },
   {
     slug: "long-distance-charter",
     name: "Long-Distance Charter",
+    seoTitle: "Long-Distance & Interstate Charter Bus Service",
     short:
       "Interstate and cross-country trips with rested drivers, planned stops, and a coach built for the miles.",
     intro: [
@@ -125,11 +133,12 @@ export const services: Service[] = [
       "Relief drivers and rest compliance on long hauls",
       "Route planning with fuel and meal stops",
     ],
-    relatedFleetSlugs: ["motor-coaches", "charter-buses", "coach-buses"],
+    relatedFleetSlugs: ["motor-coaches", "coach-buses", "sprinter-vans"],
   },
   {
     slug: "school-trips",
     name: "School Trips",
+    seoTitle: "School Bus Rental for Field Trips & Student Travel",
     short:
       "Field trips, campus visits, and activity travel with safety-first drivers and clear pricing.",
     intro: [
@@ -142,7 +151,7 @@ export const services: Service[] = [
       "Band, choir, and club travel",
       "Graduation and event transport",
     ],
-    relatedFleetSlugs: ["school-buses", "charter-buses", "mini-buses"],
+    relatedFleetSlugs: ["school-buses", "coach-buses", "mini-buses"],
   },
 ]
 

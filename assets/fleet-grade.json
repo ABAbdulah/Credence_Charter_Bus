@@ -40,6 +40,36 @@
       "action": "copied"
     },
     {
+      "file": "coach-bus-exterior.png",
+      "action": "graded",
+      "points": [
+        {
+          "black": 3,
+          "white": 238
+        },
+        {
+          "black": 4,
+          "white": 239
+        },
+        {
+          "black": 4,
+          "white": 239
+        }
+      ],
+      "before": [
+        159.06226133757735,
+        156.88908203631482,
+        154.1066245824202
+      ],
+      "after": [
+        164.24980904156027,
+        161.83951713261956,
+        159.82688008239106
+      ],
+      "padded": true,
+      "size": "1672x1115"
+    },
+    {
       "file": "mini-bus-exterior.png",
       "action": "graded",
       "points": [

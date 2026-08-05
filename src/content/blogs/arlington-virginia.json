@@ -85,7 +85,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is the standard vehicle for school and veterans' groups, and the Welcome Center has coach drop-off provision.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is the standard vehicle for school and veterans' groups, and the Welcome Center has coach drop-off provision.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is easier in Arlington and DC traffic and better for a smaller civic group.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a family visiting a specific grave or a small delegation."
       ]
@@ -134,7 +134,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

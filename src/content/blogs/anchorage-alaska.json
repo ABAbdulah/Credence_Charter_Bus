@@ -65,7 +65,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty or more traveling together: a full-size [charter bus](/fleet/charter-buses) seats 40 to 56, with reclining seats, climate control, an on-board restroom and luggage bays deep enough for a week of duffel bags.",
+        "Forty or more traveling together: a full-size [charter bus](/fleet/motor-coaches) seats 40 to 56, with reclining seats, climate control, an on-board restroom and luggage bays deep enough for a week of duffel bags.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) covers the same ground, parks more easily at trailheads and hotel entrances, and loads noticeably faster.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits executive groups and small families, with a walk-in cabin and room for gear."
       ]
@@ -114,7 +114,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

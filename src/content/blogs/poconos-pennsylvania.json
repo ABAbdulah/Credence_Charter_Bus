@@ -55,7 +55,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is the workhorse for ski trips and school outings, with the luggage bays that make winter travel practical.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is the workhorse for ski trips and school outings, with the luggage bays that make winter travel practical.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) suits a family reunion or a corporate retreat and reaches the smaller resort and lodge entrances more easily.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) works for an executive offsite at one of the conference resorts.",
         "Fourteen to forty: a [party bus](/fleet/party-buses) suits a milestone birthday or bachelor and bachelorette groups heading to the resorts."
@@ -129,7 +129,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

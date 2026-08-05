@@ -59,7 +59,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is comfortable on the Nisqually–Paradise road and for the approach from Seattle or Tacoma. Confirm any length restrictions on Stevens Canyon and Sunrise before including them.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is comfortable on the Nisqually–Paradise road and for the approach from Seattle or Tacoma. Confirm any length restrictions on Stevens Canyon and Sunrise before including them.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the flexible choice, able to reach Sunrise and the tighter pull-offs while still carrying a real group.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) goes everywhere in the park and suits a photography group working the light on the mountain."
       ]
@@ -136,7 +136,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

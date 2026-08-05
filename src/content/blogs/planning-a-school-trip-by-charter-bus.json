@@ -41,7 +41,7 @@
     },
     {
       "type": "p",
-      "text": "For local trips under two hours, a classic [school bus](/fleet/school-buses) is the economical and familiar choice, seating 28 to 60 depending on the vehicle. For longer academic travel — state competitions, college visits, overnight trips — a full [charter bus](/fleet/charter-buses) earns its cost with seat belts, luggage bays, an on-board restroom, and a smoother highway ride that gets students there rested rather than restless."
+      "text": "For local trips under two hours, a classic [school bus](/fleet/school-buses) is the economical and familiar choice, seating 28 to 60 depending on the vehicle. For longer academic travel — state competitions, college visits, overnight trips — a full [charter bus](/fleet/motor-coaches) earns its cost with seat belts, luggage bays, an on-board restroom, and a smoother highway ride that gets students there rested rather than restless."
     },
     {
       "type": "p",
@@ -119,7 +119,7 @@
     },
     {
       "label": "Charter buses for longer trips",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Get a school trip quote",
@@ -128,8 +128,8 @@
   ],
   "relatedPostSlugs": [
     "charter-bus-vs-mini-bus",
-    "what-a-charter-bus-quote-should-include",
-    "corporate-event-transportation-guide"
+    "wheelchair-accessible-charter-bus-rental",
+    "church-group-transportation-guide"
   ],
   "source": "original",
   "reviewed": true

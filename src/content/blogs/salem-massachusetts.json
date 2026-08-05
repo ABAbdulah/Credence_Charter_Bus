@@ -77,7 +77,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is the standard vehicle for school and church groups coming up from Boston, New York or Connecticut.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is the standard vehicle for school and church groups coming up from Boston, New York or Connecticut.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is easier in the narrow streets around the old town and is the better choice in October when access is restricted.",
         "Twenty-eight to sixty: a [school bus](/fleet/school-buses) remains the most economical option for districts within about ninety minutes.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a small historical society or a family group."
@@ -123,7 +123,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

@@ -60,7 +60,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is the standard vehicle, and there is designated bus parking at both the Visitor Center and the plaza.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is the standard vehicle, and there is designated bus parking at both the Visitor Center and the plaza.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) suits a smaller class, a historical society or a veterans' group.",
         "Twenty-eight to sixty: a [school bus](/fleet/school-buses) works for districts within about two hours."
       ]
@@ -117,7 +117,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

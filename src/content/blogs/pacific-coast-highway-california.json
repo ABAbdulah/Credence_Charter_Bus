@@ -69,7 +69,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty or more: a full-size [charter bus](/fleet/charter-buses) seats 40 to 56 with reclining seats, climate control, an on-board restroom and deep luggage bays. On a multi-day coastal run the restroom is the detail that matters most, because the gaps between facilities are long.",
+        "Forty or more: a full-size [charter bus](/fleet/motor-coaches) seats 40 to 56 with reclining seats, climate control, an on-board restroom and deep luggage bays. On a multi-day coastal run the restroom is the detail that matters most, because the gaps between facilities are long.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) reaches pullouts and park lots a 45-foot coach has to skip, and it turns around in places a coach cannot.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) goes essentially anywhere a car goes, which on this particular road is worth real money."
       ]
@@ -126,7 +126,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

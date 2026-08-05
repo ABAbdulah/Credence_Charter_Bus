@@ -69,7 +69,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is the standard school-group vehicle, and the national park sites have coach parking.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is the standard school-group vehicle, and the national park sites have coach parking.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is easier at the smaller house museums and around the town center, where streets are narrow and colonial.",
         "Twenty-eight to sixty: a [school bus](/fleet/school-buses) is the economical choice for districts within about ninety minutes.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a literary society or a small tour."
@@ -127,7 +127,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

@@ -81,7 +81,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is right for a conference group or a school trip moving as one unit between the main sites.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is right for a conference group or a school trip moving as one unit between the main sites.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is markedly easier inside the city, reaching hotel loading zones and neighborhood streets a coach cannot.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits an executive group working between downtown offices and Logan.",
         "Twenty-eight to sixty: a [school bus](/fleet/school-buses) is the economical option for districts within about two hours."
@@ -123,7 +123,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

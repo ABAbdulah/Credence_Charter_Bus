@@ -6,9 +6,9 @@ import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
 
 export const metadata = pageMetadata({
-  title: "Frequently Asked Questions",
+  title: "Charter Bus Rental FAQs",
   description:
-    "Booking windows, pricing, drivers, cancellations, and accessibility — answers to the questions groups ask most.",
+    "Booking windows, charter bus pricing, drivers, cancellations, and accessibility — answers to the questions groups ask most.",
   path: "/faq",
 });
 

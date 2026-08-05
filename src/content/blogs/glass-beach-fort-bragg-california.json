@@ -72,7 +72,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is comfortable for the long haul and should take the inland route. The on-board restroom is worth real money on this drive.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is comfortable for the long haul and should take the inland route. The on-board restroom is worth real money on this drive.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) can handle the coastal highway if the scenic route is the point of the day, and parks more easily in Fort Bragg and Mendocino.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) suits a small group and goes anywhere on this coast."
       ]
@@ -109,7 +109,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

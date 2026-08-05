@@ -59,7 +59,7 @@
     {
       "type": "ul",
       "items": [
-        "Forty to fifty-six: a full-size [charter bus](/fleet/charter-buses) is comfortable on SR 504 and the western corridor, which is a well-engineered highway built after the eruption.",
+        "Forty to fifty-six: a full-size [charter bus](/fleet/motor-coaches) is comfortable on SR 504 and the western corridor, which is a well-engineered highway built after the eruption.",
         "Twenty to thirty-two: a [mini bus](/fleet/mini-buses) is the better vehicle for the southern approach to Ape Cave, where the roads and parking are tighter.",
         "Ten to fourteen: a [sprinter van](/fleet/sprinter-vans) is the only sensible choice for the eastern Windy Ridge road."
       ]
@@ -120,7 +120,7 @@
   "planningLinks": [
     {
       "label": "Charter buses and motorcoaches",
-      "href": "/fleet/charter-buses"
+      "href": "/fleet/motor-coaches"
     },
     {
       "label": "Mini buses for smaller groups",

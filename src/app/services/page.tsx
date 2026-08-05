@@ -6,7 +6,7 @@ import { CtaBand } from "@/components/site/cta-band";
 import { ServiceCard } from "@/components/site/service-card";
 
 export const metadata = pageMetadata({
-  title: "Services",
+  title: "Group Transportation Services",
   description:
     "Corporate travel, event transportation, airport transfers, sports teams, weddings, and school trips — group transportation with a dedicated coordinator.",
   path: "/services",
