@@ -79,7 +79,7 @@
     },
     {
       "type": "p",
-      "text": "Build the schedule backwards from the ceremony rather than forwards from the first pickup. Decide when the last guest must be seated, subtract the drive, subtract loading, and the first departure time writes itself. It will usually land earlier than anybody expects, and that is the useful part."
+      "text": "Build the schedule backward from the ceremony rather than forward from the first pickup. Decide when the last guest must be seated, subtract the drive, subtract loading, and the first departure time writes itself. It will usually land earlier than anybody expects, and that is the useful part."
     },
     {
       "type": "h2",

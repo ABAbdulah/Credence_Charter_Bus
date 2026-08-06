@@ -187,6 +187,14 @@ Owner supplied `public/logo.png` — a 900×900 bus mark on a flat cream canvas,
 ### Lockup + the 320px constraint
 `<Logo />` is mark + wordmark because the supplied art has no company name. The mark adds ~74 px, which **overflowed the 320 px header** (348 > 320) — hence `max-[360px]:hidden`, dropping the mark below 360 px while every other width keeps it. Re-run the responsive overflow audit if the lockup, header gaps, or the Menu button change.
 
+## American English — audited clean 7 Aug 2026
+
+US audience, US spelling everywhere. The 177 migrated posts arrived with British forms; a full sweep of `src` (blogs, data, components, pages) plus all 438 rendered HTML pages fixed **85 instances**: `amidst`→amid (35), `queue/queues/queuing`→line (15), `towards`→toward, `car park(ing)`→parking lot/parking, `backwards/forwards/upwards`→backward/forward/upward, plus `ploughing`, `rubbish`, `kerbside`, `fortnight`, `anticlockwise`, `compartmentalisation`, and `north-east`/`south-west`-style hyphens→closed up (regions capitalized: "the Northeast").
+- **`torch` was the sleeper.** Four cave/night-sky posts used the British sense for flashlight ("phone torches", "red-filtered torches"). Spell-checkers never flag it because `torch` is a real English word. Re-check this one by hand on any new caving/stargazing copy.
+- **Do NOT "fix" these — they are correct:** proper names keep their given spelling (`Mount Washington Cog Railway`, `Alabama Theatre`, `Miller Outdoor Theatre`), and **real US place names** in `locations.json` legitimately contain British-looking strings — Centre AL, Rockville Centre NY, Sauk Centre MN, Centre Hall PA, Bal Harbour FL, Indian Harbour Beach FL, Aquia Harbour VA. A blind find-and-replace over locations data would corrupt live city URLs.
+- Also verified as correct American usage, not errors: `pavement` (road surface), `flat` (level/salt flats), `lift` (wheelchair/ski lift), `holiday`, `film`, `autumn`/`autumnal`, `timetable`.
+- Re-verify by scanning **rendered HTML**, not just source — `index.json` is generated, so a source-only pass leaves stale copy in cards and meta descriptions until `npm run blog-index` runs.
+
 ## SEO rules
 - Every route: Metadata API title/description/canonical/OpenGraph. Canonicals self-referencing.
 - JSON-LD: Organization/LocalBusiness site-wide; Service, BreadcrumbList, FAQPage, Article per page type.
