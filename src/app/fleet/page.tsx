@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
-import { FleetCard } from "@/components/site/fleet-card";
+import { FleetGrid } from "@/components/site/fleet-grid";
 
 export const metadata = pageMetadata({
   title: "Charter Bus Rental Fleet — Coaches, Mini Buses & Vans",
@@ -25,11 +25,7 @@ export default function FleetPage() {
             title="Vehicles for every group size"
             lede="Nine vehicle types, one standard: clean, safe, and on time. Every rental includes a licensed professional driver and a clear, itemized quote."
           />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {fleetCategories.map((category) => (
-              <FleetCard key={category.slug} category={category} />
-            ))}
-          </div>
+          <FleetGrid categories={fleetCategories} />
           <div className="mt-10 rounded-xl bg-secondary/60 p-6 sm:p-8">
             <p>
               When you search for <strong>charter bus rental near me</strong>,

@@ -6,10 +6,11 @@ import { blogStates, getBlogState } from "@/data/blogs";
 import { breadcrumbJsonLd, itemListJsonLd, JsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
-import { Section, SectionHeading } from "@/components/ui/section";
+import { Section } from "@/components/ui/section";
 import { BlogCardGrid } from "@/components/site/blog-card-grid";
 import { BlogStateFilter } from "@/components/site/blog-state-filter";
 import { CtaBand } from "@/components/site/cta-band";
+import { DetailPageHeader } from "@/components/site/detail-page-header";
 
 type Props = {
   params: Promise<{ state: string }>;
@@ -54,18 +55,12 @@ export default async function BlogStatePage({ params }: Props) {
       />
       <Section>
         <Container>
-          <Link
-            href="/blogs"
-            className="text-base font-medium text-muted-foreground hover:text-primary hover:underline"
-          >
-            ← All guides
-          </Link>
-          <SectionHeading
-            as="h1"
+          <DetailPageHeader
+            backHref="/blogs"
+            backLabel="All guides"
             eyebrow={`${archive.abbr} · ${archive.posts.length} ${archive.posts.length === 1 ? "guide" : "guides"}`}
             title={`Group travel guides for ${archive.name}`}
             lede={`Destinations across ${archive.name} worth booking a group trip to, with the vehicle and service that suits each one.`}
-            className="mt-6"
           />
           <BlogStateFilter activeSlug={archive.slug} />
           <BlogCardGrid posts={archive.posts} />

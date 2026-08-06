@@ -1,5 +1,3 @@
-import { CheckCircle2 } from "lucide-react";
-
 import { pageMetadata } from "@/lib/seo";
 import {
   Card,
@@ -7,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { CheckList } from "@/components/ui/check-list";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { DriverForm } from "@/components/site/driver-form";
@@ -95,34 +94,14 @@ export default function DriversPage() {
               title="What we look for"
               lede="Every driver on our roster meets the same bar before their first trip."
             />
-            <ul className="mt-8 space-y-3">
-              {requirements.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2
-                    aria-hidden="true"
-                    className="mt-1 size-5 shrink-0 text-accent-deep"
-                  />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+            <CheckList items={requirements} className="mt-8 space-y-3" />
           </div>
           <div>
             <SectionHeading
               title="Training that continues"
               lede="New drivers complete a full onboarding program, and refresher training keeps everyone current with regulations and best practices."
             />
-            <ul className="mt-8 space-y-3">
-              {training.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2
-                    aria-hidden="true"
-                    className="mt-1 size-5 shrink-0 text-accent-deep"
-                  />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+            <CheckList items={training} className="mt-8 space-y-3" />
           </div>
         </Container>
       </Section>

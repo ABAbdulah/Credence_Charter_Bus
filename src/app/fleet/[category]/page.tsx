@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check } from "lucide-react";
 
 import { fleetCategories, getFleetCategory } from "@/data/fleet";
 import { breadcrumbJsonLd, JsonLd, serviceJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
+import { BulletList } from "@/components/ui/bullet-list";
+import { CheckList } from "@/components/ui/check-list";
 import { Container } from "@/components/ui/container";
-import { Section, SectionHeading } from "@/components/ui/section";
+import { Section } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
+import { DetailPageHeader } from "@/components/site/detail-page-header";
 import { FleetGallery } from "@/components/site/fleet-gallery";
 
 type Props = {
@@ -66,18 +67,12 @@ export default async function FleetCategoryPage({ params }: Props) {
       />
       <Section>
         <Container>
-          <Link
-            href="/fleet"
-            className="text-base font-medium text-muted-foreground hover:text-primary hover:underline"
-          >
-            ← All vehicles
-          </Link>
-          <SectionHeading
-            as="h1"
+          <DetailPageHeader
+            backHref="/fleet"
+            backLabel="All vehicles"
             eyebrow={category.capacity}
             title={category.name}
             lede={category.short}
-            className="mt-6"
           />
           <div className="mt-10">
             <FleetGallery images={images} label={category.name} />
@@ -88,31 +83,19 @@ export default async function FleetCategoryPage({ params }: Props) {
               <h2 className="text-2xl font-semibold text-primary">
                 On-board amenities
               </h2>
-              <ul className="mt-4 flex flex-col gap-3">
-                {category.amenities.map((amenity) => (
-                  <li key={amenity} className="flex items-start gap-3">
-                    <Check
-                      aria-hidden="true"
-                      className="mt-1 size-5 shrink-0 text-accent-deep"
-                    />
-                    {amenity}
-                  </li>
-                ))}
-              </ul>
+              <CheckList
+                items={category.amenities}
+                className="mt-4 flex flex-col gap-3"
+              />
             </div>
             <div>
               <h2 className="text-2xl font-semibold text-primary">Ideal for</h2>
-              <ul className="mt-4 flex flex-col gap-3">
-                {category.idealFor.map((use) => (
-                  <li key={use} className="flex items-start gap-3">
-                    <span
-                      aria-hidden="true"
-                      className="mt-2.5 size-2 shrink-0 rounded-full bg-accent"
-                    />
-                    {use}
-                  </li>
-                ))}
-              </ul>
+              <BulletList
+                items={category.idealFor.map((use) => ({
+                  key: use,
+                  content: use,
+                }))}
+              />
             </div>
           </div>
         </Container>

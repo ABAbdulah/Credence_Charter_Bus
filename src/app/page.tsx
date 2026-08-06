@@ -2,19 +2,17 @@ import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
 import { blogPreviews } from "@/data/blogs";
-import { featuredFleet } from "@/data/fleet";
 import { services } from "@/data/services";
 import { formatBlogDate } from "@/lib/blog-format";
 import { pageMetadata } from "@/lib/seo";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { BookingSteps } from "@/components/site/booking-steps";
 import { CtaBand } from "@/components/site/cta-band";
-import { FleetCard } from "@/components/site/fleet-card";
+import { FeaturedFleetSection } from "@/components/site/featured-fleet-section";
 import { Hero } from "@/components/site/hero";
-import { ServiceCard } from "@/components/site/service-card";
+import { HowItWorksSection } from "@/components/site/how-it-works-section";
+import { ServiceGrid } from "@/components/site/service-grid";
 import { StatsBand } from "@/components/site/stats-band";
 
 export const metadata = pageMetadata({
@@ -28,25 +26,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Section>
-        <Container>
-          <SectionHeading
-            eyebrow="Our fleet"
-            title="The right vehicle for your group"
-            lede="From full-size coaches to sprinter vans, every vehicle comes with a professional driver and clear, all-in pricing."
-          />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredFleet.map((category) => (
-              <FleetCard key={category.slug} category={category} />
-            ))}
-          </div>
-          <div className="mt-8">
-            <Button asChild variant="outline" size="lg">
-              <Link href="/fleet">View the full fleet</Link>
-            </Button>
-          </div>
-        </Container>
-      </Section>
+      <FeaturedFleetSection
+        eyebrow="Our fleet"
+        title="The right vehicle for your group"
+        lede="From full-size coaches to sprinter vans, every vehicle comes with a professional driver and clear, all-in pricing."
+      />
       <Section className="bg-secondary/40">
         <Container>
           <SectionHeading
@@ -54,25 +38,10 @@ export default function Home() {
             title="Wherever your group is headed"
             lede="Six ways we keep groups moving — each with a dedicated coordinator from first call to final drop-off."
           />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
-            ))}
-          </div>
+          <ServiceGrid services={services} />
         </Container>
       </Section>
-      <Section>
-        <Container>
-          <SectionHeading
-            eyebrow="How it works"
-            title="Booked in three simple steps"
-            lede="No accounts, no apps, no fine print — just a quote, an agreement, and a bus at your door."
-          />
-          <div className="mt-10">
-            <BookingSteps />
-          </div>
-        </Container>
-      </Section>
+      <HowItWorksSection lede="No accounts, no apps, no fine print — just a quote, an agreement, and a bus at your door." />
       <StatsBand />
       <Section className="bg-secondary/40">
         <Container>

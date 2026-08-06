@@ -1,6 +1,5 @@
-import { Check } from "lucide-react";
-
 import { pageMetadata } from "@/lib/seo";
+import { CheckList } from "@/components/ui/check-list";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { QuoteForm } from "@/components/site/quote-form";
@@ -28,17 +27,10 @@ export default function QuotePage() {
           title="Tell us about your trip"
           lede="A few details are all we need. A real coordinator reads every request and replies with an itemized quote."
         />
-        <ul className="mt-6 flex max-w-2xl flex-col gap-2">
-          {reassurances.map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <Check
-                aria-hidden="true"
-                className="mt-1 size-5 shrink-0 text-accent-deep"
-              />
-              {item}
-            </li>
-          ))}
-        </ul>
+        <CheckList
+          items={reassurances}
+          className="mt-6 flex max-w-2xl flex-col gap-2"
+        />
         <div className="mt-10 max-w-3xl">
           <QuoteForm />
         </div>

@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
-import { ServiceCard } from "@/components/site/service-card";
+import { ServiceGrid } from "@/components/site/service-grid";
 
 export const metadata = pageMetadata({
   title: "Group Transportation Services",
@@ -23,11 +23,7 @@ export default function ServicesPage() {
             title="Group transportation, handled end to end"
             lede="Whatever brings your group together, we plan the route, assign the right vehicle, and stay reachable from first pickup to final drop-off."
           />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
-            ))}
-          </div>
+          <ServiceGrid services={services} />
         </Container>
       </Section>
       <CtaBand />

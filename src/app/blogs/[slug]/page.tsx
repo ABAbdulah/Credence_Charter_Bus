@@ -18,9 +18,11 @@ import {
 } from "@/lib/blog-format";
 import { blogId, breadcrumbJsonLd, JsonLd, organizationId } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
+import { BulletList } from "@/components/ui/bullet-list";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { BackLink } from "@/components/site/back-link";
 import { CtaBand } from "@/components/site/cta-band";
 
 type Props = {
@@ -78,19 +80,12 @@ function BlockRenderer({ block }: { block: BlogBlock }) {
       return <h2 className="mt-10 text-2xl font-semibold text-primary">{block.text}</h2>;
     case "ul":
       return (
-        <ul className="mt-4 flex flex-col gap-3">
-          {block.items.map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <span
-                aria-hidden="true"
-                className="mt-2.5 size-2 shrink-0 rounded-full bg-accent"
-              />
-              <span>
-                <InlineText text={item} />
-              </span>
-            </li>
-          ))}
-        </ul>
+        <BulletList
+          items={block.items.map((item) => ({
+            key: item,
+            content: <InlineText text={item} />,
+          }))}
+        />
       );
     default:
       return (
@@ -155,12 +150,7 @@ export default async function BlogPostPage({ params }: Props) {
       />
       <Section>
         <Container className="max-w-4xl">
-          <Link
-            href="/blogs"
-            className="text-base font-medium text-muted-foreground hover:text-primary hover:underline"
-          >
-            ← All articles
-          </Link>
+          <BackLink href="/blogs">All articles</BackLink>
           <article className="mt-6">
             <p className="text-sm font-semibold tracking-[0.2em] uppercase text-accent-deep">
               {formatBlogDate(post.date)} · {readingMinutes(post.body)} min read

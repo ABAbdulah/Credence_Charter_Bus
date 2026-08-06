@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check } from "lucide-react";
 
 import { getFleetCategory } from "@/data/fleet";
 import { getService, services } from "@/data/services";
 import { breadcrumbJsonLd, JsonLd, serviceJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
+import { CheckList } from "@/components/ui/check-list";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
-import { FleetCard } from "@/components/site/fleet-card";
+import { DetailPageHeader } from "@/components/site/detail-page-header";
+import { FleetGrid } from "@/components/site/fleet-grid";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -58,18 +58,12 @@ export default async function ServicePage({ params }: Props) {
       />
       <Section>
         <Container>
-          <Link
-            href="/services"
-            className="text-base font-medium text-muted-foreground hover:text-primary hover:underline"
-          >
-            ← All services
-          </Link>
-          <SectionHeading
-            as="h1"
+          <DetailPageHeader
+            backHref="/services"
+            backLabel="All services"
             eyebrow="Services"
             title={service.name}
             lede={service.short}
-            className="mt-6"
           />
           <div className="mt-10 max-w-3xl">
             {service.intro.map((paragraph) => (
@@ -81,17 +75,10 @@ export default async function ServicePage({ params }: Props) {
           <h2 className="mt-10 text-2xl font-semibold text-primary">
             What we handle
           </h2>
-          <ul className="mt-4 grid max-w-3xl gap-3 sm:grid-cols-2">
-            {service.whatWeHandle.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <Check
-                  aria-hidden="true"
-                  className="mt-1 size-5 shrink-0 text-accent-deep"
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
+          <CheckList
+            items={service.whatWeHandle}
+            className="mt-4 grid max-w-3xl gap-3 sm:grid-cols-2"
+          />
         </Container>
       </Section>
       <Section className="bg-secondary/40">
@@ -100,11 +87,7 @@ export default async function ServicePage({ params }: Props) {
             eyebrow="Recommended vehicles"
             title={`Popular choices for ${service.name.toLowerCase()}`}
           />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {relatedFleet.map((category) => (
-              <FleetCard key={category.slug} category={category} />
-            ))}
-          </div>
+          <FleetGrid categories={relatedFleet} />
         </Container>
       </Section>
       <CtaBand

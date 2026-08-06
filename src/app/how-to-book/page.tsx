@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import { pageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
+import { CheckList } from "@/components/ui/check-list";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { BookingSteps } from "@/components/site/booking-steps";
@@ -64,17 +64,7 @@ export default function HowToBookPage() {
               title="What to have ready"
               lede="The more detail you give us up front, the more accurate your first quote will be."
             />
-            <ul className="mt-8 space-y-3">
-              {checklist.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2
-                    aria-hidden="true"
-                    className="mt-1 size-5 shrink-0 text-accent-deep"
-                  />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+            <CheckList items={checklist} className="mt-8 space-y-3" />
             <p className="mt-6 text-muted-foreground">
               Not sure about something? Leave it blank — your coordinator will
               help you fill in the gaps.

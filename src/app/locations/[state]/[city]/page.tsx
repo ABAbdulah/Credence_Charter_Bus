@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import { Phone } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
-import { featuredFleet } from "@/data/fleet";
 import {
   citiesOfState,
   distanceMiles,
@@ -19,12 +18,13 @@ import { services } from "@/data/services";
 import { breadcrumbJsonLd, JsonLd, organizationId } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { buildCityCopy } from "@/lib/variation";
+import { BulletDot } from "@/components/ui/bullet-list";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { BookingSteps } from "@/components/site/booking-steps";
 import { CtaBand } from "@/components/site/cta-band";
-import { FleetCard } from "@/components/site/fleet-card";
+import { FeaturedFleetSection } from "@/components/site/featured-fleet-section";
+import { HowItWorksSection } from "@/components/site/how-it-works-section";
 
 export const revalidate = 86400;
 export const dynamicParams = true;
@@ -160,25 +160,12 @@ export default async function CityPage({ params }: Props) {
           </div>
         </Container>
       </Section>
-      <Section className="bg-secondary/40">
-        <Container>
-          <SectionHeading
-            eyebrow="Vehicles"
-            title={`Popular vehicles in ${city.name}`}
-            lede="Every rental includes a licensed driver and an itemized, all-in quote."
-          />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredFleet.map((category) => (
-              <FleetCard key={category.slug} category={category} />
-            ))}
-          </div>
-          <div className="mt-8">
-            <Button asChild variant="outline" size="lg">
-              <Link href="/fleet">View the full fleet</Link>
-            </Button>
-          </div>
-        </Container>
-      </Section>
+      <FeaturedFleetSection
+        eyebrow="Vehicles"
+        title={`Popular vehicles in ${city.name}`}
+        lede="Every rental includes a licensed driver and an itemized, all-in quote."
+        className="bg-secondary/40"
+      />
       <Section>
         <Container>
           <SectionHeading
@@ -192,7 +179,7 @@ export default async function CityPage({ params }: Props) {
                   href={`/services/${service.slug}`}
                   className="flex min-h-11 items-center gap-3 rounded-md px-3 font-medium text-primary hover:bg-muted hover:underline"
                 >
-                  <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-accent" />
+                  <BulletDot className="mt-0" />
                   {service.name} in {city.name}
                 </Link>
               </li>
@@ -200,17 +187,7 @@ export default async function CityPage({ params }: Props) {
           </ul>
         </Container>
       </Section>
-      <Section className="bg-secondary/40">
-        <Container>
-          <SectionHeading
-            eyebrow="How it works"
-            title="Booked in three simple steps"
-          />
-          <div className="mt-10">
-            <BookingSteps />
-          </div>
-        </Container>
-      </Section>
+      <HowItWorksSection className="bg-secondary/40" />
       <Section>
         <Container>
           <SectionHeading

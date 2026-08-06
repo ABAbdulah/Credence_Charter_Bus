@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getState, states } from "@/data/locations";
 import { breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
-import { Section, SectionHeading } from "@/components/ui/section";
+import { Section } from "@/components/ui/section";
 import { CtaBand } from "@/components/site/cta-band";
+import { DetailPageHeader } from "@/components/site/detail-page-header";
 import { StateCities } from "@/components/site/state-cities";
 
 export const revalidate = 86400;
@@ -48,18 +48,12 @@ export default async function StatePage({ params }: Props) {
       />
       <Section>
         <Container>
-          <Link
-            href="/locations"
-            className="text-base font-medium text-muted-foreground hover:text-primary hover:underline"
-          >
-            ← All locations
-          </Link>
-          <SectionHeading
-            as="h1"
+          <DetailPageHeader
+            backHref="/locations"
+            backLabel="All locations"
             eyebrow={`${state.abbr} · ${state.region}`}
             title={`Charter Bus Rental in ${state.name}`}
             lede={`From city shuttles to statewide tours, we pair ${state.name} groups with the right vehicle and a licensed professional driver. Pick your city below for local details.`}
-            className="mt-6"
           />
           <StateCities state={state} page={1} />
         </Container>

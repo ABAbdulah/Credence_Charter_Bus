@@ -1,5 +1,3 @@
-import { CheckCircle2 } from "lucide-react";
-
 import { pageMetadata } from "@/lib/seo";
 import {
   Card,
@@ -7,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { CheckList } from "@/components/ui/check-list";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { AffiliateForm } from "@/components/site/affiliate-form";
@@ -79,17 +78,10 @@ export default function AffiliatesPage() {
             title="What we require"
             lede="Every partner carries the same credentials we hold ourselves — your vehicles carry our customers."
           />
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-            {requirements.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <CheckCircle2
-                  aria-hidden="true"
-                  className="mt-1 size-5 shrink-0 text-accent-deep"
-                />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          <CheckList
+            items={requirements}
+            className="mt-8 grid gap-3 sm:grid-cols-2"
+          />
         </Container>
       </Section>
       <Section>
