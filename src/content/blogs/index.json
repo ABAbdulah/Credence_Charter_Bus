@@ -10,10 +10,10 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/school-bus-exterior.png",
-      "alt": "Yellow school bus, the budget option many congregations choose for local shuttles",
-      "width": 1536,
-      "height": 1024
+      "src": "/blogs/church-group-transportation-guide.webp",
+      "alt": "Stone country church with white trim and a bench by the front door on a sunny morning",
+      "width": 1024,
+      "height": 810
     },
     "source": "original"
   },
@@ -28,10 +28,10 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/mini-bus-exterior.png",
-      "alt": "Mini bus at a flat, level curb — the boarding conditions a lift deployment needs",
-      "width": 1622,
-      "height": 970
+      "src": "/blogs/wheelchair-accessible-charter-bus-rental.webp",
+      "alt": "Rider on an adaptive handcycle pausing at a canyon overlook to photograph the river below",
+      "width": 1024,
+      "height": 682
     },
     "source": "original"
   },
@@ -64,10 +64,10 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/coach-bus-exterior.png",
-      "alt": "Coach bus parked and ready for boarding on the morning of a group trip",
-      "width": 1672,
-      "height": 941
+      "src": "/blogs/how-to-rent-a-charter-bus.webp",
+      "alt": "Open travel notebook with a pencil, glasses, and a camera resting on an old map",
+      "width": 1024,
+      "height": 768
     },
     "source": "original"
   },
@@ -82,10 +82,46 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/motor-coach-exterior.png",
-      "alt": "Full-size motor coach parked before departure, the largest vehicle class on most charter quotes",
-      "width": 1774,
-      "height": 887
+      "src": "/blogs/how-much-does-it-cost-to-rent-a-charter-bus.webp",
+      "alt": "Calculator, coins, and a ledger sheet laid out on a desk while a trip budget is planned",
+      "width": 960,
+      "height": 641
+    },
+    "source": "original"
+  },
+  {
+    "slug": "chicago-illinois",
+    "title": "Chicago, Illinois",
+    "seoTitle": "Charter Bus to Chicago, Illinois — Group Travel Guide",
+    "excerpt": "Plan a charter bus trip to Chicago: where coaches load downtown, how to time the Loop, and the stops worth building a group day around.",
+    "date": "2026-07-18",
+    "state": "Illinois",
+    "stateAbbr": "IL",
+    "stateSlug": "illinois",
+    "stateRegion": "Midwest",
+    "heroImage": {
+      "src": "/blogs/chicago-illinois.webp",
+      "alt": "Visitors gathered around the mirrored Cloud Gate sculpture in Millennium Park on a summer day",
+      "width": 1024,
+      "height": 693
+    },
+    "source": "original"
+  },
+  {
+    "slug": "mount-rushmore-south-dakota",
+    "title": "Mount Rushmore, South Dakota",
+    "seoTitle": "Charter Bus to Mount Rushmore — Group Travel Guide",
+    "excerpt": "A charter bus guide to Mount Rushmore: coach parking at the memorial, the Black Hills roads big buses must avoid, and how to build a full day.",
+    "date": "2026-07-16",
+    "state": "South Dakota",
+    "stateAbbr": "SD",
+    "stateSlug": "south-dakota",
+    "stateRegion": "Midwest",
+    "heroImage": {
+      "src": "/blogs/mount-rushmore-south-dakota.webp",
+      "alt": "The Avenue of Flags leading toward the carved presidential faces of Mount Rushmore on a clear morning",
+      "width": 1024,
+      "height": 768
     },
     "source": "original"
   },
@@ -100,10 +136,46 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/stretch-limo-exterior.png",
-      "alt": "A stretch limousine waiting at the entrance of a wedding venue in the early evening",
-      "width": 1536,
-      "height": 1024
+      "src": "/blogs/how-to-rent-a-charter-bus-for-a-wedding.webp",
+      "alt": "Bride and groom sitting together at the water's edge as the sun sets after the ceremony",
+      "width": 960,
+      "height": 640
+    },
+    "source": "original"
+  },
+  {
+    "slug": "gettysburg-pennsylvania",
+    "title": "Gettysburg, Pennsylvania",
+    "seoTitle": "Charter Bus to Gettysburg, PA — Field Trips & Tours",
+    "excerpt": "Plan a Gettysburg charter bus trip: licensed guides who ride aboard your coach, battlefield logistics, and what school groups should book ahead.",
+    "date": "2026-07-12",
+    "state": "Pennsylvania",
+    "stateAbbr": "PA",
+    "stateSlug": "pennsylvania",
+    "stateRegion": "Northeast",
+    "heroImage": {
+      "src": "/blogs/gettysburg-pennsylvania.webp",
+      "alt": "Stone wall crossing a quiet stretch of the Gettysburg battlefield at sunset",
+      "width": 1024,
+      "height": 683
+    },
+    "source": "original"
+  },
+  {
+    "slug": "philadelphia-pennsylvania",
+    "title": "Philadelphia, Pennsylvania",
+    "seoTitle": "Charter Bus to Philadelphia, PA — Group Travel Guide",
+    "excerpt": "A charter bus guide to Philadelphia: Independence Hall tickets, where coaches stop in the historic district, and a one-day plan for groups.",
+    "date": "2026-07-09",
+    "state": "Pennsylvania",
+    "stateAbbr": "PA",
+    "stateSlug": "pennsylvania",
+    "stateRegion": "Northeast",
+    "heroImage": {
+      "src": "/blogs/philadelphia-pennsylvania.webp",
+      "alt": "Philadelphia skyline rising beyond the green treetops of Fairmount Park in summer",
+      "width": 1024,
+      "height": 793
     },
     "source": "original"
   },
@@ -136,10 +208,10 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/charter-bus-exterior.png",
-      "alt": "A full-size charter bus at the curb with its luggage bays open before a group departure",
-      "width": 1602,
-      "height": 982
+      "src": "/blogs/what-a-charter-bus-quote-should-include.webp",
+      "alt": "Two people going through a printed quote line by line at a desk with laptops open",
+      "width": 960,
+      "height": 641
     },
     "source": "original"
   },
@@ -154,10 +226,10 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/school-bus-exterior.png",
-      "alt": "A yellow school bus loading students outside a school building for a field trip",
-      "width": 1536,
-      "height": 1024
+      "src": "/blogs/planning-a-school-trip-by-charter-bus.webp",
+      "alt": "Rear of a yellow school bus with its School Bus sign and emergency-door lettering",
+      "width": 1024,
+      "height": 576
     },
     "source": "original"
   },
@@ -172,10 +244,10 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/sprinter-van-exterior.png",
-      "alt": "An executive sprinter van parked outside a glass-fronted office building",
-      "width": 1672,
-      "height": 941
+      "src": "/blogs/corporate-event-transportation-guide.webp",
+      "alt": "Colleagues talking through plans around a conference-room table before an offsite",
+      "width": 960,
+      "height": 640
     },
     "source": "original"
   },
@@ -190,10 +262,10 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/motor-coach-exterior.png",
-      "alt": "A motorcoach traveling a scenic two-lane highway between wooded hills",
-      "width": 1774,
-      "height": 887
+      "src": "/blogs/six-group-trips-worth-chartering-a-bus-for.webp",
+      "alt": "Family of four silhouetted against an orange sunset at the waterfront on a group outing",
+      "width": 960,
+      "height": 720
     },
     "source": "original"
   },
@@ -1612,10 +1684,10 @@
     "stateSlug": "iowa",
     "stateRegion": "Midwest",
     "heroImage": {
-      "src": "/fleet/charter-bus-exterior.png",
-      "alt": "Charter bus parked and ready for a group departure",
-      "width": 1602,
-      "height": 982
+      "src": "/blogs/field-of-dreams-dyersville-iowa.webp",
+      "alt": "Ballplayers in vintage uniforms walking out of the corn at the Field of Dreams site in Dyersville",
+      "width": 1024,
+      "height": 773
     },
     "source": "migrated"
   },

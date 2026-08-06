@@ -42,8 +42,6 @@ const benefits = [
 ];
 
 const requirements = [
-  "Valid DOT number",
-  "Valid MC number",
   "Commercial insurance coverage",
   "A well-maintained fleet that meets safety standards",
   "Professional, properly licensed drivers",

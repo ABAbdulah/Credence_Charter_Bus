@@ -8,10 +8,10 @@
   "stateAbbr": "",
   "stateSlug": "",
   "heroImage": {
-    "src": "/fleet/school-bus-exterior.png",
-    "alt": "A yellow school bus loading students outside a school building for a field trip",
-    "width": 1536,
-    "height": 1024
+    "src": "/blogs/planning-a-school-trip-by-charter-bus.webp",
+    "alt": "Rear of a yellow school bus with its School Bus sign and emergency-door lettering",
+    "width": 1024,
+    "height": 576
   },
   "extraImage": null,
   "body": [
@@ -85,7 +85,7 @@
     },
     {
       "type": "p",
-      "text": "Expect at least one parent to ask about the vehicle's safety record, and have the answer ready before the question arrives. The operator should be able to produce their USDOT number, current insurance certificates, and confirmation that drivers hold a commercial license with a passenger endorsement and sit within an ongoing drug and alcohol testing program. Ours go out with school quotes by default rather than on request."
+      "text": "Expect at least one parent to ask how the trip is being kept safe, and have the answer ready before the question arrives. The operator should be able to confirm current insurance coverage and that drivers hold a commercial license with a passenger endorsement and sit within an ongoing drug and alcohol testing program. Ours go out with school quotes by default rather than on request."
     },
     {
       "type": "p",

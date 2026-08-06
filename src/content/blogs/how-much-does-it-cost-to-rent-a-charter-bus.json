@@ -8,16 +8,16 @@
   "stateAbbr": "",
   "stateSlug": "",
   "heroImage": {
-    "src": "/fleet/motor-coach-exterior.png",
-    "alt": "Full-size motor coach parked before departure, the largest vehicle class on most charter quotes",
-    "width": 1774,
-    "height": 887
+    "src": "/blogs/how-much-does-it-cost-to-rent-a-charter-bus.webp",
+    "alt": "Calculator, coins, and a ledger sheet laid out on a desk while a trip budget is planned",
+    "width": 960,
+    "height": 641
   },
   "extraImage": {
-    "src": "/fleet/mini-bus-exterior.png",
-    "alt": "Mini bus waiting at the curb, usually the lower-priced option for groups under thirty",
-    "width": 1622,
-    "height": 970
+    "src": "/fleet/charter-bus-exterior.png",
+    "alt": "Full-size charter bus parked and ready ahead of a group departure",
+    "width": 1602,
+    "height": 982
   },
   "body": [
     {

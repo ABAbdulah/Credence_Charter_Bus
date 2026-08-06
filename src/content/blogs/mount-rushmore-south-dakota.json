@@ -1,0 +1,85 @@
+{
+  "slug": "mount-rushmore-south-dakota",
+  "title": "Mount Rushmore, South Dakota",
+  "seoTitle": "Charter Bus to Mount Rushmore — Group Travel Guide",
+  "excerpt": "A charter bus guide to Mount Rushmore: coach parking at the memorial, the Black Hills roads big buses must avoid, and how to build a full day.",
+  "date": "2026-07-16",
+  "state": "South Dakota",
+  "stateAbbr": "SD",
+  "stateSlug": "south-dakota",
+  "heroImage": {
+    "src": "/blogs/mount-rushmore-south-dakota.webp",
+    "alt": "The Avenue of Flags leading toward the carved presidential faces of Mount Rushmore on a clear morning",
+    "width": 1024,
+    "height": 768
+  },
+  "extraImage": {
+    "src": "/blogs/mount-rushmore-south-dakota-2.webp",
+    "alt": "Close view of the four presidents' faces carved into the granite of Mount Rushmore",
+    "width": 1024,
+    "height": 683
+  },
+  "body": [
+    {
+      "type": "p",
+      "text": "Mount Rushmore may be the friendliest landmark in America to visit by charter bus — the memorial was built for exactly this kind of arrival, with a parking structure that takes full-size coaches, a flag-lined walkway that starts where the bus stops, and a viewing terrace that needs no hiking to reach. But the Black Hills around it are a different story: some of the most famous drives in South Dakota physically will not fit a 45-foot bus. Knowing which roads are yours and which belong to smaller vehicles is the difference between a smooth day and a very long three-point turn."
+    },
+    { "type": "h2", "text": "Arriving by charter bus: parking and entry" },
+    {
+      "type": "p",
+      "text": "Admission to the memorial itself is free; what you pay is parking, charged per vehicle with a commercial rate for buses. Coaches unload at the parking structure and the group walks straight onto the Avenue of Flags, with the four faces framed dead ahead — the classic photo happens about ninety seconds after everyone steps off. The Grand View Terrace, the museum beneath it, and the Presidential Trail's first overlooks are all close together; the full trail loop adds stairs, so groups with limited mobility can simply stay with the terrace and lose very little."
+    },
+    { "type": "h2", "text": "The roads your bus cannot take — plan around them" },
+    {
+      "type": "p",
+      "text": "This is the section to read twice. The Needles Highway through Custer State Park squeezes through granite tunnels as narrow as 8 feet 4 inches — no coach, and honestly no [mini bus](/fleet/mini-buses) of any dignity, is getting through the Needles Eye. Iron Mountain Road's tunnels, the ones that famously frame the faces in their openings, run around 13 feet wide and under 13 feet tall with pigtail bridges between them; full-size coaches must skip it and approach via US 16 and 16A through Keystone instead. If those drives are on your group's wish list, the working pattern is to park the coach and transfer to smaller vehicles for the scenic loops — or book the whole trip on mini buses from the start and trade capacity for access."
+    },
+    { "type": "h2", "text": "Building a full Black Hills day" },
+    {
+      "type": "ul",
+      "items": [
+        "Morning: beat the tour-season crowds by reaching the memorial before 10 — mid-day parking queues in July are real.",
+        "Midday: Crazy Horse Memorial is about 25 minutes away, with easy coach parking and a good group cafeteria.",
+        "Afternoon: Custer State Park's Wildlife Loop — bison, pronghorn, and burros from the comfort of the bus, on a road coaches can actually use.",
+        "Evening: back to the memorial for the summer lighting ceremony, held nightly from late May through September."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "The memorial sits at about 5,700 feet, and Black Hills weather runs its own schedule: mornings can open in fog that burns off by ten, and July afternoons build thunderstorms with impressive punctuality. Bring layers even in high summer, and keep the evening ceremony plans flexible — it shortens or moves when storms roll through. Cell coverage between the sights is patchy, so agree on reboarding times before the group scatters at each stop rather than counting on a text to round everyone up."
+    },
+    { "type": "h2", "text": "Why groups do this trip by charter bus" },
+    {
+      "type": "p",
+      "text": "Distances in western South Dakota are deceptive — the sights cluster within an hour of each other, but that hour is winding mountain road, and a convoy of cars sheds time at every junction. One vehicle, one driver who has done the loop before, and the whole group sees the same things at the same time. [Rapid City](/locations/south-dakota/rapid-city) is the natural staging base, about 35 minutes from the memorial, with the airport most groups fly into; our [long-distance charter service](/services/long-distance-charter) also brings groups in from Sioux Falls, Denver, and beyond. The Badlands make a natural bookend on the eastern approach — sunrise through the spires on the way in, or golden hour on the way home, without adding more than an hour to the day."
+    },
+    { "type": "h2", "text": "Choosing the vehicle" },
+    {
+      "type": "p",
+      "text": "For 35 or more, a [full-size motor coach](/fleet/motor-coaches) with restroom and luggage bays is the comfortable default, and it handles every road on the core itinerary — memorial, Crazy Horse, Wildlife Loop. For groups set on Iron Mountain Road or the Needles, book smaller: a pair of mini buses covers the same headcount and clears the tunnels that matter. Either way, ask your driver to check the day's schedule at the memorial before the evening ceremony — seasonal timings shift, and the amphitheater fills early in peak weeks."
+    },
+    { "type": "h2", "text": "Booking the trip" },
+    {
+      "type": "p",
+      "text": "The Black Hills season is sharply peaked: June through August books out weeks ahead, and the Sturgis Motorcycle Rally in early August absorbs nearly every room and vehicle within a hundred miles — avoid that week unless the rally is the trip. Shoulder months are quieter and the light on the faces is better anyway. When your dates firm up, [request a free quote](/quote) with your group size and whether the tunnel drives are on the list, and we'll match the vehicles to the roads before you commit."
+    },
+    {
+      "type": "p",
+      "text": "Four presidents, one parking structure, and a handful of tunnels that keep bus drivers humble: Mount Rushmore is the easiest great landmark in the country to do well by charter — provided the itinerary respects what the granite allows."
+    }
+  ],
+  "planningLinks": [
+    { "label": "Full-size motor coaches", "href": "/fleet/motor-coaches" },
+    { "label": "Mini buses for the tunnel roads", "href": "/fleet/mini-buses" },
+    { "label": "Long-distance charter trips", "href": "/services/long-distance-charter" },
+    { "label": "Charter bus rental in Rapid City, SD", "href": "/locations/south-dakota/rapid-city" },
+    { "label": "Get a free quote for this trip", "href": "/quote" }
+  ],
+  "relatedPostSlugs": [
+    "black-hills-national-forest-south-dakota",
+    "badlands-national-park-south-dakota",
+    "deadwood-south-dakota"
+  ],
+  "source": "original",
+  "reviewed": true
+}

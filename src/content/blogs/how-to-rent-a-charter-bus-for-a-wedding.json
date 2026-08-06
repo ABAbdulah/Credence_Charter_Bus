@@ -8,12 +8,17 @@
   "stateAbbr": "",
   "stateSlug": "",
   "heroImage": {
+    "src": "/blogs/how-to-rent-a-charter-bus-for-a-wedding.webp",
+    "alt": "Bride and groom sitting together at the water's edge as the sun sets after the ceremony",
+    "width": 960,
+    "height": 640
+  },
+  "extraImage": {
     "src": "/fleet/stretch-limo-exterior.png",
-    "alt": "A stretch limousine waiting at the entrance of a wedding venue in the early evening",
+    "alt": "White stretch limousine polished and parked ahead of the wedding party's arrival",
     "width": 1536,
     "height": 1024
   },
-  "extraImage": null,
   "body": [
     {
       "type": "p",

@@ -67,6 +67,7 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 - 18 vehicle photos in `public/fleet/` (owner-supplied)
 
 ## Client directives (from owner's notes, 31 Jul 2026) — treat as binding
+- **No USDOT/SAFER/DOT-number references anywhere (7 Aug 2026).** The owner does not want the site telling customers to verify operators via federal registries ("we don't provide this"). Removed from `how-to-rent-a-charter-bus` (verification paragraph rewritten around practical questions), `planning-a-school-trip-by-charter-bus` (USDOT dropped, insurance/CDL kept), and the affiliates page ("Valid DOT number"/"Valid MC number" requirement rows deleted). Do not re-add operator-verification copy.
 - **No social media links anywhere.** `siteConfig.social` was REMOVED; JSON-LD has no `sameAs`. Do not re-add.
 - **No reviews/testimonials.** Section and data file deleted ("Cut out reviews. No need to"). Do not re-add.
 - **Neutral palette only — no orange, green, yellow.** Current navy/bronze/cream set is approved; keep it.
@@ -252,7 +253,7 @@ The written brief asked for 20–30 company hubs; the owner revised the split tw
 
 ## Phase 9 — blog migration (in progress)
 
-Ports the 177 destination guides from the legacy site. Target end state was **183 posts** (177 migrated + the 6 original how-to posts); the corpus is now **188** after the 6 Aug 2026 keyword expansion added 5 original posts (see "SEO keyword expansion" below). Briefs: `MIGRATION-AUDIT.md` §2, `BLOG-MIGRATION-BRIEF.md`.
+Ports the 177 destination guides from the legacy site. Target end state was **183 posts** (177 migrated + the 6 original how-to posts); the corpus is now **192**: 188 after the 6 Aug 2026 keyword expansion added 5 original posts (see "SEO keyword expansion" below), plus 4 destination posts added 7 Aug 2026 to fill tourist-coverage gaps (see "Destination gaps + blog imagery" below). Briefs: `MIGRATION-AUDIT.md` §2, `BLOG-MIGRATION-BRIEF.md`.
 
 ### Owner decisions settled this phase (binding)
 - **Port + keyword/link pass**, not verbatim and not a from-scratch rewrite. This supersedes the older "reword the blogs away from the model site" note.
@@ -325,8 +326,19 @@ The owner supplied a keyword document (SEO.pdf: primary / services / vehicle / v
 - `check-blogs.mjs` `staticPaths` gained `/how-to-book` (page existed but predated the checker; the how-to-rent post links it).
 - Remaining unplaced clusters (deliberate): "entertainer/sleeper coach" (fleet doesn't offer them — do not add copy for vehicles we can't supply), government/military/nonprofit/senior service niches (candidates for future posts or services), "cheap/affordable" beyond the cost post (kept minimal — discount language conflicts with the trust brief).
 
+### Destination gaps + blog imagery (7 Aug 2026)
+
+**4 new destination posts, all `reviewed: true` and passing the gate (SEO complete 55/192):** `chicago-illinois`, `mount-rushmore-south-dakota`, `gettysburg-pennsylvania`, `philadelphia-pennsylvania` — the four most prominent group destinations the 177-post legacy corpus never covered. Dated 9–18 Jul 2026 **deliberately before 22 Jul** so the 3 home-page previews (the keyword posts) are not displaced. Each carries real operational fact (Needles Eye tunnel 8'4" — coaches can't take Needles Hwy; Licensed Battlefield Guides board the bus at Gettysburg; Independence Hall is timed-ticket; Columbus Drive drop for Millennium Park). **Still-unfilled gaps, in priority order:** Minnesota, Wisconsin, Arkansas have ZERO posts (Mall of America, Wisconsin Dells, Hot Springs are the natural firsts); Bryce Canyon (Utah "Mighty 5" incomplete), Everglades, Grand Teton, Baltimore Inner Harbor, Hershey PA.
+
+**Blog imagery: zero duplicate images corpus-wide now.** The 11 original posts + field-of-dreams all shared the 9 fleet photos (3 posts had the identical motor-coach hero — the user flagged it). 12 posts now have distinct topical CC0 heroes; `sizes-guide` and `vs-mini-bus` keep fleet photos (topical, and unique after the reshuffle). Sourcing pipeline (no API keys exist in this env — Pexels and Gemini AI generation both need keys the user would have to supply):
+- **Openverse API** (`api.openverse.org`, keyless) filtered to `license=cc0,pdm`; best sources are **stocksnap** and **rawpixel** (incl. Carol M. Highsmith / LOC and NPS public-domain photos). Flickr `url`s are clean.
+- **rawpixel `image_1300` URLs are WATERMARKED; `editor_1024` (what Openverse indexes) is clean.** Never ship an `image_1300` without eyeballing it.
+- Highsmith photos are also fetchable clean + full-res from LOC (`loc.gov/item/{id}/?fo=json` → tile.loc.gov files).
+- Field-of-dreams now uses Highsmith's ghost-players photo — the "owner should supply a real image" gap above is closed.
+- **Provenance table: `assets/blog-image-sources.md`** — every non-fleet blog image with source URL + license. Add rows when adding images.
+
 ### Remaining work in this phase
-1. **Prose/keyword pass — 51 of 188 done.** Complete: the 6 how-to originals, Anchorage, and all of California (13), Pennsylvania (7), Massachusetts (7), Virginia (6), Washington (6, incl. the DC post). Per post: `seoTitle`, a written meta description, descriptive alt text on both images, an opening carrying the primary phrase, imposed `h2` structure (roughly half the corpus has none), a vehicle-recommendation section, a logistics section, and 5–6 in-body links. `npm run check-blogs` prints the exact remaining issue counts — work to zero.
+1. **Prose/keyword pass — 55 of 192 done.** Complete: the 6 how-to originals, Anchorage, and all of California (13), Pennsylvania (7), Massachusetts (7), Virginia (6), Washington (6, incl. the DC post). Per post: `seoTitle`, a written meta description, descriptive alt text on both images, an opening carrying the primary phrase, imposed `h2` structure (roughly half the corpus has none), a vehicle-recommendation section, a logistics section, and 5–6 in-body links. `npm run check-blogs` prints the exact remaining issue counts — work to zero.
    - **Word count is the trap.** Drafts that feel like 900 words land at 550–780, consistently ~25% short of estimate. Every batch so far has needed a top-up round to clear 800. Measure, never estimate; write 9–10 sections up front rather than 7.
    - Batch workflow that works: read the posts compactly (first paragraph + h2 list + extracted proper nouns), verify every city slug against `locations.json` *before* writing, emit one JSON patch keyed by slug, apply with a transactional merge script, run `check-blogs`, top up what fails.
    - The patch applier must validate all markers **before** writing any file — a mid-batch throw otherwise leaves half the posts rewritten and the index stale.
