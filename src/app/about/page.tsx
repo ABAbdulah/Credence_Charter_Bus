@@ -64,7 +64,7 @@ export default function AboutPage() {
               width={1774}
               height={887}
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="aspect-3/2 w-full rounded-xl object-cover ring-1 ring-foreground/10"
+              className="aspect-2/1 w-full rounded-xl object-cover ring-1 ring-foreground/10"
             />
           </div>
         </Container>

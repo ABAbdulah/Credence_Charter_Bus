@@ -8,7 +8,7 @@ import type { FleetImage } from "@/data/fleet"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-const frameClass = "aspect-3/2 w-full object-cover"
+const frameClass = "aspect-2/1 w-full object-cover"
 
 function FleetGallery({
   images,
@@ -50,8 +50,8 @@ function FleetGallery({
       <Image
         src={images[0].src}
         alt={images[0].alt}
-        width={1602}
-        height={982}
+        width={1600}
+        height={800}
         priority
         sizes="(min-width: 1200px) 1200px, 100vw"
         className={cn(frameClass, "rounded-xl ring-1 ring-foreground/10")}
@@ -77,8 +77,8 @@ function FleetGallery({
               key={image.src}
               src={image.src}
               alt={image.alt}
-              width={1602}
-              height={982}
+              width={1600}
+              height={800}
               priority={position === 0}
               sizes="(min-width: 1200px) 1200px, 100vw"
               className={cn(frameClass, "shrink-0 snap-center")}
@@ -133,9 +133,9 @@ function FleetGallery({
                 src={image.src}
                 alt=""
                 width={320}
-                height={214}
+                height={160}
                 sizes="160px"
-                className="aspect-3/2 w-20 object-cover sm:w-28"
+                className="aspect-2/1 w-20 object-cover sm:w-28"
               />
             </button>
           </li>

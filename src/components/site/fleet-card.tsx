@@ -18,10 +18,10 @@ function FleetCard({ category }: { category: FleetCategory }) {
       <Image
         src={category.images.exterior.src}
         alt={category.images.exterior.alt}
-        width={1602}
-        height={982}
+        width={1600}
+        height={800}
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-        className="aspect-3/2 w-full object-cover"
+        className="aspect-2/1 w-full object-cover"
       />
       <CardHeader>
         <CardTitle>{category.name}</CardTitle>
