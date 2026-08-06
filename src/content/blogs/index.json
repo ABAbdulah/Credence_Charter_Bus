@@ -46,7 +46,7 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/motor-coach-exterior.png",
+      "src": "/fleet/motor-coach-exterior.webp",
       "alt": "56-passenger motor coach, the largest standard size in a charter fleet",
       "width": 1774,
       "height": 887
@@ -190,7 +190,7 @@
     "stateSlug": "",
     "stateRegion": "",
     "heroImage": {
-      "src": "/fleet/mini-bus-exterior.png",
+      "src": "/fleet/mini-bus-exterior.webp",
       "alt": "A mini bus parked alongside a full-size charter bus, showing the difference in length and door height",
       "width": 1622,
       "height": 970

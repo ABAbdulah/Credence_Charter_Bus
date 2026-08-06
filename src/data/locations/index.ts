@@ -26,19 +26,22 @@ export const locationsBuildConfig = {
   stateCityPageSize: 150,
 }
 
+const statesBySlug = new Map(states.map((state) => [state.slug, state]))
+const citiesBySlug = new Map(
+  cities.map((city) => [`${city.stateSlug}/${city.slug}`, city])
+)
+
 export function stateCityPageCount(stateSlug: string) {
   const total = cities.filter((city) => city.stateSlug === stateSlug).length
   return Math.max(1, Math.ceil(total / locationsBuildConfig.stateCityPageSize))
 }
 
 export function getState(slug: string) {
-  return states.find((state) => state.slug === slug)
+  return statesBySlug.get(slug)
 }
 
 export function getCity(stateSlug: string, citySlug: string) {
-  return cities.find(
-    (city) => city.stateSlug === stateSlug && city.slug === citySlug
-  )
+  return citiesBySlug.get(`${stateSlug}/${citySlug}`)
 }
 
 export function citiesOfState(stateSlug: string) {

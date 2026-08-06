@@ -1,4 +1,4 @@
-import { copyFileSync, mkdirSync, readdirSync, writeFileSync } from "node:fs"
+import { mkdirSync, readdirSync, writeFileSync } from "node:fs"
 import { resolve, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
 
@@ -33,6 +33,7 @@ const SATURATION = 0.9
  * cabins are deliberately dim. Neutralising those would erase the product.
  */
 const isGraded = (file) => file.endsWith("-exterior.png")
+const WEBP_QUALITY = 82
 
 function channelPoints(data) {
   const total = data.length / 3
@@ -90,11 +91,11 @@ const report = []
 
 for (const file of readdirSync(sourceDir).filter((f) => f.endsWith(".png"))) {
   const from = resolve(sourceDir, file)
-  const to = resolve(outDir, file)
+  const to = resolve(outDir, file.replace(/\.png$/, ".webp"))
 
   if (!isGraded(file)) {
-    copyFileSync(from, to)
-    report.push({ file, action: "copied" })
+    await sharp(from).webp({ quality: WEBP_QUALITY }).toFile(to)
+    report.push({ file, action: "encoded" })
     continue
   }
 
@@ -109,7 +110,7 @@ for (const file of readdirSync(sourceDir).filter((f) => f.endsWith(".png"))) {
     raw: { width: info.width, height: info.height, channels: 3 },
   })
     .modulate({ saturation: SATURATION })
-    .png({ compressionLevel: 9 })
+    .webp({ quality: WEBP_QUALITY })
     .toBuffer()
   writeFileSync(to, graded)
 
@@ -132,8 +133,8 @@ const fmt = (m) => m.map((v) => v.toFixed(0)).join("/")
 const graded = report.filter((r) => r.action === "graded")
 
 for (const row of report) {
-  if (row.action === "copied") {
-    console.log(`${row.file.padEnd(30)} copied (interior lighting preserved)`)
+  if (row.action === "encoded") {
+    console.log(`${row.file.padEnd(30)} encoded (interior lighting preserved)`)
   } else {
     console.log(
       `${row.file.padEnd(30)} ${fmt(row.before).padEnd(14)} -> ${fmt(row.after).padEnd(14)} cast ${cast(row.before).toFixed(0)} -> ${cast(row.after).toFixed(0)} ${row.size}`
@@ -142,7 +143,7 @@ for (const row of report) {
 }
 
 const worstCast = (rows, key) => Math.max(...rows.map((r) => cast(r[key])))
-console.log(`\n${graded.length} graded, ${report.length - graded.length} copied`)
+console.log(`\n${graded.length} graded, ${report.length - graded.length} encoded`)
 console.log(
   `worst colour cast ${worstCast(graded, "before").toFixed(0)} -> ${worstCast(graded, "after").toFixed(0)}`
 )

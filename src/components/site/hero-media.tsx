@@ -3,7 +3,7 @@ import Image from "next/image"
 import { siteConfig } from "@/config/site"
 import { HeroVideo } from "@/components/site/hero-video"
 
-const fallbackImage = "/fleet/charter-bus-exterior.png"
+const fallbackImage = "/fleet/charter-bus-exterior.webp"
 
 /**
  * Server component on purpose — moving the image into the client half costs

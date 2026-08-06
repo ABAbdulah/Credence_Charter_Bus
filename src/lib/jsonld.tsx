@@ -22,7 +22,7 @@ export const organizationJsonLd = {
   url: siteConfig.url,
   telephone: siteConfig.phone.tel,
   email: siteConfig.email,
-  image: `${siteConfig.url}/fleet/charter-bus-exterior.png`,
+  image: `${siteConfig.url}/fleet/charter-bus-exterior.webp`,
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,

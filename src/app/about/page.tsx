@@ -59,7 +59,7 @@ export default function AboutPage() {
               </p>
             </div>
             <Image
-              src="/fleet/motor-coach-exterior.png"
+              src="/fleet/motor-coach-exterior.webp"
               alt="Motorcoach from the Credence network on the road"
               width={1774}
               height={887}

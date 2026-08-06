@@ -1,3 +1,4 @@
+import { cache } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -39,7 +40,7 @@ export function generateStaticParams() {
   }));
 }
 
-function cityCopy(stateSlug: string, citySlug: string) {
+const cityCopy = cache((stateSlug: string, citySlug: string) => {
   const state = getState(stateSlug);
   const city = getCity(stateSlug, citySlug);
   if (!state || !city) return null;
@@ -61,7 +62,7 @@ function cityCopy(stateSlug: string, citySlug: string) {
       })),
     }),
   };
-}
+});
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { state: stateSlug, city: citySlug } = await params;

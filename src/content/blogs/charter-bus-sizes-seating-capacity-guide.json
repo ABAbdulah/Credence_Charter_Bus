@@ -8,13 +8,13 @@
   "stateAbbr": "",
   "stateSlug": "",
   "heroImage": {
-    "src": "/fleet/motor-coach-exterior.png",
+    "src": "/fleet/motor-coach-exterior.webp",
     "alt": "56-passenger motor coach, the largest standard size in a charter fleet",
     "width": 1774,
     "height": 887
   },
   "extraImage": {
-    "src": "/fleet/sprinter-van-exterior.png",
+    "src": "/fleet/sprinter-van-exterior.webp",
     "alt": "Sprinter van for ten to fourteen riders, the smallest group vehicle we run",
     "width": 1672,
     "height": 941

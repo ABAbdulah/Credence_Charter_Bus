@@ -47,11 +47,11 @@ export const fleetCategories: FleetCategory[] = [
     ],
     images: {
       exterior: {
-        src: "/fleet/motor-coach-exterior.png",
+        src: "/fleet/motor-coach-exterior.webp",
         alt: "Motor coach exterior parked and ready for a long-distance trip",
       },
       interior: {
-        src: "/fleet/motor-coach-interior.png",
+        src: "/fleet/motor-coach-interior.webp",
         alt: "Motor coach interior with high-back reclining seats",
       },
     },
@@ -82,11 +82,11 @@ export const fleetCategories: FleetCategory[] = [
     ],
     images: {
       exterior: {
-        src: "/fleet/coach-bus-exterior.png",
+        src: "/fleet/coach-bus-exterior.webp",
         alt: "Coach bus exterior ready for boarding",
       },
       interior: {
-        src: "/fleet/motor-coach-interior.png",
+        src: "/fleet/motor-coach-interior.webp",
         alt: "Coach bus interior with reclining seats",
       },
     },
@@ -117,11 +117,11 @@ export const fleetCategories: FleetCategory[] = [
     ],
     images: {
       exterior: {
-        src: "/fleet/mini-bus-exterior.png",
+        src: "/fleet/mini-bus-exterior.webp",
         alt: "Mini bus parked outside a venue",
       },
       interior: {
-        src: "/fleet/mini-bus-interior.png",
+        src: "/fleet/mini-bus-interior.webp",
         alt: "Mini bus interior with comfortable forward-facing seats",
       },
     },
@@ -152,11 +152,11 @@ export const fleetCategories: FleetCategory[] = [
     ],
     images: {
       exterior: {
-        src: "/fleet/sprinter-van-exterior.png",
+        src: "/fleet/sprinter-van-exterior.webp",
         alt: "Sprinter van parked curbside",
       },
       interior: {
-        src: "/fleet/sprinter-van-interior.png",
+        src: "/fleet/sprinter-van-interior.webp",
         alt: "Sprinter van interior with executive seating",
       },
     },
@@ -185,11 +185,11 @@ export const fleetCategories: FleetCategory[] = [
     ],
     images: {
       exterior: {
-        src: "/fleet/school-bus-exterior.png",
+        src: "/fleet/school-bus-exterior.webp",
         alt: "Yellow school bus parked and ready for a group",
       },
       interior: {
-        src: "/fleet/school-bus-interior.png",
+        src: "/fleet/school-bus-interior.webp",
         alt: "School bus interior with bench seating",
       },
     },
@@ -220,11 +220,11 @@ export const fleetCategories: FleetCategory[] = [
     ],
     images: {
       exterior: {
-        src: "/fleet/party-bus-exterior.png",
+        src: "/fleet/party-bus-exterior.webp",
         alt: "Party bus exterior at night",
       },
       interior: {
-        src: "/fleet/party-bus-interior.png",
+        src: "/fleet/party-bus-interior.webp",
         alt: "Party bus interior with wraparound seating and accent lighting",
       },
     },
@@ -254,11 +254,11 @@ export const fleetCategories: FleetCategory[] = [
     ],
     images: {
       exterior: {
-        src: "/fleet/stretch-limo-exterior.png",
+        src: "/fleet/stretch-limo-exterior.webp",
         alt: "Stretch limousine parked outside a venue",
       },
       interior: {
-        src: "/fleet/stretch-limo-interior.png",
+        src: "/fleet/stretch-limo-interior.webp",
         alt: "Stretch limousine interior with leather seating and bar",
       },
     },
@@ -288,11 +288,11 @@ export const fleetCategories: FleetCategory[] = [
     ],
     images: {
       exterior: {
-        src: "/fleet/suv-exterior.png",
+        src: "/fleet/suv-exterior.webp",
         alt: "Black luxury SUV parked curbside",
       },
       interior: {
-        src: "/fleet/suv-interior.png",
+        src: "/fleet/suv-interior.webp",
         alt: "Luxury SUV interior with leather seating",
       },
     },
@@ -322,11 +322,11 @@ export const fleetCategories: FleetCategory[] = [
     ],
     images: {
       exterior: {
-        src: "/fleet/sedan-exterior.png",
+        src: "/fleet/sedan-exterior.webp",
         alt: "Executive sedan parked in front of a building",
       },
       interior: {
-        src: "/fleet/sedan-interior.png",
+        src: "/fleet/sedan-interior.webp",
         alt: "Executive sedan interior with leather seats",
       },
     },

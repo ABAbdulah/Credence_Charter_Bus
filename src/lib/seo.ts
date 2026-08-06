@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { siteConfig } from "@/config/site"
 
 const defaultOgImage = {
-  url: "/fleet/charter-bus-exterior.png",
+  url: "/fleet/charter-bus-exterior.webp",
   width: 1602,
   height: 982,
   alt: "Credence charter bus ready for boarding",
