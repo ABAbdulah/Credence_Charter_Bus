@@ -443,22 +443,6 @@ const PARTNER_HUB_IDS = [
   "wyoming/cheyenne",
   "montana/missoula",
   "wyoming/casper",
-  "north-dakota/bismarck",
-  "maine/bangor",
-  "mississippi/jackson",
-  "mississippi/biloxi",
-  "montana/great-falls",
-  "south-dakota/rapid-city",
-  "texas/amarillo",
-  "texas/lubbock",
-  "texas/corpus-christi",
-  "texas/mcallen",
-  "idaho/idaho-falls",
-  "oregon/bend",
-  "oregon/eugene",
-  "utah/saint-george",
-  "minnesota/duluth",
-  "wisconsin/green-bay",
 ]
 
 const cityById = new Map(
