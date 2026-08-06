@@ -366,6 +366,16 @@ const COMPANY_HUB_IDS = [
   "wisconsin/milwaukee",
   "utah/salt-lake-city",
   "texas/fort-worth",
+  "montana/bozeman",
+  "south-dakota/rapid-city",
+  "new-mexico/santa-fe",
+  "alabama/huntsville",
+  "texas/corpus-christi",
+  "north-carolina/greenville",
+  "arkansas/fayetteville",
+  "minnesota/duluth",
+  "texas/amarillo",
+  "texas/lubbock",
 ]
 
 const PARTNER_HUB_IDS = [
