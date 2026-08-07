@@ -58,7 +58,7 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 - **Fleet + service descriptions** — original copy written for this site (intentionally not copied from the model site); owner should approve wording.
 - **Logo** — owner-supplied bus mark is live (see "Brand logo" below). The mark carries no company name, so `<Logo />` pairs it with the existing text wordmark; a real combined-lockup file from the owner would replace both.
 - **Hero media** — falls back to `/fleet/charter-bus-exterior.png`; real image/video goes in `siteConfig.hero`.
-- **Quote delivery — wired to Resend 8 Aug 2026.** All six forms now email `siteConfig.email`. **`RESEND_API_KEY` must be set in the environment** (`.env.local` locally, host env vars in production) or submissions silently fall back to a console log instead of sending — see "Form delivery" below.
+- **Quote delivery — wired to Resend 8 Aug 2026, verified end-to-end.** All six forms email `siteConfig.email`; all six confirmed `delivered` by the Resend API, so `info@credencecharterbus.com` is a live mailbox (it accepted the mail), not just a placeholder. **`RESEND_API_KEY` must be set in the environment** (`.env.local` locally, host env vars in production) or submissions silently fall back to a console log — see "Form delivery" below.
 
 ### 4. Confirmed real client data ✅ (do not change without owner)
 - Address: 7901 4th St N, Ste 31686, St. Petersburg, FL 33702 (owner-supplied 6 Aug 2026, in `siteConfig.address`)
@@ -121,7 +121,10 @@ Written as plausible marketing copy; none confirmed by the client. If any is unt
 
 Six forms → five API routes → two sender interfaces → one Resend call. Every submission emails `siteConfig.email`.
 
-- `src/lib/resend-client.ts` — the ONLY place that talks to Resend. From address is derived: `notifications@{hostname of siteConfig.url}`, so changing the domain is a `site.ts` edit, not a code edit. **That domain must stay verified in Resend or delivery fails.**
+- `src/lib/resend-client.ts` — the ONLY place that talks to Resend. Sends **from `siteConfig.email`** (`info@credencecharterbus.com`, owner's choice 7 Aug 2026) to that same address; `replyTo` carries the customer, so replying from the inbox still reaches them. Overridable via `RESEND_FROM` / `SUBMISSIONS_TO`.
+- **The from-domain must be the bare `credencecharterbus.com`, never `www.`** — Resend treats `www.credencecharterbus.com` as a separate, unverified domain and 403s it. Deriving the sender from `siteConfig.url` (which has the `www.`) is exactly the trap; that cost a wrong diagnosis on the first production test. Sending from `siteConfig.email` sidesteps it, so don't "improve" it back to a URL-derived host.
+- **A 502 from a form endpoint is almost always Resend, not the code.** `resend-client.ts` `console.error`s the real reason (with the from/to it used) before throwing, so check the Vercel function logs first. Verify domain state any time with `curl -H "Authorization: Bearer $RESEND_API_KEY" https://api.resend.com/domains` — `status` must be `verified`, not `not_started`.
+- Sandbox testing before DNS is done: `RESEND_FROM="… <onboarding@resend.dev>"` delivers **only to the Resend account owner's own address**, nothing else. Any other recipient 403s.
 - `src/lib/notification-email.ts` — per-kind subject + `[label, value]` rows; one `compose()` builds the HTML table and plaintext together. Blank fields are dropped, so a quick-mode quote doesn't email empty rows. Values are HTML-escaped — form input is untrusted.
 - **No key = no crash.** With `RESEND_API_KEY` unset, `sendNotificationEmail` warns once and `console.info`s the message instead. Local dev works without a key, but that also means **a missing key in production loses leads silently** — verify it is set after any host/env change.
 - Delivery failure throws, which the routes' existing `catch` turns into a 502 so the form shows its error banner. The Resend SDK **resolves** with `{ data, error }` rather than throwing, so the `if (error) throw` in `resend-client.ts` is what makes that path work — don't remove it.

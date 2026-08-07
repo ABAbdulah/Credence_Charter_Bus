@@ -75,7 +75,7 @@ function HeroQuoteForm() {
         onSubmit={handleSubmit}
         noValidate
         aria-busy={status === "submitting"}
-        className="mt-6 flex flex-col gap-5"
+        className="mt-5 flex flex-col gap-4"
       >
         <HoneypotField
           id="hero-website"

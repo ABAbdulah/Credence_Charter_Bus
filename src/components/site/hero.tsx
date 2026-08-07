@@ -18,9 +18,9 @@ function Hero() {
       <HeroMedia />
       <Container
         size="wide"
-        className="relative grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1fr_26rem] lg:gap-14 lg:py-16"
+        className="relative grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1fr_29rem] lg:gap-14 lg:py-16"
       >
-        <div className="max-w-xl">
+        <div className="max-w-xl lg:mt-[-0.5cm]">
           <p className="text-sm font-semibold tracking-[0.2em] uppercase text-accent">
             Nationwide group transportation
           </p>

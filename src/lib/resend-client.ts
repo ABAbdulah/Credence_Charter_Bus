@@ -10,11 +10,15 @@ export type NotificationEmail = {
 }
 
 /**
- * Sends from the domain in siteConfig.url, so a domain change follows the
- * config rather than needing an edit here. That domain must stay verified in
- * Resend or delivery fails.
+ * Sends from siteConfig.email. Its domain must be VERIFIED in Resend — note
+ * that is the bare `credencecharterbus.com`; the `www.` host from
+ * siteConfig.url is a separate domain to Resend and 403s as unverified.
+ * RESEND_FROM overrides this for testing (e.g. `onboarding@resend.dev`).
  */
-const fromAddress = `${siteConfig.name} <notifications@${new URL(siteConfig.url).hostname}>`
+const fromAddress =
+  process.env.RESEND_FROM ?? `${siteConfig.name} <${siteConfig.email}>`
+
+const toAddress = process.env.SUBMISSIONS_TO ?? siteConfig.email
 
 let client: Resend | null = null
 let warned = false
@@ -46,7 +50,7 @@ export async function sendNotificationEmail({
 
   const { error } = await resend.emails.send({
     from: fromAddress,
-    to: siteConfig.email,
+    to: toAddress,
     subject,
     text,
     html,
@@ -54,6 +58,10 @@ export async function sendNotificationEmail({
   })
 
   if (error) {
+    /** The route turns this into a bare 502, so log it or the cause is invisible. */
+    console.error(
+      `Resend rejected the message (from=${fromAddress} to=${toAddress}): ${error.message}`
+    )
     throw new Error(`Resend rejected the message: ${error.message}`)
   }
 }
