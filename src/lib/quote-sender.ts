@@ -1,13 +1,15 @@
+import { quoteEmail } from "@/lib/notification-email"
 import type { QuoteRequest } from "@/lib/quote"
+import { sendNotificationEmail } from "@/lib/resend-client"
 
 export interface QuoteSender {
   send(request: QuoteRequest): Promise<void>
 }
 
-const consoleQuoteSender: QuoteSender = {
+const emailQuoteSender: QuoteSender = {
   async send(request) {
-    console.info("Quote request received:", JSON.stringify(request, null, 2))
+    await sendNotificationEmail(quoteEmail(request))
   },
 }
 
-export const quoteSender: QuoteSender = consoleQuoteSender
+export const quoteSender: QuoteSender = emailQuoteSender

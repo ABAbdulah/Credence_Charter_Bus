@@ -1,3 +1,5 @@
+import { submissionEmail } from "@/lib/notification-email"
+import { sendNotificationEmail } from "@/lib/resend-client"
 import type {
   AffiliateInquiry,
   ContactMessage,
@@ -15,13 +17,10 @@ export interface SubmissionSender {
   send(submission: Submission): Promise<void>
 }
 
-const consoleSubmissionSender: SubmissionSender = {
+const emailSubmissionSender: SubmissionSender = {
   async send(submission) {
-    console.info(
-      `${submission.kind} submission received:`,
-      JSON.stringify(submission.data, null, 2)
-    )
+    await sendNotificationEmail(submissionEmail(submission))
   },
 }
 
-export const submissionSender: SubmissionSender = consoleSubmissionSender
+export const submissionSender: SubmissionSender = emailSubmissionSender

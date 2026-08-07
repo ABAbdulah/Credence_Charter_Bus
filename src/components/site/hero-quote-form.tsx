@@ -4,18 +4,13 @@ import * as React from "react"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
-import {
-  emptyQuoteRequest,
-  validateQuote,
-  type QuoteFieldErrors,
-  type QuoteRequest,
-} from "@/lib/quote"
+import { useFormSubmission } from "@/hooks/use-form-submission"
+import { emptyQuoteRequest, validateQuote } from "@/lib/quote"
 import { Button } from "@/components/ui/button"
 import { Field } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { FormErrorBanner } from "@/components/site/form-status"
 import { HoneypotField } from "@/components/site/honeypot-field"
-
-type Status = "idle" | "submitting" | "success" | "error"
 
 /**
  * Client-only so the prerendered HTML doesn't bake in the build date as the
@@ -25,61 +20,27 @@ const neverChanges = () => () => {}
 const todayOnClient = () => new Date().toISOString().slice(0, 10)
 const todayOnServer = () => ""
 
+const cardClass =
+  "rounded-xl bg-card p-6 shadow-lg ring-1 ring-foreground/10 sm:p-8"
+
 function HeroQuoteForm() {
-  const [data, setData] = React.useState<QuoteRequest>(emptyQuoteRequest)
-  const [website, setWebsite] = React.useState("")
-  const [errors, setErrors] = React.useState<QuoteFieldErrors>({})
-  const [status, setStatus] = React.useState<Status>("idle")
+  const { data, errors, status, website, setWebsite, idFor, fieldProps, handleSubmit } =
+    useFormSubmission({
+      endpoint: "/api/quote",
+      initialData: emptyQuoteRequest,
+      validate: (values) => validateQuote(values, "quick"),
+      idPrefix: "hero",
+      extraPayload: { mode: "quick" },
+    })
   const today = React.useSyncExternalStore(
     neverChanges,
     todayOnClient,
     todayOnServer
   )
 
-  const set =
-    (key: keyof QuoteRequest) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setData((current) => ({ ...current, [key]: event.target.value }))
-    }
-
-  const fieldProps = (key: keyof QuoteRequest) => ({
-    id: `hero-${key}`,
-    "aria-invalid": errors[key] ? true : undefined,
-    "aria-describedby": errors[key] ? `hero-${key}-error` : undefined,
-    value: data[key],
-    onChange: set(key),
-  })
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const found = validateQuote(data, "quick")
-    setErrors(found)
-    const firstInvalid = Object.keys(found)[0]
-    if (firstInvalid) {
-      requestAnimationFrame(() => {
-        document.getElementById(`hero-${firstInvalid}`)?.focus()
-      })
-      return
-    }
-    setStatus("submitting")
-    try {
-      const response = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, mode: "quick", website }),
-      })
-      if (!response.ok) throw new Error(`Request failed: ${response.status}`)
-      setStatus("success")
-    } catch {
-      setStatus("error")
-    }
-  }
-
   if (status === "success") {
     return (
-      <div
-        role="status"
-        className="rounded-xl bg-card p-6 shadow-lg ring-1 ring-foreground/10 sm:p-8"
-      >
+      <div role="status" className={cardClass}>
         <h2 className="font-heading text-2xl font-bold text-primary">
           Request received — thank you
         </h2>
@@ -103,7 +64,7 @@ function HeroQuoteForm() {
   }
 
   return (
-    <div className="rounded-xl bg-card p-6 shadow-lg ring-1 ring-foreground/10 sm:p-8">
+    <div className={cardClass}>
       <h2 className="font-heading text-2xl font-bold text-primary">
         Get a free quote
       </h2>
@@ -123,7 +84,7 @@ function HeroQuoteForm() {
         />
         <div className="grid gap-5 sm:grid-cols-2">
           <Field
-            id="hero-departureDate"
+            id={idFor("departureDate")}
             label="Departure date"
             error={errors.departureDate}
           >
@@ -133,7 +94,11 @@ function HeroQuoteForm() {
               min={today || undefined}
             />
           </Field>
-          <Field id="hero-passengers" label="Passengers" error={errors.passengers}>
+          <Field
+            id={idFor("passengers")}
+            label="Passengers"
+            error={errors.passengers}
+          >
             <Input
               {...fieldProps("passengers")}
               type="number"
@@ -145,21 +110,25 @@ function HeroQuoteForm() {
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
           <Field
-            id="hero-pickupLocation"
+            id={idFor("pickupLocation")}
             label="Pick-up city"
             error={errors.pickupLocation}
           >
             <Input {...fieldProps("pickupLocation")} placeholder="Dallas, TX" />
           </Field>
-          <Field id="hero-destination" label="Destination" error={errors.destination}>
+          <Field
+            id={idFor("destination")}
+            label="Destination"
+            error={errors.destination}
+          >
             <Input {...fieldProps("destination")} placeholder="Austin, TX" />
           </Field>
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field id="hero-name" label="Your name" error={errors.name}>
+          <Field id={idFor("name")} label="Your name" error={errors.name}>
             <Input {...fieldProps("name")} autoComplete="name" />
           </Field>
-          <Field id="hero-phone" label="Phone" error={errors.phone}>
+          <Field id={idFor("phone")} label="Phone" error={errors.phone}>
             <Input
               {...fieldProps("phone")}
               type="tel"
@@ -169,10 +138,10 @@ function HeroQuoteForm() {
           </Field>
         </div>
         {status === "error" && (
-          <p role="alert" className="font-medium text-destructive">
+          <FormErrorBanner>
             Something went wrong sending your request. Please call{" "}
             {siteConfig.phone.display} and we&apos;ll take the details.
-          </p>
+          </FormErrorBanner>
         )}
         <Button
           type="submit"

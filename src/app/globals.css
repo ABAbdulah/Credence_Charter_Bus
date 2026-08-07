@@ -100,3 +100,31 @@
     }
   }
 }
+
+@keyframes hero-slideshow {
+  0%,
+  28% {
+    opacity: 1;
+  }
+  34%,
+  94% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*
+ * Tuned for exactly 3 layers over an 18s cycle (6s share each). Each layer after
+ * the first gets a NEGATIVE inline animation-delay (a fraction of this duration) —
+ * negative delay starts the animation already partway through its cycle, so it
+ * interpolates from the first frame instead of holding static until a positive
+ * delay elapses. That distinction is what makes this an actual crossfade instead
+ * of a hard cut.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-slide {
+    animation: hero-slideshow 18s ease-in-out infinite;
+  }
+}

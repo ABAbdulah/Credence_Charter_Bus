@@ -23,6 +23,11 @@ export const siteConfig = {
   hero: {
     mediaType: "image" as "image" | "video",
     mediaSrc: "",
+    slideshowImages: [
+      "/fleet/charter-bus-exterior.webp",
+      "/hero/blue-ridge-parkway.webp",
+      "/hero/mountain-pass.webp",
+    ],
     fallbackHeadline: "Reliable Group Transportation, Coast to Coast",
     fallbackSubheadline:
       "Charter buses, mini buses, and sprinter vans for groups of every size — with clear pricing and a team you can reach.",

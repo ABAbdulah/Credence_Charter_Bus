@@ -1,22 +1,19 @@
 "use client"
 
-import * as React from "react"
-
 import { siteConfig } from "@/config/site"
+import { useFormSubmission } from "@/hooks/use-form-submission"
 import {
   contactSubjects,
   validateContactMessage,
   type ContactMessage,
-  type FieldErrors,
 } from "@/lib/submissions"
 import { Button } from "@/components/ui/button"
 import { Field } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Select } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { FormErrorBanner, FormSuccessCard } from "@/components/site/form-status"
 import { HoneypotField } from "@/components/site/honeypot-field"
-
-type Status = "idle" | "submitting" | "success" | "error"
 
 const emptyMessage: ContactMessage = {
   name: "",
@@ -27,61 +24,26 @@ const emptyMessage: ContactMessage = {
 }
 
 function ContactForm() {
-  const [data, setData] = React.useState<ContactMessage>(emptyMessage)
-  const [website, setWebsite] = React.useState("")
-  const [errors, setErrors] = React.useState<FieldErrors<ContactMessage>>({})
-  const [status, setStatus] = React.useState<Status>("idle")
-
-  const set =
-    (key: keyof ContactMessage) =>
-    (
-      event: React.ChangeEvent<
-        HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-      >
-    ) => {
-      setData((current) => ({ ...current, [key]: event.target.value }))
-    }
-
-  const ariaProps = (key: keyof ContactMessage) => ({
-    id: `contact-${key}`,
-    "aria-invalid": errors[key] ? true : undefined,
-    "aria-describedby": errors[key] ? `contact-${key}-error` : undefined,
+  const {
+    data,
+    errors,
+    status,
+    website,
+    setWebsite,
+    idFor,
+    set,
+    ariaProps,
+    handleSubmit,
+  } = useFormSubmission({
+    endpoint: "/api/contact",
+    initialData: emptyMessage,
+    validate: validateContactMessage,
+    idPrefix: "contact",
   })
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const found = validateContactMessage(data)
-    setErrors(found)
-    const firstInvalid = Object.keys(found)[0]
-    if (firstInvalid) {
-      requestAnimationFrame(() => {
-        document.getElementById(`contact-${firstInvalid}`)?.focus()
-      })
-      return
-    }
-    setStatus("submitting")
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, website }),
-      })
-      if (!response.ok) throw new Error(`Request failed: ${response.status}`)
-      setStatus("success")
-    } catch {
-      setStatus("error")
-    }
-  }
 
   if (status === "success") {
     return (
-      <div
-        role="status"
-        className="rounded-xl bg-card p-8 shadow-xs ring-1 ring-foreground/10"
-      >
-        <h3 className="text-2xl font-semibold text-primary">
-          Message sent — thank you
-        </h3>
+      <FormSuccessCard heading="Message sent — thank you">
         <p className="mt-3">
           We read every message and reply within one business day, usually
           sooner. If it&apos;s urgent, call{" "}
@@ -93,7 +55,7 @@ function ContactForm() {
           </a>
           .
         </p>
-      </div>
+      </FormSuccessCard>
     )
   }
 
@@ -105,7 +67,7 @@ function ContactForm() {
         onChange={(event) => setWebsite(event.target.value)}
       />
       <div className="grid gap-6 sm:grid-cols-2">
-        <Field id="contact-name" label="Your name" error={errors.name}>
+        <Field id={idFor("name")} label="Your name" error={errors.name}>
           <Input
             {...ariaProps("name")}
             value={data.name}
@@ -113,7 +75,7 @@ function ContactForm() {
             autoComplete="name"
           />
         </Field>
-        <Field id="contact-email" label="Email address" error={errors.email}>
+        <Field id={idFor("email")} label="Email address" error={errors.email}>
           <Input
             {...ariaProps("email")}
             type="email"
@@ -123,7 +85,7 @@ function ContactForm() {
           />
         </Field>
         <Field
-          id="contact-phone"
+          id={idFor("phone")}
           label="Phone number"
           optional
           error={errors.phone}
@@ -136,7 +98,7 @@ function ContactForm() {
             autoComplete="tel"
           />
         </Field>
-        <Field id="contact-subject" label="Subject" error={errors.subject}>
+        <Field id={idFor("subject")} label="Subject" error={errors.subject}>
           <Select
             {...ariaProps("subject")}
             value={data.subject}
@@ -152,7 +114,7 @@ function ContactForm() {
         </Field>
       </div>
       <div className="mt-6">
-        <Field id="contact-message" label="Your message" error={errors.message}>
+        <Field id={idFor("message")} label="Your message" error={errors.message}>
           <Textarea
             {...ariaProps("message")}
             value={data.message}
@@ -162,7 +124,7 @@ function ContactForm() {
         </Field>
       </div>
       {status === "error" && (
-        <p role="alert" className="mt-6 font-medium text-destructive">
+        <FormErrorBanner className="mt-6">
           Something went wrong sending your message. Please try again, or call{" "}
           <a
             href={`tel:${siteConfig.phone.tel}`}
@@ -171,7 +133,7 @@ function ContactForm() {
             {siteConfig.phone.display}
           </a>
           .
-        </p>
+        </FormErrorBanner>
       )}
       <div className="mt-8">
         <Button type="submit" size="lg" disabled={status === "submitting"}>

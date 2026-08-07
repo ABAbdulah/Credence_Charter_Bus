@@ -1,82 +1,40 @@
 "use client"
 
-import * as React from "react"
 import { Phone } from "lucide-react"
 
 import { fleetCategories } from "@/data/fleet"
 import { services } from "@/data/services"
 import { siteConfig } from "@/config/site"
-import {
-  emptyQuoteRequest,
-  validateQuote,
-  type QuoteFieldErrors,
-  type QuoteRequest,
-} from "@/lib/quote"
+import { useFormSubmission } from "@/hooks/use-form-submission"
+import { emptyQuoteRequest, validateQuote } from "@/lib/quote"
 import { Button } from "@/components/ui/button"
 import { Field } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Select } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { FormErrorBanner, FormSuccessCard } from "@/components/site/form-status"
 import { HoneypotField } from "@/components/site/honeypot-field"
 
-type Status = "idle" | "submitting" | "success" | "error"
-
 function QuoteForm() {
-  const [data, setData] = React.useState<QuoteRequest>(emptyQuoteRequest)
-  const [website, setWebsite] = React.useState("")
-  const [errors, setErrors] = React.useState<QuoteFieldErrors>({})
-  const [status, setStatus] = React.useState<Status>("idle")
-
-  const set =
-    (key: keyof QuoteRequest) =>
-    (
-      event: React.ChangeEvent<
-        HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-      >
-    ) => {
-      setData((current) => ({ ...current, [key]: event.target.value }))
-    }
-
-  const ariaProps = (key: keyof QuoteRequest) => ({
-    id: key,
-    "aria-invalid": errors[key] ? true : undefined,
-    "aria-describedby": errors[key] ? `${key}-error` : undefined,
+  const {
+    data,
+    errors,
+    status,
+    website,
+    setWebsite,
+    idFor,
+    set,
+    ariaProps,
+    handleSubmit,
+  } = useFormSubmission({
+    endpoint: "/api/quote",
+    initialData: emptyQuoteRequest,
+    validate: (values) => validateQuote(values),
   })
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const found = validateQuote(data)
-    setErrors(found)
-    const firstInvalid = Object.keys(found)[0]
-    if (firstInvalid) {
-      requestAnimationFrame(() => {
-        document.getElementById(firstInvalid)?.focus()
-      })
-      return
-    }
-    setStatus("submitting")
-    try {
-      const response = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, website }),
-      })
-      if (!response.ok) throw new Error(`Request failed: ${response.status}`)
-      setStatus("success")
-    } catch {
-      setStatus("error")
-    }
-  }
 
   if (status === "success") {
     return (
-      <div
-        role="status"
-        className="rounded-xl bg-card p-8 shadow-xs ring-1 ring-foreground/10"
-      >
-        <h2 className="text-2xl font-semibold text-primary">
-          Request received — thank you
-        </h2>
+      <FormSuccessCard as="h2" heading="Request received — thank you">
         <p className="mt-3">
           A coordinator is putting your quote together now. You&apos;ll hear
           from us within one business day, usually much sooner.
@@ -91,7 +49,7 @@ function QuoteForm() {
           </a>{" "}
           — we answer around the clock.
         </p>
-      </div>
+      </FormSuccessCard>
     )
   }
 
@@ -103,7 +61,7 @@ function QuoteForm() {
         onChange={(event) => setWebsite(event.target.value)}
       />
       <div className="grid gap-6 sm:grid-cols-2">
-        <Field id="name" label="Your name" error={errors.name}>
+        <Field id={idFor("name")} label="Your name" error={errors.name}>
           <Input
             {...ariaProps("name")}
             value={data.name}
@@ -111,7 +69,7 @@ function QuoteForm() {
             autoComplete="name"
           />
         </Field>
-        <Field id="phone" label="Phone number" error={errors.phone}>
+        <Field id={idFor("phone")} label="Phone number" error={errors.phone}>
           <Input
             {...ariaProps("phone")}
             type="tel"
@@ -120,7 +78,7 @@ function QuoteForm() {
             autoComplete="tel"
           />
         </Field>
-        <Field id="email" label="Email address" error={errors.email}>
+        <Field id={idFor("email")} label="Email address" error={errors.email}>
           <Input
             {...ariaProps("email")}
             type="email"
@@ -129,7 +87,11 @@ function QuoteForm() {
             autoComplete="email"
           />
         </Field>
-        <Field id="passengers" label="Number of passengers" error={errors.passengers}>
+        <Field
+          id={idFor("passengers")}
+          label="Number of passengers"
+          error={errors.passengers}
+        >
           <Input
             {...ariaProps("passengers")}
             type="number"
@@ -139,7 +101,7 @@ function QuoteForm() {
             onChange={set("passengers")}
           />
         </Field>
-        <Field id="tripType" label="Type of trip" error={errors.tripType}>
+        <Field id={idFor("tripType")} label="Type of trip" error={errors.tripType}>
           <Select
             {...ariaProps("tripType")}
             value={data.tripType}
@@ -154,7 +116,12 @@ function QuoteForm() {
             <option value="other">Something else</option>
           </Select>
         </Field>
-        <Field id="vehicle" label="Vehicle preference" optional error={errors.vehicle}>
+        <Field
+          id={idFor("vehicle")}
+          label="Vehicle preference"
+          optional
+          error={errors.vehicle}
+        >
           <Select
             {...ariaProps("vehicle")}
             value={data.vehicle}
@@ -168,21 +135,33 @@ function QuoteForm() {
             ))}
           </Select>
         </Field>
-        <Field id="pickupLocation" label="Pickup city or address" error={errors.pickupLocation}>
+        <Field
+          id={idFor("pickupLocation")}
+          label="Pickup city or address"
+          error={errors.pickupLocation}
+        >
           <Input
             {...ariaProps("pickupLocation")}
             value={data.pickupLocation}
             onChange={set("pickupLocation")}
           />
         </Field>
-        <Field id="destination" label="Destination" error={errors.destination}>
+        <Field
+          id={idFor("destination")}
+          label="Destination"
+          error={errors.destination}
+        >
           <Input
             {...ariaProps("destination")}
             value={data.destination}
             onChange={set("destination")}
           />
         </Field>
-        <Field id="departureDate" label="Departure date" error={errors.departureDate}>
+        <Field
+          id={idFor("departureDate")}
+          label="Departure date"
+          error={errors.departureDate}
+        >
           <Input
             {...ariaProps("departureDate")}
             type="date"
@@ -190,7 +169,12 @@ function QuoteForm() {
             onChange={set("departureDate")}
           />
         </Field>
-        <Field id="returnDate" label="Return date" optional error={errors.returnDate}>
+        <Field
+          id={idFor("returnDate")}
+          label="Return date"
+          optional
+          error={errors.returnDate}
+        >
           <Input
             {...ariaProps("returnDate")}
             type="date"
@@ -200,7 +184,12 @@ function QuoteForm() {
         </Field>
       </div>
       <div className="mt-6">
-        <Field id="notes" label="Anything else we should know?" optional error={errors.notes}>
+        <Field
+          id={idFor("notes")}
+          label="Anything else we should know?"
+          optional
+          error={errors.notes}
+        >
           <Textarea
             {...ariaProps("notes")}
             value={data.notes}
@@ -210,7 +199,7 @@ function QuoteForm() {
         </Field>
       </div>
       {status === "error" && (
-        <p role="alert" className="mt-6 font-medium text-destructive">
+        <FormErrorBanner className="mt-6">
           Something went wrong sending your request. Please try again, or call{" "}
           <a
             href={`tel:${siteConfig.phone.tel}`}
@@ -219,7 +208,7 @@ function QuoteForm() {
             {siteConfig.phone.display}
           </a>{" "}
           and we&apos;ll take the details over the phone.
-        </p>
+        </FormErrorBanner>
       )}
       <div className="mt-8 flex flex-col items-start gap-4">
         <Button type="submit" size="lg" disabled={status === "submitting"}>
