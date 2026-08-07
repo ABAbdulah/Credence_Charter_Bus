@@ -10,23 +10,20 @@ type ChangeEventFor = React.ChangeEvent<
   HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
 >
 
-/**
- * The shared state machine behind every form on the site: validate, focus the
- * first invalid field, POST alongside the honeypot, then report status. Field
- * layout stays with each form — only this behavior is shared.
- */
 export function useFormSubmission<T extends FormValues>({
   endpoint,
   initialData,
   validate,
   idPrefix,
   extraPayload,
+  resetOnSuccess,
 }: {
   endpoint: string
   initialData: T
   validate: (data: T) => Partial<Record<keyof T, string>>
   idPrefix?: string
   extraPayload?: Record<string, string>
+  resetOnSuccess?: boolean
 }) {
   const [data, setData] = React.useState<T>(initialData)
   const [website, setWebsite] = React.useState("")
@@ -34,12 +31,14 @@ export function useFormSubmission<T extends FormValues>({
     {}
   )
   const [status, setStatus] = React.useState<SubmissionStatus>("idle")
+  const inFlight = React.useRef(false)
 
   const idFor = (key: keyof T | string) =>
     idPrefix ? `${idPrefix}-${String(key)}` : String(key)
 
   const set = (key: keyof T) => (event: ChangeEventFor) => {
     setData((current) => ({ ...current, [key]: event.target.value }))
+    setStatus((current) => (current === "success" ? "idle" : current))
   }
 
   const ariaProps = (key: keyof T) => ({
@@ -56,6 +55,7 @@ export function useFormSubmission<T extends FormValues>({
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    if (inFlight.current) return
     const found = validate(data)
     setErrors(found)
     const firstInvalid = Object.keys(found)[0]
@@ -65,6 +65,7 @@ export function useFormSubmission<T extends FormValues>({
       })
       return
     }
+    inFlight.current = true
     setStatus("submitting")
     try {
       const response = await fetch(endpoint, {
@@ -74,8 +75,15 @@ export function useFormSubmission<T extends FormValues>({
       })
       if (!response.ok) throw new Error(`Request failed: ${response.status}`)
       setStatus("success")
+      if (resetOnSuccess) {
+        setData(initialData)
+        setErrors({})
+        setWebsite("")
+      }
     } catch {
       setStatus("error")
+    } finally {
+      inFlight.current = false
     }
   }
 

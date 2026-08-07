@@ -39,28 +39,28 @@ function ContactForm() {
     initialData: emptyMessage,
     validate: validateContactMessage,
     idPrefix: "contact",
+    resetOnSuccess: true,
   })
-
-  if (status === "success") {
-    return (
-      <FormSuccessCard heading="Message sent — thank you">
-        <p className="mt-3">
-          We read every message and reply within one business day, usually
-          sooner. If it&apos;s urgent, call{" "}
-          <a
-            href={`tel:${siteConfig.phone.tel}`}
-            className="font-semibold text-primary underline underline-offset-4"
-          >
-            {siteConfig.phone.display}
-          </a>
-          .
-        </p>
-      </FormSuccessCard>
-    )
-  }
 
   return (
     <form onSubmit={handleSubmit} noValidate aria-busy={status === "submitting"}>
+      {status === "success" && (
+        <div className="mb-8">
+          <FormSuccessCard heading="Message sent — thank you">
+            <p className="mt-3">
+              We read every message and reply within one business day, usually
+              sooner. If it&apos;s urgent, call{" "}
+              <a
+                href={`tel:${siteConfig.phone.tel}`}
+                className="font-semibold text-primary underline underline-offset-4"
+              >
+                {siteConfig.phone.display}
+              </a>
+              .
+            </p>
+          </FormSuccessCard>
+        </div>
+      )}
       <HoneypotField
         id="contact-website"
         value={website}
