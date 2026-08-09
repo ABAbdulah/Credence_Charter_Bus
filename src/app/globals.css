@@ -103,11 +103,11 @@
 
 @keyframes hero-slideshow {
   0%,
-  28% {
+  13.1% {
     opacity: 1;
   }
-  34%,
-  94% {
+  16.7%,
+  96.4% {
     opacity: 0;
   }
   100% {
@@ -116,15 +116,19 @@
 }
 
 /*
- * Tuned for exactly 3 layers over an 18s cycle (6s share each). Each layer after
- * the first gets a NEGATIVE inline animation-delay (a fraction of this duration) —
- * negative delay starts the animation already partway through its cycle, so it
- * interpolates from the first frame instead of holding static until a positive
- * delay elapses. That distinction is what makes this an actual crossfade instead
- * of a hard cut.
+ * Tuned for exactly 6 layers over a 36s cycle (6s share each), so each layer holds
+ * for 16.7% of the cycle and the 3.6% ramps are the crossfade. Change the layer count
+ * and all four percentages move: hold ends at 100/N - 3.6, hidden starts at 100/N.
+ * HERO_SLIDESHOW_DURATION_S in hero-media.tsx must match this duration.
+ *
+ * Each layer after the first gets a NEGATIVE inline animation-delay (a fraction of
+ * this duration) — negative delay starts the animation already partway through its
+ * cycle, so it interpolates from the first frame instead of holding static until a
+ * positive delay elapses. That distinction is what makes this an actual crossfade
+ * instead of a hard cut.
  */
 @media (prefers-reduced-motion: no-preference) {
   .hero-slide {
-    animation: hero-slideshow 18s ease-in-out infinite;
+    animation: hero-slideshow 36s ease-in-out infinite;
   }
 }

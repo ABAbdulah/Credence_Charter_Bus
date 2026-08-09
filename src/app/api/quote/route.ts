@@ -1,5 +1,5 @@
 import { isHoneypotTripped, isRateLimited } from "@/lib/anti-spam"
-import { toQuoteMode, toQuoteRequest, validateQuote } from "@/lib/quote"
+import { toQuoteRequest, validateQuote } from "@/lib/quote"
 import { quoteSender } from "@/lib/quote-sender"
 
 export async function POST(request: Request) {
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     return Response.json({ ok: true })
   }
   const data = toQuoteRequest(payload)
-  const errors = validateQuote(data, toQuoteMode(payload))
+  const errors = validateQuote(data)
   if (Object.keys(errors).length > 0) {
     return Response.json({ ok: false, errors }, { status: 422 })
   }

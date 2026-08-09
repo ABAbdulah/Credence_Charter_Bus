@@ -26,7 +26,10 @@ export const siteConfig = {
     slideshowImages: [
       "/fleet/charter-bus-exterior.webp",
       "/hero/blue-ridge-parkway.webp",
+      "/hero/big-sur-bixby-bridge.webp",
+      "/hero/yosemite-tour-coach.webp",
       "/hero/mountain-pass.webp",
+      "/hero/pacific-coast-curve.webp",
     ],
     fallbackHeadline: "Reliable Group Transportation, Coast to Coast",
     fallbackSubheadline:

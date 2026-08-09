@@ -1,12 +1,18 @@
 "use client"
 
+import * as React from "react"
 import { Phone } from "lucide-react"
 
 import { fleetCategories } from "@/data/fleet"
-import { services } from "@/data/services"
 import { siteConfig } from "@/config/site"
 import { useFormSubmission } from "@/hooks/use-form-submission"
-import { emptyQuoteRequest, validateQuote } from "@/lib/quote"
+import {
+  contactMethods,
+  emptyQuoteRequest,
+  needsReturnLeg,
+  tripTypes,
+  validateQuote,
+} from "@/lib/quote"
 import { Button } from "@/components/ui/button"
 import { Field } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
@@ -24,6 +30,7 @@ function QuoteForm() {
     setWebsite,
     idFor,
     set,
+    patch,
     ariaProps,
     handleSubmit,
   } = useFormSubmission({
@@ -31,6 +38,17 @@ function QuoteForm() {
     initialData: emptyQuoteRequest,
     validate: (values) => validateQuote(values),
   })
+  const showReturnLeg = needsReturnLeg(data.tripType)
+  const describeTrip = data.tripType === "other"
+
+  function changeTripType(event: React.ChangeEvent<HTMLSelectElement>) {
+    const tripType = event.target.value
+    patch(
+      needsReturnLeg(tripType)
+        ? { tripType }
+        : { tripType, returnDate: "", returnTime: "" }
+    )
+  }
 
   if (status === "success") {
     return (
@@ -88,6 +106,23 @@ function QuoteForm() {
           />
         </Field>
         <Field
+          id={idFor("contactMethod")}
+          label="Preferred contact method"
+          error={errors.contactMethod}
+        >
+          <Select
+            {...ariaProps("contactMethod")}
+            value={data.contactMethod}
+            onChange={set("contactMethod")}
+          >
+            {contactMethods.map((method) => (
+              <option key={method.value} value={method.value}>
+                {method.label}
+              </option>
+            ))}
+          </Select>
+        </Field>
+        <Field
           id={idFor("passengers")}
           label="Number of passengers"
           error={errors.passengers}
@@ -100,21 +135,6 @@ function QuoteForm() {
             value={data.passengers}
             onChange={set("passengers")}
           />
-        </Field>
-        <Field id={idFor("tripType")} label="Type of trip" error={errors.tripType}>
-          <Select
-            {...ariaProps("tripType")}
-            value={data.tripType}
-            onChange={set("tripType")}
-          >
-            <option value="">Choose one…</option>
-            {services.map((service) => (
-              <option key={service.slug} value={service.slug}>
-                {service.name}
-              </option>
-            ))}
-            <option value="other">Something else</option>
-          </Select>
         </Field>
         <Field
           id={idFor("vehicle")}
@@ -135,6 +155,26 @@ function QuoteForm() {
             ))}
           </Select>
         </Field>
+        <div className="sm:col-span-2">
+          <Field
+            id={idFor("tripType")}
+            label="Type of trip"
+            error={errors.tripType}
+          >
+            <Select
+              {...ariaProps("tripType")}
+              value={data.tripType}
+              onChange={changeTripType}
+            >
+              <option value="">Choose one…</option>
+              {tripTypes.map((tripType) => (
+                <option key={tripType.value} value={tripType.value}>
+                  {tripType.label}
+                </option>
+              ))}
+            </Select>
+          </Field>
+        </div>
         <Field
           id={idFor("pickupLocation")}
           label="Pickup city or address"
@@ -170,24 +210,56 @@ function QuoteForm() {
           />
         </Field>
         <Field
-          id={idFor("returnDate")}
-          label="Return date"
-          optional
-          error={errors.returnDate}
+          id={idFor("departureTime")}
+          label="Departure time"
+          error={errors.departureTime}
         >
           <Input
-            {...ariaProps("returnDate")}
-            type="date"
-            value={data.returnDate}
-            onChange={set("returnDate")}
+            {...ariaProps("departureTime")}
+            type="time"
+            value={data.departureTime}
+            onChange={set("departureTime")}
           />
         </Field>
+        {showReturnLeg && (
+          <>
+            <Field
+              id={idFor("returnDate")}
+              label="Return date"
+              error={errors.returnDate}
+            >
+              <Input
+                {...ariaProps("returnDate")}
+                type="date"
+                min={data.departureDate || undefined}
+                value={data.returnDate}
+                onChange={set("returnDate")}
+              />
+            </Field>
+            <Field
+              id={idFor("returnTime")}
+              label="Return time"
+              error={errors.returnTime}
+            >
+              <Input
+                {...ariaProps("returnTime")}
+                type="time"
+                value={data.returnTime}
+                onChange={set("returnTime")}
+              />
+            </Field>
+          </>
+        )}
       </div>
       <div className="mt-6">
         <Field
           id={idFor("notes")}
-          label="Anything else we should know?"
-          optional
+          label={
+            describeTrip
+              ? "Please describe your trip"
+              : "Anything else we should know?"
+          }
+          optional={!describeTrip}
           error={errors.notes}
         >
           <Textarea

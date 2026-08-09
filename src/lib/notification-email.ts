@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site"
+import { contactMethodLabel, tripTypeLabel } from "@/lib/quote"
 import type { QuoteRequest } from "@/lib/quote"
 import type { NotificationEmail } from "@/lib/resend-client"
 import type { Submission } from "@/lib/submission-sender"
@@ -35,6 +36,11 @@ function compose(heading: string, rows: Row[]): { text: string; html: string } {
   return { text, html }
 }
 
+function whenLabel(date: string, time: string): string {
+  if (!date) return ""
+  return time ? `${date} at ${time}` : date
+}
+
 export function quoteEmail(data: QuoteRequest): NotificationEmail {
   const heading = `New quote request from ${data.name}`
   return {
@@ -43,13 +49,14 @@ export function quoteEmail(data: QuoteRequest): NotificationEmail {
       ["Name", data.name],
       ["Phone", data.phone],
       ["Email", data.email],
-      ["Trip type", data.tripType],
+      ["Preferred contact", contactMethodLabel(data.contactMethod)],
+      ["Trip type", tripTypeLabel(data.tripType)],
       ["Vehicle preference", data.vehicle],
       ["Passengers", data.passengers],
       ["Pickup", data.pickupLocation],
       ["Destination", data.destination],
-      ["Departure date", data.departureDate],
-      ["Return date", data.returnDate],
+      ["Departure", whenLabel(data.departureDate, data.departureTime)],
+      ["Return", whenLabel(data.returnDate, data.returnTime)],
       ["Notes", data.notes],
     ]),
     ...(data.email ? { replyTo: data.email } : {}),

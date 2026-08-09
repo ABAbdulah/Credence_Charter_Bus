@@ -36,10 +36,13 @@ export function useFormSubmission<T extends FormValues>({
   const idFor = (key: keyof T | string) =>
     idPrefix ? `${idPrefix}-${String(key)}` : String(key)
 
-  const set = (key: keyof T) => (event: ChangeEventFor) => {
-    setData((current) => ({ ...current, [key]: event.target.value }))
+  const patch = (values: Partial<T>) => {
+    setData((current) => ({ ...current, ...values }))
     setStatus((current) => (current === "success" ? "idle" : current))
   }
+
+  const set = (key: keyof T) => (event: ChangeEventFor) =>
+    patch({ [key]: event.target.value } as Partial<T>)
 
   const ariaProps = (key: keyof T) => ({
     id: idFor(key),
@@ -95,6 +98,7 @@ export function useFormSubmission<T extends FormValues>({
     setWebsite,
     idFor,
     set,
+    patch,
     ariaProps,
     fieldProps,
     handleSubmit,

@@ -6,7 +6,7 @@ import { HeroVideo } from "@/components/site/hero-video"
 const fallbackImage = "/fleet/charter-bus-exterior.webp"
 
 /** Must match the animation-duration of .hero-slide in globals.css. */
-const HERO_SLIDESHOW_DURATION_S = 18
+const HERO_SLIDESHOW_DURATION_S = 36
 
 /**
  * Server component on purpose — moving the image into the client half costs

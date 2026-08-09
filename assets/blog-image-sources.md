@@ -32,3 +32,17 @@ Not sourced via Openverse — the owner generated these directly and asked for t
 | how-much-does-it-cost-to-rent-a-charter-bus.webp | Charter bus on a misty mountain pass switchback road (replaces the StockSnap "Rural Road" photo) |
 
 The same two files are reused at `public/hero/blue-ridge-parkway.webp` and `public/hero/mountain-pass.webp` for the home hero background slideshow.
+
+## Home hero slideshow — added 9 Aug 2026 (owner-supplied, Pexels)
+
+Pexels License: free for commercial use, no attribution required. Originals kept in `assets/background/`; `public/hero/*.webp` is generated (1600×1040, `fit: cover`, quality 82).
+
+| File (`public/hero/`) | Subject | Original | Photographer |
+|---|---|---|---|
+| big-sur-bixby-bridge.webp | Bixby Creek Bridge, Big Sur CA | pexels-lesli-whitecotton-237271934-12422704.jpg | Lesli Whitecotton |
+| pacific-coast-curve.webp | Coastal switchback above the Pacific, double-yellow centre line | pexels-tom-briskey-99375926-12422182.jpg | Tom Briskey |
+| yosemite-tour-coach.webp | Tour coach on a Yosemite valley road in autumn | pexels-stephen-leonardi-587681991-32822203.jpg | Stephen Leonardi |
+
+Cropped to **1800×818 (2.2:1)** — close to the hero's rendered ratio on a wide screen, so `object-cover` trims almost nothing. `pacific-coast-curve.webp` is **mirrored** (`.flop()`): the road curve is on the left in the original and the hero scrim covers the left ~65%, so unflipped it showed only open water. Nothing in the frame reveals the flip — no text, no vehicles, and a double-yellow centre line is symmetric.
+
+The six rejected files were deleted; the remaining originals in `assets/background/` are only the three above. See the "US-audience screening" note in CLAUDE.md for why the rest failed.
