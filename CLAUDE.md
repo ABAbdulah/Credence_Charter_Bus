@@ -29,12 +29,12 @@ Marketing + lead-gen site for a charter bus company (rebrand of "Vanguard Charte
 ### 1. Fake contact details — MUST REPLACE (wrong = lost leads)
 All in `src/config/site.ts`, each marked with a `// dummy` comment. Change them there only; every page, JSON-LD, sitemap, and tel: link derives from this file.
 
+**Phone — real, set 13 Aug 2026:** `phone.display` (302) 499-4074 / `phone.tel` +13024994074 (owner-supplied; `// dummy` comment removed). Everything else below is still invented.
+
 | Field | Current dummy value |
 |---|---|
 | `legalName` | Credence Charter Bus LLC |
 | `url` | https://www.credencecharterbus.com |
-| `phone.display` | (800) 555-0142 |
-| `phone.tel` | +18005550142 |
 | `email` | info@credencecharterbus.com |
 
 Verify with: `grep -rn "dummy" src/config/site.ts` (should return 0 lines once real values are in).

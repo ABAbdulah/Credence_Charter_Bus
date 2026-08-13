@@ -9,8 +9,8 @@ export const siteConfig = {
   tagline: "Charter Bus & Coach Rentals Nationwide",
   url: "https://www.credencecharterbus.com", // dummy
   phone: {
-    display: "(800) 555-0142", // dummy
-    tel: "+18005550142", // dummy
+    display: "(302) 499-4074",
+    tel: "+13024994074",
   },
   email: "info@credencecharterbus.com", // dummy
   address: {
