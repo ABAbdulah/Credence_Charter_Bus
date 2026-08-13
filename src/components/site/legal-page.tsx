@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site"
 import { getLegalDocument, type LegalBlock } from "@/data/legal"
+import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/jsonld"
 import { Container } from "@/components/ui/container"
 import { Section, SectionHeading } from "@/components/ui/section"
 
@@ -34,8 +35,23 @@ function LegalBlockView({ block }: { block: LegalBlock }) {
 function LegalPage({ slug }: { slug: string }) {
   const doc = getLegalDocument(slug)
   if (!doc) return null
+  const path = `/${slug}`
   return (
     <Section>
+      <JsonLd
+        data={webPageJsonLd({
+          name: doc.title,
+          description: fillLegalTokens(doc.description),
+          path,
+          breadcrumbPath: path,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: doc.title, path },
+        ])}
+      />
       <Container>
         <div className="mx-auto max-w-3xl">
           <SectionHeading

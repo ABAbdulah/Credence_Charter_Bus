@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { siteConfig } from "@/config/site";
 import { fleetCategories, getFleetCategory } from "@/data/fleet";
 import { breadcrumbJsonLd, JsonLd, serviceJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
@@ -63,6 +64,7 @@ export default async function FleetCategoryPage({ params }: Props) {
           name: `${category.name} Rental`,
           description: category.short,
           path: `/fleet/${category.slug}`,
+          image: `${siteConfig.url}${category.images.exterior.src}`,
         })}
       />
       <Section>

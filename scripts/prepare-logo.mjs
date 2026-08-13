@@ -10,6 +10,7 @@ const sourceFile = resolve(root, "public/logo.png")
 const markFile = resolve(root, "public/brand/logo-mark.png")
 const iconFile = resolve(root, "src/app/icon.png")
 const appleIconFile = resolve(root, "src/app/apple-icon.png")
+const logoSquareFile = resolve(root, "public/brand/logo-square.png")
 
 const SITE_CREAM = [247, 245, 240]
 const ICON_NAVY = [27, 42, 74]
@@ -185,8 +186,15 @@ const mark = await sharp(data, { raw: { width, height, channels: 4 } })
 
 mkdirSync(dirname(markFile), { recursive: true })
 writeFileSync(markFile, mark)
-writeFileSync(iconFile, await squareIcon(mark, ICON_SIZE))
+const squareLogo = await squareIcon(mark, ICON_SIZE)
+writeFileSync(iconFile, squareLogo)
 writeFileSync(appleIconFile, await squareIcon(mark, APPLE_ICON_SIZE))
+/**
+ * Next's icon/apple-icon file convention serves at a content-hashed route
+ * (/icon?<hash>), not a stable URL, so it can't be referenced from JSON-LD.
+ * This static copy in public/ is what src/lib/jsonld.tsx's `logo` field uses.
+ */
+writeFileSync(logoSquareFile, squareLogo)
 
 const transparent = (() => {
   let n = 0

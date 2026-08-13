@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-import { citiesOfState, statesByRegion } from "@/data/locations";
+import { citiesOfState, states, statesByRegion } from "@/data/locations";
 import { networkSummary } from "@/data/network";
+import { breadcrumbJsonLd, itemListJsonLd, JsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -21,6 +22,27 @@ export const metadata = pageMetadata({
 export default function LocationsPage() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd({
+          type: "CollectionPage",
+          name: "Charter Bus Rentals by Location",
+          description:
+            "Find charter bus, mini bus, and sprinter van rentals near you. Credence Charter Bus serves cities in all 50 states with licensed drivers and all-in quotes.",
+          path: "/locations",
+          breadcrumbPath: "/locations",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Locations", path: "/locations" },
+        ])}
+      />
+      <JsonLd
+        data={itemListJsonLd(
+          states.map((state) => ({ name: state.name, path: `/locations/${state.slug}` })),
+        )}
+      />
       <Section>
         <Container>
           <SectionHeading

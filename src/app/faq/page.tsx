@@ -1,5 +1,5 @@
 import { faqCategories, faqItems } from "@/data/faq";
-import { JsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -26,6 +26,12 @@ export default function FaqPage() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "FAQ", path: "/faq" },
+        ])}
+      />
       <Section>
         <Container>
           <SectionHeading

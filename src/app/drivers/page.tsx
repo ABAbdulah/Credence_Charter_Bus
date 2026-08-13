@@ -1,3 +1,4 @@
+import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import {
   Card,
@@ -65,6 +66,21 @@ const training = [
 export default function DriversPage() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd({
+          name: "Drive With Us",
+          description:
+            "Join the Credence Charter Bus driver team — competitive pay, a modern fleet, ongoing training, and routes across all 50 states. Apply online today.",
+          path: "/drivers",
+          breadcrumbPath: "/drivers",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Drive With Us", path: "/drivers" },
+        ])}
+      />
       <Section>
         <Container>
           <SectionHeading

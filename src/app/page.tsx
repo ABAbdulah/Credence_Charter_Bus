@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/site";
 import { blogPreviews } from "@/data/blogs";
 import { services } from "@/data/services";
 import { formatBlogDate } from "@/lib/blog-format";
+import { JsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -25,6 +26,14 @@ export const metadata = pageMetadata({
 export default function Home() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd({
+          name: `${siteConfig.name} — ${siteConfig.tagline}`,
+          description:
+            "Charter bus, mini bus, and sprinter van rentals for groups of every size, serving all 50 states. Request a free quote or call to plan your trip.",
+          path: "/",
+        })}
+      />
       <Hero />
       <FeaturedFleetSection
         eyebrow="Our fleet"

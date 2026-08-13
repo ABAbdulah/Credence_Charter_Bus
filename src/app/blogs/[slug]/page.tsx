@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: Props) {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated ?? post.date,
     wordCount: wordCount(post.body),
     inLanguage: "en-US",
     ...(post.state ? { articleSection: post.state } : {}),

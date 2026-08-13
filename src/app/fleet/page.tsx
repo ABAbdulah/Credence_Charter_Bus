@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { fleetCategories } from "@/data/fleet";
+import { breadcrumbJsonLd, itemListJsonLd, JsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -17,6 +18,30 @@ export const metadata = pageMetadata({
 export default function FleetPage() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd({
+          type: "CollectionPage",
+          name: "Charter Bus Rental Fleet — Coaches, Mini Buses & Vans",
+          description:
+            "Motor coaches, coach buses, mini buses, sprinter vans, party buses, limousines, SUVs, and sedans — every charter bus rental includes a professional driver and a clear, itemized quote.",
+          path: "/fleet",
+          breadcrumbPath: "/fleet",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Fleet", path: "/fleet" },
+        ])}
+      />
+      <JsonLd
+        data={itemListJsonLd(
+          fleetCategories.map((category) => ({
+            name: category.name,
+            path: `/fleet/${category.slug}`,
+          })),
+        )}
+      />
       <Section>
         <Container>
           <SectionHeading

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
+import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,6 +26,22 @@ export const metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd({
+          type: "ContactPage",
+          name: "Contact Us",
+          description:
+            "Call, email, or request a quote — the Credence Charter Bus team answers around the clock.",
+          path: "/contact",
+          breadcrumbPath: "/contact",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
       <Section>
         <Container>
           <SectionHeading

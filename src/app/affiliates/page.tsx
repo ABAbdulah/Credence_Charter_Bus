@@ -1,3 +1,4 @@
+import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import {
   Card,
@@ -50,6 +51,21 @@ const requirements = [
 export default function AffiliatesPage() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd({
+          name: "Affiliate Program",
+          description:
+            "Operate a charter fleet? Partner with Credence Charter Bus for a steady stream of trips in your service area, fast payments, and dedicated support.",
+          path: "/affiliates",
+          breadcrumbPath: "/affiliates",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Affiliate Program", path: "/affiliates" },
+        ])}
+      />
       <Section>
         <Container>
           <SectionHeading

@@ -13,6 +13,8 @@ export type BlogSummary = {
   seoTitle: string
   excerpt: string
   date: string
+  /** ISO date of the last substantive content edit, distinct from `date` (the publish date). Stamped by the prose/SEO pass; falls back to `date` when absent. */
+  updated?: string
   state: string
   stateAbbr: string
   stateSlug: string

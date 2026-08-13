@@ -1,3 +1,4 @@
+import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { CheckList } from "@/components/ui/check-list";
 import { Container } from "@/components/ui/container";
@@ -20,6 +21,21 @@ const reassurances = [
 export default function QuotePage() {
   return (
     <Section>
+      <JsonLd
+        data={webPageJsonLd({
+          name: "Get a Free Charter Bus Quote",
+          description:
+            "Request a free charter bus rental quote — group size, dates, and route are all we need. Clear, itemized pricing, usually the same day.",
+          path: "/quote",
+          breadcrumbPath: "/quote",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Get a Quote", path: "/quote" },
+        ])}
+      />
       <Container>
         <SectionHeading
           as="h1"

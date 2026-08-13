@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
+import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { CheckList } from "@/components/ui/check-list";
@@ -44,6 +45,21 @@ const afterSubmit = [
 export default function HowToBookPage() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd({
+          name: "How Booking Works",
+          description:
+            "Renting a charter bus with Credence takes three steps: request a quote, review your itemized estimate, and sign the agreement. Here's what to have ready.",
+          path: "/how-to-book",
+          breadcrumbPath: "/how-to-book",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "How Booking Works", path: "/how-to-book" },
+        ])}
+      />
       <Section>
         <Container>
           <SectionHeading

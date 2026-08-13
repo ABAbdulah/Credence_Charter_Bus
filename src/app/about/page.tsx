@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { siteConfig } from "@/config/site";
+import { breadcrumbJsonLd, JsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -32,6 +33,22 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd({
+          type: "AboutPage",
+          name: "About Us",
+          description:
+            "Credence Charter Bus arranges group transportation in all 50 states — licensed drivers, well-maintained vehicles, and quotes without surprises.",
+          path: "/about",
+          breadcrumbPath: "/about",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
       <Section>
         <Container>
           <SectionHeading

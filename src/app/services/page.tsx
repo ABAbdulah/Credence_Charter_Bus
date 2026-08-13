@@ -1,4 +1,5 @@
 import { services } from "@/data/services";
+import { breadcrumbJsonLd, itemListJsonLd, JsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -15,6 +16,27 @@ export const metadata = pageMetadata({
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd({
+          type: "CollectionPage",
+          name: "Group Transportation Services",
+          description:
+            "Corporate travel, event transportation, airport transfers, sports teams, weddings, and school trips — group transportation with a dedicated coordinator.",
+          path: "/services",
+          breadcrumbPath: "/services",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+        ])}
+      />
+      <JsonLd
+        data={itemListJsonLd(
+          services.map((service) => ({ name: service.name, path: `/services/${service.slug}` })),
+        )}
+      />
       <Section>
         <Container>
           <SectionHeading

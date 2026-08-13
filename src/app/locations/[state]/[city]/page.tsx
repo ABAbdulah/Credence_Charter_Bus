@@ -97,6 +97,7 @@ export default async function CityPage({ params }: Props) {
       "@type": "City",
       name: city.name,
       containedInPlace: { "@type": "State", name: state.name },
+      geo: { "@type": "GeoCoordinates", latitude: city.lat, longitude: city.lng },
     },
     provider: { "@id": organizationId },
   };

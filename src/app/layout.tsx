@@ -3,7 +3,7 @@ import { Bitter, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 
 import { siteConfig } from "@/config/site";
-import { JsonLd, organizationJsonLd } from "@/lib/jsonld";
+import { JsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
 import { CallBar } from "@/components/site/call-bar";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
@@ -33,6 +33,7 @@ export default function RootLayout({
     <html lang="en" className={`${bitter.variable} ${sourceSans.variable}`}>
       <body className="flex min-h-svh flex-col pb-24 antialiased md:pb-0">
         <JsonLd data={organizationJsonLd} />
+        <JsonLd data={websiteJsonLd} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-5 focus:py-3 focus:font-semibold focus:text-primary-foreground"

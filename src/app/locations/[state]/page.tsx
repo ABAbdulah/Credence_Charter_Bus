@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { getState, states } from "@/data/locations";
-import { breadcrumbJsonLd, JsonLd } from "@/lib/jsonld";
+import { citiesOfState, getState, locationsBuildConfig, states } from "@/data/locations";
+import { breadcrumbJsonLd, itemListJsonLd, JsonLd } from "@/lib/jsonld";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -36,6 +36,10 @@ export default async function StatePage({ params }: Props) {
   const state = getState(slug);
   if (!state) notFound();
 
+  const pageOneCities = citiesOfState(state.slug).slice(
+    0,
+    locationsBuildConfig.stateCityPageSize
+  );
 
   return (
     <>
@@ -45,6 +49,14 @@ export default async function StatePage({ params }: Props) {
           { name: "Locations", path: "/locations" },
           { name: state.name, path: `/locations/${state.slug}` },
         ])}
+      />
+      <JsonLd
+        data={itemListJsonLd(
+          pageOneCities.map((city) => ({
+            name: city.name,
+            path: `/locations/${state.slug}/${city.slug}`,
+          })),
+        )}
       />
       <Section>
         <Container>
